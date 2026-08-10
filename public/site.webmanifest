@@ -1,0 +1,18 @@
+{
+  "name": "LevelApp — Software house",
+  "short_name": "LevelApp",
+  "description": "Software su misura, web app e AI per la tua azienda.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d1117",
+  "theme_color": "#0d1117",
+  "lang": "it",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

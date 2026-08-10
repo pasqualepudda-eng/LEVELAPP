@@ -1,0 +1,608 @@
+@import 'tailwindcss';
+
+/* ============================================================
+   LevelApp — design system
+   Copia del sistema di GitHub (Primer + pagine marketing):
+   stessa palette nei due temi, stessi bordi da 1px sempre
+   visibili, stessa scala tipografica Mona Sans.
+
+   I token vivono in `@theme` con i valori del tema chiaro, poi
+   vengono riscritti per il tema scuro in un solo posto:
+   `:root[data-color-mode='dark']`. Le utility Tailwind leggono
+   `var(--color-*)` a runtime, quindi cambiano da sole.
+   ============================================================ */
+@theme {
+  /* Superfici — Primer light */
+  --color-canvas: #ffffff; /* canvas.default */
+  --color-canvas-inset: #f6f8fa; /* canvas.inset */
+  --color-canvas-subtle: #f6f8fa; /* canvas.subtle — card */
+  --color-canvas-overlay: #ffffff; /* overlay.backdrop — menu, popover */
+  --color-canvas-raised: #eff2f5; /* hover dei neutri */
+
+  /* Testo */
+  --color-fg: #1f2328; /* fg.default */
+  --color-fg-muted: #59636e; /* fg.muted */
+  --color-fg-subtle: #6e7781; /* fg.subtle */
+  --color-fg-onemphasis: #ffffff;
+
+  /* Bordi */
+  --color-line: #d1d9e0; /* border.default */
+  --color-line-muted: #e4e8ec; /* border.muted */
+
+  /* Accenti funzionali */
+  --color-accent: #0969da; /* accent.fg */
+  --color-accent-emphasis: #0969da;
+  --color-accent-subtle: #ddf4ff;
+  --color-success: #1a7f37;
+  --color-success-emphasis: #1f883d;
+  --color-success-subtle: #dafbe1;
+  --color-attention: #9a6700;
+  --color-attention-subtle: #fff8c5;
+  --color-danger: #cf222e;
+  --color-danger-subtle: #ffebe9;
+  --color-purple: #8250df;
+  --color-purple-emphasis: #8250df;
+  --color-purple-subtle: #fbefff;
+  --color-pink: #bf3989;
+  --color-orange: #bc4c00;
+
+  /* Bottoni — Primer btn */
+  --color-btn-bg: #f6f8fa;
+  --color-btn-hover: #eff2f5;
+  --color-btn-active: #e6eaef;
+  --color-btn-border: #1f232826;
+  --color-btn-primary-bg: #1f883d;
+  --color-btn-primary-hover: #1c8139;
+  --color-btn-primary-active: #197935;
+  --color-btn-primary-border: #1f232826;
+
+  /* Superfici piatte per label e badge */
+  --color-neutral-muted: #818b981f;
+
+  /* Sintassi del codice — Primer light */
+  --color-code-plain: #1f2328;
+  --color-code-comment: #59636e;
+  --color-code-string: #0a3069;
+  --color-code-keyword: #cf222e;
+  --color-code-fn: #8250df;
+  --color-code-number: #0550ae;
+  --color-code-tag: #116329;
+
+  /* Ombre: valori Primer, il colore cambia col tema */
+  --color-shadow-card: #1f23280a;
+  --color-shadow-overlay: #1f23281f;
+  --shadow-card: 0 1px 0 var(--color-shadow-card);
+  --shadow-overlay: 0 8px 24px var(--color-shadow-overlay);
+  --shadow-float: 0 12px 28px var(--color-shadow-overlay);
+
+  /* Glow delle hero marketing */
+  --color-glow-1: #0969da;
+  --color-glow-2: #8250df;
+  --glow-opacity: 0.16;
+
+  /* Tipografia: la stessa famiglia usata da github.com */
+  --font-sans:
+    'Mona Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans', Helvetica, Arial,
+    sans-serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
+
+  /* Raggi: 6px ovunque, 12/16px per le superfici grandi */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-2xl: 24px;
+
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ------------------------------------------------------------
+   Tema scuro. Vale per la scelta esplicita dell'utente
+   (`data-color-mode="dark"`, scritto dallo switch) e per le
+   sezioni che restano scure in entrambi i temi, come fa GitHub
+   nelle sue pagine marketing (`.on-dark`).
+   ------------------------------------------------------------ */
+:root[data-color-mode='dark'],
+.on-dark {
+  color-scheme: dark;
+
+  --color-canvas: #0d1117;
+  --color-canvas-inset: #010409;
+  --color-canvas-subtle: #151b23;
+  --color-canvas-overlay: #212830;
+  --color-canvas-raised: #262c36;
+
+  --color-fg: #f0f6fc;
+  --color-fg-muted: #9198a1;
+  --color-fg-subtle: #656c76;
+  --color-fg-onemphasis: #ffffff;
+
+  --color-line: #3d444d;
+  --color-line-muted: #262c36;
+
+  --color-accent: #4493f8;
+  --color-accent-emphasis: #1f6feb;
+  --color-accent-subtle: #121d2f;
+  --color-success: #3fb950;
+  --color-success-emphasis: #238636;
+  --color-success-subtle: #0f2913;
+  --color-attention: #d29922;
+  --color-attention-subtle: #272115;
+  --color-danger: #f85149;
+  --color-danger-subtle: #25171c;
+  --color-purple: #ab7df8;
+  --color-purple-emphasis: #8957e5;
+  --color-purple-subtle: #211035;
+  --color-pink: #f778ba;
+  --color-orange: #db6d28;
+
+  --color-btn-bg: #212830;
+  --color-btn-hover: #262c36;
+  --color-btn-active: #2f3742;
+  --color-btn-border: #f0f6fc1a;
+  --color-btn-primary-bg: #238636;
+  --color-btn-primary-hover: #29903b;
+  --color-btn-primary-active: #1f7a30;
+  --color-btn-primary-border: #f0f6fc1a;
+
+  --color-neutral-muted: #656c7633;
+
+  --color-code-plain: #e6edf3;
+  --color-code-comment: #9198a1;
+  --color-code-string: #a5d6ff;
+  --color-code-keyword: #ff7b72;
+  --color-code-fn: #d2a8ff;
+  --color-code-number: #79c0ff;
+  --color-code-tag: #7ee787;
+
+  --color-shadow-card: #01040966;
+  --color-shadow-overlay: #010409cc;
+
+  --color-glow-1: #1f6feb;
+  --color-glow-2: #8957e5;
+  --glow-opacity: 0.48;
+}
+
+/* `.on-dark` è un'isola scura dentro una pagina chiara: deve
+   dipingere il proprio fondo, altrimenti resta bianco. */
+.on-dark {
+  background-color: var(--color-canvas);
+  color: var(--color-fg);
+}
+
+/* ============================================================
+   Base
+   ============================================================ */
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+    /* Il taglio va anche qui, non solo sul body: senza, gli sconfinamenti
+       (le strisce che scorrono, i bagliori delle hero) allargano il documento
+       e con lui il riquadro su cui si misurano gli elementi `fixed` — il
+       pannello del menu mobile finiva più largo dello schermo. */
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent-emphasis) 45%, transparent);
+    color: var(--color-fg);
+  }
+
+  ::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-canvas);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line);
+    border-radius: 99px;
+    border: 3px solid var(--color-canvas);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-fg-subtle);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    text-wrap: balance;
+    font-weight: 600;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  button,
+  a {
+    cursor: pointer;
+  }
+
+  /* Anello di focus di sistema: sempre visibile da tastiera, mai col mouse. */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: var(--radius-md);
+  }
+
+  /* Le ancore non devono finire sotto l'header sticky. */
+  [id] {
+    scroll-margin-top: 5.5rem;
+  }
+}
+
+/* ============================================================
+   Utilities
+   ============================================================ */
+@layer utilities {
+  /* Contenitore standard: 1280px come la chrome di GitHub. */
+  .shell {
+    width: 100%;
+    max-width: 80rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .shell {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Contenitore stretto per i testi lunghi delle pagine interne. */
+  .shell-narrow {
+    width: 100%;
+    max-width: 56rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+  @media (min-width: 768px) {
+    .shell-narrow {
+      padding-inline: 2rem;
+    }
+  }
+
+  /* Titolo marketing: Mona Sans stretta e molto grande. */
+  .display {
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    font-stretch: 125%;
+  }
+
+  /* Le tre misure dei titoli usate sulle pagine marketing di GitHub. */
+  .display-hero {
+    font-size: clamp(2.75rem, 7vw, 5.25rem);
+  }
+  .display-section {
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+  }
+  .display-sub {
+    font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  }
+
+  /* Il gradiente usato sui claim. */
+  .text-gradient {
+    background: linear-gradient(
+      93deg,
+      var(--color-fg) 0%,
+      var(--color-accent) 45%,
+      var(--color-purple) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Bagliore d'ambiente dietro le hero. */
+  .hero-glow {
+    background:
+      radial-gradient(
+        60% 50% at 50% 0%,
+        color-mix(in oklab, var(--color-glow-1) calc(var(--glow-opacity) * 100%), transparent) 0%,
+        transparent 70%
+      ),
+      radial-gradient(
+        40% 40% at 80% 10%,
+        color-mix(in oklab, var(--color-glow-2) calc(var(--glow-opacity) * 80%), transparent) 0%,
+        transparent 70%
+      );
+  }
+
+  /* Alone circolare dietro i mockup, come nelle sezioni prodotto. */
+  .spot-glow {
+    background: radial-gradient(
+      closest-side,
+      color-mix(in oklab, var(--color-glow-1) calc(var(--glow-opacity) * 90%), transparent),
+      transparent
+    );
+  }
+
+  /* Reticolo tecnico, come i background dei materiali dev. */
+  .grid-lines {
+    background-image:
+      linear-gradient(
+        to right,
+        color-mix(in oklab, var(--color-fg) 6%, transparent) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--color-fg) 6%, transparent) 1px,
+        transparent 1px
+      );
+    background-size: 48px 48px;
+  }
+
+  .mask-fade-x {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  .mask-fade-b {
+    -webkit-mask-image: linear-gradient(to bottom, #000 45%, transparent);
+    mask-image: linear-gradient(to bottom, #000 45%, transparent);
+  }
+
+  /* Card di base: bordo netto, niente ombre diffuse. */
+  .card {
+    background-color: var(--color-canvas-subtle);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-lg);
+  }
+
+  .card-hover {
+    transition:
+      border-color 0.2s ease,
+      background-color 0.2s ease,
+      transform 0.2s var(--ease-out-quint);
+  }
+  .card-hover:hover {
+    border-color: var(--color-fg-subtle);
+    transform: translateY(-2px);
+  }
+
+  /* Cornice sfumata usata sulle card in evidenza. */
+  .card-accent {
+    position: relative;
+  }
+  .card-accent::before {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      180deg,
+      color-mix(in oklab, var(--accent, var(--color-accent)) 60%, transparent),
+      transparent 65%
+    );
+    -webkit-mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    mask:
+      linear-gradient(#000 0 0) content-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Barra colorata sopra le sezioni tematiche (il "river" dei materiali dev). */
+  .accent-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--accent, var(--color-accent)) 35%,
+      var(--accent, var(--color-accent)) 65%,
+      transparent
+    );
+  }
+
+  /* Campo di input: Primer FormControl, identico nei due temi. */
+  .field {
+    width: 100%;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-line);
+    background-color: var(--color-canvas);
+    padding: 0.4375rem 0.75rem;
+    /* 16px sul telefono: sotto questa misura Safari su iOS ingrandisce la
+       pagina appena tocchi il campo, e poi resta zoomata. */
+    font-size: 1rem;
+    color: var(--color-fg);
+    box-shadow: inset 0 1px 0 var(--color-shadow-card);
+    transition:
+      border-color 0.15s ease,
+      box-shadow 0.15s ease;
+  }
+  .field::placeholder {
+    color: var(--color-fg-subtle);
+  }
+  .field:focus {
+    outline: none;
+    border-color: var(--color-accent-emphasis);
+    box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-accent-emphasis) 30%, transparent);
+  }
+  .field:focus-visible {
+    outline: none;
+  }
+  @media (min-width: 640px) {
+    .field {
+      font-size: 0.875rem;
+    }
+  }
+
+  /* Link testuale del corpo: colore accento, sottolineato in hover. */
+  .link {
+    color: var(--color-accent);
+  }
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  /* ----------------------------------------------------------------
+     Pagina interattiva
+     ---------------------------------------------------------------- */
+
+  /* Carta che si gira su sé stessa (memory). Le due facce stanno una
+     sopra l'altra e ruotano insieme al contenitore. */
+  .flip {
+    perspective: 900px;
+  }
+  .flip-inner {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.45s var(--ease-out-quint);
+  }
+  .flip.is-flipped .flip-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-face {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-md);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-back {
+    transform: rotateY(180deg);
+  }
+
+  /* Righe orizzontali sottili sopra i giochi arcade: bastano a dare il
+     tono da cabinato senza appesantire la lettura. */
+  .scanlines::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    background: repeating-linear-gradient(
+      to bottom,
+      color-mix(in oklab, #fff 5%, transparent) 0 1px,
+      transparent 1px 3px
+    );
+  }
+
+  /* I canvas dei classici sono disegnati a blocchi: niente sfocatura
+     quando il browser li scala. */
+  .pixelated {
+    image-rendering: pixelated;
+  }
+}
+
+@keyframes arcade-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--accent, #4493f8) 45%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+
+.animate-arcade-pulse {
+  animation: arcade-pulse 1.8s ease-out infinite;
+}
+
+/* Alone pulsante sul testo. Usa `currentColor`, così si accende del colore
+   della fascia in cui cade il risultato senza doverlo passare due volte. */
+@keyframes glow-pulse {
+  0%,
+  100% {
+    text-shadow: 0 0 10px color-mix(in oklab, currentColor 45%, transparent);
+  }
+  50% {
+    text-shadow: 0 0 24px color-mix(in oklab, currentColor 85%, transparent);
+  }
+}
+
+.animate-glow {
+  animation: glow-pulse 1.9s ease-in-out infinite;
+}
+
+/* ============================================================
+   Keyframes
+   ============================================================ */
+@keyframes marquee-x {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.45;
+    transform: scale(0.82);
+  }
+}
+
+.animate-marquee {
+  animation: marquee-x var(--marquee-duration, 40s) linear infinite;
+}
+.animate-caret {
+  animation: caret 1.1s steps(1) infinite;
+}
+.animate-pulse-dot {
+  animation: pulse-dot 2.4s ease-in-out infinite;
+}
+
+/* ============================================================
+   Reduced motion
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
