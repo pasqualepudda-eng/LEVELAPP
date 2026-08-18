@@ -5,23 +5,17 @@
 
 export const company = {
   name: 'LevelApp',
+  // Ragione sociale: è quella che compare in testata e nella riga legale.
+  legalName: 'LevelApp LLC',
   claim: 'Software house',
   payoff: 'Portiamo il tuo business al livello successivo.',
-  phone: '+39 000 000 0000', // TODO: numero reale
-  phoneHref: 'tel:+390000000000',
-  email: 'info@levelapp.it', // TODO: email reale
-  vat: 'P.IVA 00000000000', // TODO
+  phone: '+39 351 418 1029',
+  phoneHref: 'tel:+393514181029',
+  email: 'amministrazione@levelapp.cloud',
   founded: 2022,
   foundedIn: 'Roma',
-  offices: [
-    // La prima è la sede storica: LevelApp è nata qui. TODO: indirizzi reali.
-    { city: 'Roma', address: 'Via Esempio, 12', zip: '00184 Roma (RM)' },
-    { city: 'Milano', address: 'Viale Esempio, 4', zip: '20121 Milano (MI)' },
-  ],
   socials: [
-    { label: 'LinkedIn', href: '#', icon: 'linkedin' }, // TODO
-    { label: 'Instagram', href: '#', icon: 'instagram' }, // TODO
-    { label: 'GitHub', href: '#', icon: 'github' }, // TODO
+    { label: 'Instagram', href: 'https://www.instagram.com/levelapp.cloud', icon: 'instagram' },
   ],
 }
 
@@ -52,31 +46,31 @@ export const nav = [
             label: 'Software gestionale',
             to: '/servizi/gestionale',
             icon: 'layers',
-            desc: 'ERP, CRM e MES sul tuo flusso di lavoro',
+            desc: 'ERP, CRM, MES e verticali su misura',
           },
           {
             label: 'Web app & piattaforme',
             to: '/servizi/web-app',
             icon: 'browser',
-            desc: 'Portali, aree riservate, configuratori',
+            desc: 'Portali, aree riservate, intranet, SaaS',
           },
           {
             label: 'Siti web ed e-commerce',
             to: '/servizi/siti-web',
             icon: 'globe',
-            desc: 'Veloci, indicizzabili, aggiornabili da te',
+            desc: 'One page, landing, multipagina, e-commerce',
           },
           {
             label: 'App mobile',
             to: '/servizi/mobile',
             icon: 'mobile',
-            desc: 'iOS e Android da un solo codebase',
+            desc: 'App per clienti, rete vendita, operativi',
           },
           {
             label: 'AI applicata',
             to: '/servizi/ai',
             icon: 'sparkle',
-            desc: 'Assistenti e automazioni sui tuoi dati',
+            desc: 'Bot, esperienze guidate, sistemi multi-modello',
           },
         ],
       },
@@ -96,22 +90,22 @@ export const nav = [
         title: 'Case study',
         items: [
           {
-            label: 'CRM · Novaform',
-            to: '/progetti/crm',
-            icon: 'graph',
-            desc: 'Preventivi da 3 giorni a 20 minuti',
-          },
-          {
-            label: 'ERP · Arkadia',
-            to: '/progetti/erp',
+            label: 'Horeca in Suite',
+            to: '/progetti/horeca',
             icon: 'layers',
-            desc: 'Nove sistemi sostituiti da uno',
+            desc: 'Un gestionale al posto di trenta strumenti',
           },
           {
-            label: 'MES · Officine V',
-            to: '/progetti/mes',
-            icon: 'cpu',
-            desc: 'Produzione tracciata al pezzo, zero carta',
+            label: 'Scuolabus · Comune di Roma',
+            to: '/progetti/scuolabus',
+            icon: 'users',
+            desc: 'Il genitore segue il figlio fermata per fermata',
+          },
+          {
+            label: 'Multiservizi in Suite',
+            to: '/progetti/multiservizi',
+            icon: 'workflow',
+            desc: 'ERP per appaltatori, con timbratura sul posto',
           },
           {
             label: 'Tutti i progetti',
@@ -134,25 +128,13 @@ export const nav = [
             label: 'Chi siamo',
             to: '/azienda',
             icon: 'users',
-            desc: 'Oltre 24 sviluppatori tra Roma e Milano',
-          },
-          {
-            label: 'Valori',
-            to: '/azienda#valori',
-            icon: 'shield',
-            desc: 'Nessun lock-in, perimetro nero su bianco',
-          },
-          {
-            label: 'Tappe',
-            to: '/azienda#storia',
-            icon: 'clock',
-            desc: 'Dal 2022 a oggi',
+            desc: 'Oltre 24 sviluppatori e più di 70 clienti',
           },
           {
             label: 'Lavora con noi',
-            to: '/azienda#team',
+            to: '/lavora-con-noi',
             icon: 'briefcase',
-            desc: 'Come è fatto il team',
+            desc: 'Scegli il ruolo e fai il test d’ingresso',
           },
         ],
       },
@@ -178,9 +160,9 @@ export const footerLinks = [
     title: 'Progetti',
     links: [
       { label: 'Tutti i case study', to: '/progetti' },
-      { label: 'CRM · Novaform', to: '/progetti/crm' },
-      { label: 'ERP · Arkadia', to: '/progetti/erp' },
-      { label: 'MES · Officine V', to: '/progetti/mes' },
+      { label: 'Horeca in Suite', to: '/progetti/horeca' },
+      { label: 'Scuolabus · Comune di Roma', to: '/progetti/scuolabus' },
+      { label: 'Multiservizi in Suite', to: '/progetti/multiservizi' },
     ],
   },
   {
@@ -188,7 +170,7 @@ export const footerLinks = [
     links: [
       { label: 'Chi siamo', to: '/azienda' },
       { label: 'Il metodo', to: '/azienda#metodo' },
-      { label: 'Lavora con noi', to: '/azienda#team' },
+      { label: 'Lavora con noi', to: '/lavora-con-noi' },
       { label: 'Contatti', to: '/contatti' },
     ],
   },
@@ -204,11 +186,11 @@ export const footerLinks = [
   },
 ]
 
-// TODO: sostituire con le pagine legali reali.
 export const legalLinks = [
-  { label: 'Privacy policy', href: '#' },
-  { label: 'Cookie policy', href: '#' },
-  { label: 'Termini di servizio', href: '#' },
+  { label: 'Privacy policy', to: '/privacy' },
+  { label: 'Cookie policy', to: '/cookie' },
+  { label: 'Termini e condizioni', to: '/termini' },
+  { label: 'Mappa del sito', to: '/mappa' },
 ]
 
 /* ------------------------------------------------------------------
@@ -326,27 +308,27 @@ export const services = [
     accent: 'var(--color-attention)',
     tempi: 'MVP nelle mani dei primi utenti in 4 settimane',
     title: 'Dalla tua idea al prodotto',
-    short: 'Hai un’idea di software: la trasformiamo in un prodotto vero, non in una presentazione.',
+    short: 'Hai un’idea di software: la portiamo in produzione, dal primo utente in poi.',
     tags: ['MVP', 'Prodotto', 'Scale-up'],
     hero: 'Hai l’idea. Noi la mettiamo in produzione.',
     intro:
-      'Molti dei progetti che facciamo non nascono da un processo da sistemare, ma da un’intuizione: un servizio che nel tuo settore non esiste ancora, un modo diverso di far lavorare i clienti, una competenza che oggi vendi come consulenza e potrebbe diventare software. Si parte da lì e in quattro settimane l’idea è un prodotto funzionante davanti ai primi utenti, non un documento di specifiche.',
+      'Un servizio che nel tuo settore non esiste ancora, uno strumento che oggi vendi come consulenza, una piattaforma da affiancare al tuo prodotto, un’app pensata per i tuoi clienti: qualunque forma abbia l’idea, il percorso è lo stesso. In quattro settimane diventa un prodotto funzionante davanti ai primi utenti, non un documento di specifiche.',
     highlights: [
       {
         title: 'Prima gli utenti, poi il codice',
-        body: 'Pochi giorni per capire chi lo userà, cosa fa oggi al posto tuo e quale pezzo vale la pena costruire per primo. Tagliamo tutto il resto: le funzioni “che serviranno di sicuro” sono il motivo per cui i prodotti nuovi escono con un anno di ritardo.',
+        body: 'Pochi giorni per capire chi lo userà, cosa fa oggi al posto tuo e quale pezzo vale la pena costruire per primo. Le funzioni “che serviranno di sicuro” sono il motivo per cui i prodotti nuovi escono con un anno di ritardo.',
       },
       {
         title: 'Un MVP che regge il traffico vero',
-        body: 'Non un prototipo da buttare: l’MVP nasce sull’architettura del prodotto finale — servizi Rust dove serve reggere, cloud europeo, monitoraggio dal primo giorno. Quando funziona si scala, non si riscrive.',
+        body: 'Non un prototipo da buttare: nasce sull’architettura del prodotto finale, con monitoraggio dal primo giorno. Quando funziona si scala, non si riscrive.',
       },
       {
         title: 'La proprietà intellettuale è tua',
-        body: 'Codice, marchio e dati restano intestati alla tua azienda: nessuna quota nel capitale, nessuna royalty, nessun vincolo con noi. Se il prodotto decolla, decolla per te.',
+        body: 'Codice, marchio e dati restano intestati alla tua azienda: nessuna quota nel capitale, nessuna royalty, nessun vincolo con noi.',
       },
       {
         title: 'Si misura, poi si decide',
-        body: 'Dal primo giorno online raccogliamo i numeri che contano davvero — chi torna, dove si blocca, cosa non usa nessuno — e la settimana dopo si taglia o si raddoppia su quello che funziona.',
+        body: 'Dal primo giorno online raccogliamo i numeri che contano — chi torna, dove si blocca, cosa non usa nessuno — e la settimana dopo si taglia o si raddoppia su quello che funziona.',
       },
     ],
     deliverables: [
@@ -389,27 +371,27 @@ export const services = [
     accent: 'var(--color-accent)',
     tempi: 'Primo modulo in 4 settimane, poi uno ogni 2',
     title: 'Software gestionale su misura',
-    short: 'ERP, CRM e MES costruiti sul tuo ciclo: preventivi, ordini, magazzino, commesse.',
+    short: 'ERP, CRM, MES e gestionali verticali costruiti sul modo di lavorare della tua azienda.',
     tags: ['ERP', 'CRM', 'MES'],
     hero: 'Il gestionale che assomiglia alla tua azienda',
     intro:
-      'Non un prodotto da configurare per mesi: partiamo dal processo che ti sta bloccando davvero — la preventivazione, il magazzino, l’avanzamento delle commesse — e lo mandiamo in produzione in quattro settimane, collegato ai dati che hai già. I moduli successivi arrivano uno alla volta, mentre l’azienda continua a lavorare.',
+      'Commesse o pratiche, anagrafiche e documenti, pianificazione e turni, flussi di approvazione, scadenze, rendicontazione: ogni azienda ha processi che nessun prodotto pronto copre davvero. Costruiamo il gestionale attorno a come lavori — in produzione, nei servizi, negli appalti, nella logistica o nel commercio — partendo dal processo che oggi ti costa più ore.',
     highlights: [
       {
         title: 'Prima il collo di bottiglia',
-        body: 'Nell’analisi si sceglie un processo solo: quello che oggi costa più ore. In quattro settimane è in produzione e misurabile, invece di scoprire a rilascio completo se la direzione era giusta.',
+        body: 'Nell’analisi si sceglie un processo solo: quello che oggi consuma più tempo o genera più errori. In quattro settimane è in produzione e misurabile, invece di scoprire a rilascio completo se la direzione era giusta.',
       },
       {
         title: 'Un dato solo, ovunque',
-        body: 'Anagrafiche, listini e giacenze vivono in un posto e si sincronizzano con fatturazione elettronica, contabilità ed e-commerce. Le doppie imputazioni e gli Excel paralleli spariscono col primo rilascio.',
+        body: 'Anagrafiche, documenti e scadenze vivono in un posto e si parlano con i sistemi che hai già — contabilità, fatturazione elettronica, e-commerce, strumenti di reparto. Le doppie imputazioni spariscono col primo rilascio.',
       },
       {
         title: 'Regge i numeri veri',
-        body: 'Il motore che calcola disponibilità, marginalità e fabbisogni è scritto in Rust: risponde in millisecondi su anni di storico e non rallenta man mano che il database cresce.',
+        body: 'I motori di calcolo — disponibilità, costi, pianificazioni, riepiloghi — sono scritti in Rust: rispondono in millisecondi su anni di storico e non rallentano man mano che il database cresce.',
       },
       {
-        title: 'Permessi per ruolo',
-        body: 'Direzione, amministrazione, produzione e rete vendita hanno viste e azioni diverse sullo stesso database, con la traccia di chi ha modificato cosa e quando.',
+        title: 'Ruoli, permessi e tracciamento',
+        body: 'Direzione, amministrazione, operativi e collaboratori esterni hanno viste e azioni diverse sullo stesso sistema, con la traccia di chi ha modificato cosa e quando.',
       },
     ],
     deliverables: [
@@ -418,7 +400,7 @@ export const services = [
       'Modulo in produzione entro la quarta settimana',
       'Migrazione dei dati esistenti, provata due volte',
       'Integrazioni con i sistemi già in uso',
-      'Formazione dei reparti e manuale operativo',
+      'Formazione degli utenti e manuale operativo',
     ],
     stack: ['Rust', 'TypeScript', 'React', 'PostgreSQL', 'Docker', 'Cloud EU'],
     faqs: [
@@ -431,7 +413,7 @@ export const services = [
         a: 'Sì. Analizziamo il database o gli export esistenti, scriviamo gli script di migrazione e facciamo due prove complete prima del passaggio: il go-live occupa una giornata, non un fine settimana di emergenze.',
       },
     ],
-    caseSlug: 'erp',
+    caseSlug: 'multiservizi',
     code: {
       filename: 'ordini.service.ts',
       lines: [
@@ -453,21 +435,25 @@ export const services = [
     slug: 'web-app',
     icon: 'code',
     accent: 'var(--color-purple)',
-    tempi: 'Portale online in 3 settimane',
+    tempi: 'Piattaforma online in 3 settimane',
     title: 'Web app & piattaforme',
-    short: 'Portali B2B, aree riservate e configuratori che tolgono lavoro dalle email.',
-    tags: ['React', 'Rust', 'Cloud'],
-    hero: 'La piattaforma che toglie il lavoro manuale dalle email',
+    short: 'Portali, aree riservate, intranet, configuratori e piattaforme in abbonamento.',
+    tags: ['Portali', 'SaaS', 'Aree riservate'],
+    hero: 'Tutto quello che deve vivere nel browser',
     intro:
-      'Ordini che arrivano via email e vengono ribattuti a mano, un listino diverso per ogni cliente, richieste di stato che diventano telefonate all’ufficio. Una piattaforma web sposta tutto questo dove clienti e agenti fanno da soli — ordini, documenti, spedizioni — con le regole commerciali già dentro e i dati che tornano nel gestionale.',
+      'Un portale per clienti o fornitori, un’area riservata dove ognuno vede solo le proprie cose, una intranet che tiene insieme il lavoro dei reparti, un configuratore che guida una scelta complessa, una piattaforma in abbonamento da vendere a più aziende. Cambiano il pubblico e le regole, non il modo di costruirle: ruoli chiari, dati veri, integrazione con quello che hai già.',
     highlights: [
       {
-        title: 'Self-service per chi compra',
-        body: 'Rivenditori e agenti entrano con le proprie credenziali, vedono il loro listino e i loro documenti e ordinano senza passare dal centralino. L’ufficio interno smette di fare da tramite.',
+        title: 'Ogni utente vede il suo',
+        body: 'Ruoli e permessi disegnati sul tuo organigramma e sui tuoi interlocutori esterni: clienti, agenti, fornitori e collaboratori entrano nello stesso sistema e trovano soltanto quello che li riguarda.',
       },
       {
         title: 'Veloce anche sotto carico',
-        body: 'Soglie di performance fissate a inizio progetto e verificate a ogni rilascio. Il cuore applicativo gira su servizi Rust: prima interazione sotto il secondo anche in 4G e con il catalogo pieno.',
+        body: 'Soglie di performance fissate a inizio progetto e verificate a ogni rilascio. Il cuore applicativo gira su servizi Rust: prima interazione sotto il secondo anche in 4G e con l’archivio pieno.',
+      },
+      {
+        title: 'Parla con i tuoi sistemi',
+        body: 'API e webhook verso gestionale, contabilità, e-commerce o strumenti di settore: la piattaforma non diventa l’ennesima isola da allineare a mano.',
       },
       {
         title: 'Accessibile per contratto',
@@ -477,10 +463,10 @@ export const services = [
     deliverables: [
       'Prototipo navigabile dei flussi principali',
       'Piattaforma responsive e accessibile',
-      'API documentate (OpenAPI) verso i tuoi sistemi',
+      'Gestione di ruoli, permessi e accessi',
+      'API documentate verso i tuoi sistemi',
       'Pipeline di rilascio e ambiente di collaudo',
       'Monitoraggio, log e allerta sugli errori',
-      'Documentazione tecnica e passaggio di consegne',
     ],
     stack: ['Rust', 'React', 'TypeScript', 'PostgreSQL', 'Redis', 'GitHub Actions'],
     faqs: [
@@ -490,10 +476,10 @@ export const services = [
       },
       {
         q: 'Chi mantiene la piattaforma dopo il rilascio?',
-        a: 'Puoi restare con noi, internalizzare o cambiare fornitore: il codice usa tecnologie diffuse ed è documentato proprio perché la scelta resti tua.',
+        a: 'Ce ne occupiamo noi con un accordo di manutenzione: correzioni, evolutive e aggiornamenti tecnici. Il codice però resta tuo e usa tecnologie diffuse, quindi restare con noi è una scelta, non un obbligo.',
       },
     ],
-    caseSlug: 'crm',
+    caseSlug: 'vallenova',
     code: {
       filename: 'api/portale.ts',
       lines: [
@@ -514,48 +500,49 @@ export const services = [
     slug: 'siti-web',
     icon: 'globe',
     accent: 'var(--color-pink)',
-    tempi: 'Vetrina in 5 giorni, negozio in 2 settimane',
+    tempi: 'Landing e one page in 5 giorni, e-commerce in 2 settimane',
     title: 'Siti web ed e-commerce',
-    short: 'Siti e negozi online veloci, collegati al gestionale e aggiornabili da te.',
-    tags: ['CMS', 'E-commerce', 'SEO'],
-    hero: 'Online in cinque giorni, poi lo aggiorni senza chiamarci',
+    short:
+      'One page, multipagina, landing, opt-in, cataloghi ed e-commerce: il formato giusto per l’obiettivo.',
+    tags: ['One page', 'Landing', 'E-commerce'],
+    hero: 'Il sito giusto per l’obiettivo che hai',
     intro:
-      'È il progetto più rapido che facciamo: una vetrina va online in cinque giorni lavorativi, un negozio completo in due settimane. Il negozio prende prodotti, prezzi e disponibilità dal gestionale invece di avere un magazzino parallelo, e il pannello di gestione è costruito sui tuoi contenuti reali — ci scrive dentro il tuo team, non noi.',
+      'Un sito non è una cosa sola. Una landing serve a far compiere un’azione, una one page a raccontare un lancio, un opt-in a raccogliere contatti, un multipagina a reggere un’azienda intera con servizi e sedi, un catalogo a far trovare i prodotti, un e-commerce a venderli. Si parte dall’obiettivo e dal pubblico, poi si sceglie il formato — non il contrario.',
     highlights: [
       {
-        title: 'Il catalogo è quello vero',
-        body: 'Prodotti, listini e giacenze arrivano dal gestionale via API: niente allineamenti a mano, niente ordini presi su articoli finiti. Chi compra vede la disponibilità di adesso.',
+        title: 'Ogni formato ha il suo mestiere',
+        body: 'Landing e opt-in costruite attorno a una sola azione, one page per un lancio o un profilo professionale, multipagina per aziende con più servizi e sedi, cataloghi ed e-commerce quando c’è da vendere. In analisi ti diciamo quale ti serve davvero, anche quando è il più piccolo.',
       },
       {
-        title: 'Veloce anche in 4G',
-        body: 'Pagine servite già pronte, immagini ottimizzate e nessuno script inutile. I tempi di caricamento sono un requisito del progetto, misurato a ogni rilascio: sulle vetrine è la prima causa di abbandono.',
-      },
-      {
-        title: 'I contenuti sono tuoi',
-        body: 'Un CMS con i campi che servono a te, non un editor generico: chi scrive non può rompere la grafica e una pagina nuova va online in un minuto.',
+        title: 'Veloce, perché è la prima causa di abbandono',
+        body: 'Pagine servite già pronte, immagini ottimizzate e nessuno script inutile. I tempi di caricamento sono un requisito del progetto, misurato a ogni rilascio.',
       },
       {
         title: 'Trovabile dal primo giorno',
-        body: 'Struttura, dati strutturati, metadati e redirect dal vecchio sito curati in fase di rilascio, così il traffico già acquisito non si perde nel passaggio.',
+        body: 'Struttura, dati strutturati, metadati e redirect dal vecchio sito curati in fase di rilascio, così il traffico e le posizioni già guadagnate non si perdono nel passaggio.',
+      },
+      {
+        title: 'Aggiornamenti e manutenzione li facciamo noi',
+        body: 'Nessun pannello da imparare e nessun rischio di rompere qualcosa: le modifiche ce le chiedi e le pubblichiamo noi, con tempi concordati. Il sito resta coerente negli anni invece di degradare a ogni intervento improvvisato.',
       },
     ],
     deliverables: [
-      'Progettazione delle pagine e dei contenuti',
-      'Sito o negozio responsive e accessibile',
-      'CMS con campi su misura e ruoli',
-      'Catalogo sincronizzato con il gestionale',
-      'Pagamenti, spedizioni e email transazionali',
+      'Scelta del formato e progettazione dei contenuti',
+      'Sito responsive e accessibile',
+      'Moduli di contatto e raccolta contatti',
+      'Catalogo, pagamenti e spedizioni per gli e-commerce',
       'SEO tecnica, redirect e tracciamento conversioni',
+      'Dominio, hosting europeo e manutenzione continua',
     ],
-    stack: ['Astro', 'React', 'TypeScript', 'CMS headless', 'Stripe', 'Cloud EU'],
+    stack: ['Astro', 'React', 'TypeScript', 'Stripe', 'Cloud EU'],
     faqs: [
       {
-        q: 'Davvero un e-commerce in due settimane?',
-        a: 'Sì, ed è il motivo per cui lo consigliamo come primo progetto insieme: catalogo, pagamenti e spedizioni sono problemi già risolti, il lavoro vero è collegarli ai tuoi dati e alle tue regole. Se servono configuratori di prodotto o logiche di prezzo complesse i tempi salgono, e te lo diciamo in analisi.',
+        q: 'Che tipo di sito ci serve?',
+        a: 'Dipende da cosa deve succedere quando qualcuno arriva. Se l’obiettivo è una sola azione — un contatto, un’iscrizione, una prenotazione — bastano una landing o un opt-in e si è online in cinque giorni. Se devi raccontare più servizi, sedi o referenze serve un multipagina. Se devi vendere, un e-commerce. Lo decidiamo insieme in analisi, e non ti proponiamo il formato più grande solo perché è più grande.',
       },
       {
-        q: 'Rifate anche siti già esistenti?',
-        a: 'Spesso sì. Partiamo da quello che c’è — contenuti, posizionamento, indirizzi delle pagine — e lo portiamo sul nuovo sito mantenendo i redirect, così le posizioni guadagnate su Google non si azzerano al cambio.',
+        q: 'Possiamo modificare i testi da soli?',
+        a: 'Alle modifiche pensiamo noi: ci mandi il testo, la foto o il prodotto nuovo e lo pubblichiamo, di norma in giornata. È incluso nella manutenzione, e serve a tenere il sito coerente nel tempo invece di lasciarlo alla buona volontà di chi ha cinque minuti liberi.',
       },
     ],
     code: {
@@ -581,45 +568,45 @@ export const services = [
     accent: 'var(--color-orange)',
     tempi: '4 settimane su entrambi gli store',
     title: 'App mobile',
-    short: 'App per rete vendita e tecnici in campo, che funzionano anche senza rete.',
+    short: 'App iOS e Android per i tuoi clienti, per la rete vendita o per chi lavora in campo.',
     tags: ['iOS', 'Android', 'Offline'],
-    hero: 'Lo strumento di chi lavora fuori dall’ufficio',
+    hero: 'Lo strumento che sta in tasca a chi lo usa',
     intro:
-      'Il tecnico che compila il rapportino in cantiere, l’agente che prende l’ordine dal cliente, il magazziniere che scansiona i colli in partenza. Un unico codebase genera le build native per iOS e Android, con la logica scritta una volta sola: una squadra da mantenere invece di due, e nessuna funzione che arriva su una piattaforma sei mesi dopo l’altra.',
+      'Un’app per i clienti — prenotazioni, tessera fedeltà, stato delle pratiche, assistenza — oppure per chi lavora fuori dall’ufficio: rapportini, sopralluoghi, consegne, letture, presenze. Un unico codebase genera le build native per iOS e Android, con la logica scritta una volta sola: una squadra da mantenere invece di due.',
     highlights: [
       {
         title: 'Lavora anche senza campo',
-        body: 'Dati in locale e sincronizzazione differita: il rapportino si compila in cantiere e risale appena torna la connessione, senza che nessuno debba ricordarsi di rifarlo.',
+        body: 'Dati in locale e sincronizzazione differita: si compila dove la rete non arriva e tutto risale appena torna la connessione, senza che nessuno debba rifare il lavoro.',
       },
       {
         title: 'Usa l’hardware del dispositivo',
-        body: 'Fotocamera, scanner di codici a barre, GPS, firma grafometrica, notifiche push e sblocco biometrico: quello che serve davvero sul campo, non un sito dentro una app.',
+        body: 'Fotocamera, scanner di codici, GPS, firma sullo schermo, notifiche push, sblocco biometrico e pagamenti in app: quello che un sito dentro una app non può fare.',
       },
       {
         title: 'Pubblicazione gestita',
-        body: 'Certificati, schede store, revisioni e aggiornamenti li seguiamo noi, dalla prima submission ai rilasci successivi. Gli account restano intestati alla tua azienda.',
+        body: 'Certificati, schede store, revisioni e aggiornamenti li seguiamo noi, dalla prima pubblicazione ai rilasci successivi. Gli account restano intestati alla tua azienda.',
       },
     ],
     deliverables: [
       'App iOS e Android da un solo codebase',
       'Modalità offline con coda di sincronizzazione',
-      'Notifiche push segmentate per ruolo',
+      'Notifiche push segmentate per profilo',
       'Distribuzione su App Store e Play Store',
       'Crash reporting e statistiche di utilizzo',
-      'Aggiornamenti over-the-air per le correzioni',
+      'Aggiornamenti e correzioni gestiti da noi',
     ],
     stack: ['React Native', 'Expo', 'TypeScript', 'Rust (core condiviso)', 'SQLite'],
     faqs: [
       {
         q: 'Serve davvero un’app o basta il sito?',
-        a: 'Se non ti servono hardware del dispositivo, uso offline o notifiche push, spesso basta una web app: si aggiorna da sola e non passa dagli store a ogni rilascio. Se l’app non serve, te lo diciamo in analisi.',
+        a: 'Se non ti servono hardware del dispositivo, uso offline o notifiche push, spesso basta una web app: non passa dagli store a ogni rilascio ed è più rapida da far evolvere. Se l’app non serve, te lo diciamo in analisi.',
       },
       {
         q: 'Gestite voi gli account degli store?',
-        a: 'Sì, se vuoi. Consigliamo comunque di intestarli alla tua azienda: le app restano tue anche se un domani cambi fornitore.',
+        a: 'Sì. Consigliamo comunque di intestarli alla tua azienda: le app restano tue anche se un domani cambi fornitore.',
       },
     ],
-    caseSlug: 'mes',
+    caseSlug: 'meridia',
     code: {
       filename: 'RapportinoScreen.tsx',
       lines: [
@@ -643,45 +630,49 @@ export const services = [
     accent: 'var(--color-success)',
     tempi: 'Primo assistente in 10 giorni lavorativi',
     title: 'AI applicata',
-    short: 'Assistenti sui tuoi documenti ed estrazione dati, con la fonte sempre citata.',
-    tags: ['LLM', 'RAG', 'Automazioni'],
-    hero: 'AI che lavora sui tuoi dati, non su Internet',
+    short: 'Bot di assistenza, esperienze guidate e sistemi multi-modello sui tuoi dati.',
+    tags: ['Bot', 'Agenti', 'Multi-modello'],
+    hero: 'AI che lavora dentro i tuoi processi',
     intro:
-      'Non chatbot generici: assistenti addestrati sulle tue procedure, sui tuoi listini e sul tuo archivio documentale, con gli stessi permessi del gestionale e ogni risposta corredata dalla fonte. Si parte da un caso solo — le condizioni contrattuali, le fatture fornitore, le richieste di assistenza — e in dieci giorni lavorativi è in mano alle persone che ci lavorano.',
+      'Bot che rispondono ai clienti su prodotti, pratiche e procedure; esperienze guidate che accompagnano l’utente passo per passo fino alla scelta giusta; assistenti interni che cercano nei documenti aziendali; sistemi in cui più modelli si passano il lavoro, ognuno per quello che sa fare meglio. Si parte da un caso solo e in dieci giorni lavorativi è in mano alle persone.',
     highlights: [
       {
-        title: 'Risposte con la fonte',
-        body: 'Ogni risposta cita documento e paragrafo da cui arriva. Chi legge verifica in un clic, e l’assistente smette di essere una scatola nera di cui nessuno si fida.',
+        title: 'Bot di assistenza che risolvono',
+        body: 'Rispondono su sito, WhatsApp, app o area riservata, conoscono i tuoi prodotti e le tue procedure e sanno quando fermarsi: la conversazione passa a una persona con tutto il contesto già raccolto, non ricomincia da capo.',
       },
       {
-        title: 'Documenti che si leggono da soli',
-        body: 'Fatture, DDT, contratti e capitolati diventano dati strutturati e finiscono nel gestionale senza data entry: è il punto dove il ritorno si vede prima.',
+        title: 'Esperienze guidate, non moduli da compilare',
+        body: 'Configuratori conversazionali, diagnosi guidate, primo avvio accompagnato: l’utente risponde a domande in ordine e arriva alla scelta giusta, invece di trovarsi davanti trenta campi e una pagina di istruzioni.',
       },
       {
-        title: 'Dati che restano tuoi',
-        body: 'Elaborazione su infrastruttura europea, nessun addestramento dei modelli sui tuoi contenuti, log completo di ogni richiesta e possibilità di cancellare l’indice quando vuoi.',
+        title: 'Più modelli che collaborano',
+        body: 'Un modello capisce la richiesta, uno cerca nei dati, uno scrive, uno verifica prima di rispondere: sistemi multi-modello orchestrati, con controlli a ogni passaggio e nessuna azione sensibile eseguita senza conferma.',
+      },
+      {
+        title: 'Sui tuoi dati, con le fonti',
+        body: 'Documenti, listini, procedure e storico diventano la base delle risposte, con i permessi di chi fa la domanda e la fonte citata. Elaborazione su infrastruttura europea, nessun addestramento dei modelli sui tuoi contenuti.',
       },
     ],
     deliverables: [
-      'Indicizzazione dell’archivio documentale',
-      'Assistente con controllo dei permessi',
-      'Estrazione dati dai documenti ricorrenti',
-      'Automazioni sugli eventi del gestionale',
-      'Valutazione della qualità delle risposte',
-      'Dashboard di utilizzo e qualità',
+      'Bot pubblicato sui canali che usi già',
+      'Esperienza guidata sui percorsi scelti',
+      'Base di conoscenza sui tuoi contenuti',
+      'Orchestrazione multi-modello con controlli',
+      'Passaggio a operatore con il contesto raccolto',
+      'Valutazione della qualità e cruscotto di utilizzo',
     ],
     stack: ['Rust', 'Python', 'Claude API', 'pgvector', 'Cloud EU'],
     faqs: [
       {
-        q: 'I nostri documenti finiscono in pasto ai modelli?',
-        a: 'No. Usiamo fornitori che non addestrano sui dati inviati via API, l’elaborazione avviene in Europa e puoi cancellare l’indice quando vuoi.',
+        q: 'I nostri dati finiscono in pasto ai modelli?',
+        a: 'No. Usiamo fornitori che non addestrano sui dati inviati via API, l’elaborazione avviene in Europa e puoi cancellare la base di conoscenza quando vuoi.',
       },
       {
-        q: 'E se l’assistente sbaglia?',
-        a: 'Ogni risposta porta le fonti, le domande fuori perimetro ricevono un “non lo so” esplicito e le azioni sensibili richiedono sempre conferma umana. In fase di collaudo misuriamo la qualità su un campione di domande reali, non su esempi scelti da noi.',
+        q: 'E se il bot sbaglia?',
+        a: 'Le risposte portano le fonti, le domande fuori perimetro ricevono un “non lo so” esplicito e passano a una persona, e le azioni sensibili richiedono sempre conferma umana. In collaudo misuriamo la qualità su domande reali, non su esempi scelti da noi.',
       },
     ],
-    caseSlug: 'crm',
+    caseSlug: 'horeca',
     code: {
       filename: 'assistente.py',
       lines: [
@@ -701,19 +692,19 @@ export const services = [
 
 export const aiFeatures = [
   {
-    title: 'Agenti su misura',
+    title: 'Bot di assistenza',
+    icon: 'comment',
+    desc: 'Rispondono ai clienti su sito, WhatsApp o area riservata e passano a una persona con il contesto già raccolto.',
+  },
+  {
+    title: 'Esperienze guidate',
     icon: 'sparkle',
-    desc: 'Assistenti addestrati sui tuoi documenti e sulle tue procedure, con permessi e tracciamento delle fonti.',
+    desc: 'Configuratori conversazionali, diagnosi passo passo e primo avvio accompagnato, al posto di moduli e istruzioni.',
   },
   {
-    title: 'Documenti che si leggono da soli',
-    icon: 'file',
-    desc: 'Fatture, DDT, contratti e capitolati estratti in dati strutturati e riversati nel gestionale.',
-  },
-  {
-    title: 'Automazioni intelligenti',
+    title: 'Sistemi multi-modello',
     icon: 'zap',
-    desc: 'Smistamento richieste, risposte suggerite, controlli di coerenza: il lavoro ripetitivo sparisce.',
+    desc: 'Più modelli che si passano il lavoro — capire, cercare, scrivere, verificare — con controlli a ogni passaggio.',
   },
 ]
 
@@ -721,118 +712,251 @@ export const aiFeatures = [
    Case study — pagina di dettaglio: /progetti/{id}
    ------------------------------------------------------------------ */
 
+/**
+ * Progetti. I primi tre sono i lavori più recenti; seguono i software che
+ * portiamo avanti come prodotti nostri.
+ *
+ * TODO: i nomi dei primi tre clienti sono segnaposto inventati — vanno
+ * sostituiti con quelli reali (o rimossi) prima di pubblicare, insieme ai
+ * numeri delle metriche.
+ */
 export const cases = [
   {
-    id: 'crm',
-    kicker: 'Case study — CRM',
-    type: 'CRM',
-    client: 'Novaform',
-    sector: 'Arredamento su misura',
-    year: '2024',
-    duration: '4 settimane',
-    team: '4 persone',
-    title: 'Preventivi in 20 minuti, non più in 3 giorni',
-    body: 'Abbiamo unificato listini, configuratore di prodotto e firma digitale in un unico CRM. La rete vendita compila un’offerta dal tablet e il cliente la firma prima di uscire dall’appuntamento.',
-    quote:
-      'Prima un preventivo complesso richiedeva giorni e tre persone. Oggi lo chiude un commerciale in venti minuti.',
-    author: 'Direzione commerciale, Novaform',
-    metrics: [
-      { value: 68, suffix: '%', label: 'tempo di preventivazione' },
-      { value: 31, suffix: '%', label: 'tasso di conversione' },
-      { value: 4, suffix: 'x', label: 'offerte gestite/mese' },
-    ],
-    cta: 'Sviluppa il tuo CRM su misura',
+    id: 'sismalab',
     accent: 'var(--color-accent)',
-    challenge: [
-      'Ogni preventivo passava da tre persone: il commerciale raccoglieva le misure, l’ufficio tecnico verificava la fattibilità, l’amministrazione applicava sconti e condizioni. In mezzo, quattro versioni dello stesso file Excel e un listino aggiornato a mano.',
-      'Il risultato erano tre giorni di attesa media, errori di prezzo ricorrenti e clienti che nel frattempo chiedevano un preventivo anche altrove.',
-    ],
-    solution: [
-      'Abbiamo costruito un configuratore che conosce le regole di prodotto: combinazioni ammesse, maggiorazioni per finitura, minimi di produzione. Il commerciale compone la soluzione davanti al cliente e il prezzo si aggiorna in tempo reale.',
-      'Il listino è diventato una fonte unica, versionata, con scontistiche per fascia cliente approvate una volta sola. La firma digitale chiude il giro: l’offerta accettata genera in automatico la commessa nel gestionale di produzione.',
-    ],
-    results: [
-      'Preventivo consegnato durante l’appuntamento nel 78% dei casi',
-      'Errori di prezzo praticamente azzerati grazie al listino unico',
-      'Storico completo delle revisioni per ogni offerta',
-      'Integrazione bidirezionale con il gestionale di produzione',
-    ],
-    stack: ['React', 'TypeScript', 'Node.js', 'PostgreSQL', 'Firma digitale', 'REST API'],
-  },
-  {
-    id: 'erp',
-    kicker: 'Case study — ERP',
-    type: 'ERP',
-    client: 'Arkadia',
-    sector: 'Costruzioni e impianti',
-    year: '2023',
-    duration: '4 settimane il primo modulo',
-    team: '6 persone',
-    title: 'Un solo posto per cantieri, magazzino e costi',
-    body: 'Nove fogli di calcolo e tre gestionali diversi sono diventati un ERP unico. Ogni cantiere ha budget, avanzamento e marginalità aggiornati in tempo reale, con permessi per ruolo.',
+    type: 'Gestionale su misura',
+    team: '3 persone: analisi, back-end, front-end',
+    year: '2026',
+    client: 'Sismalab S.p.A.',
+    sector: 'Laboratorio prove materiali',
+    duration: '4 settimane',
+    title: 'Dal verbale su carta al certificato firmato in giornata',
+    body: 'Commesse, prove di laboratorio e certificati in un unico flusso: il tecnico compila in reparto, il responsabile firma digitalmente e il cliente scarica dal portale.',
     quote:
-      'Finalmente la direzione vede la marginalità di commessa mentre il cantiere è ancora aperto.',
-    author: 'CFO, Arkadia',
+      'Prima un certificato passava da tre scrivanie. Adesso esce lo stesso giorno della prova, e nessuno rincorre più i fogli.',
+    author: 'Direzione tecnica',
     metrics: [
-      { value: 9, suffix: '', label: 'sistemi sostituiti' },
-      { value: 22, suffix: '%', label: 'costi operativi' },
-      { value: 100, suffix: '%', label: 'dati centralizzati' },
+      { value: 90, suffix: '%', label: 'verbali digitalizzati' },
+      { value: 4, suffix: 'x', label: 'certificati al giorno' },
+      { value: 0, suffix: '', label: 'fogli di calcolo paralleli' },
     ],
-    cta: 'Sviluppa il tuo ERP su misura',
-    accent: 'var(--color-purple)',
     challenge: [
-      'Tre gestionali che non si parlavano — uno per la contabilità, uno per il magazzino, uno per il personale — più nove fogli di calcolo condivisi che, di fatto, erano il vero sistema aziendale.',
-      'La marginalità di una commessa si conosceva a cantiere chiuso, quando ormai non si poteva più correggere nulla. Ogni chiusura mensile richiedeva una settimana di riconciliazioni manuali.',
+      'Ogni prova produceva un verbale cartaceo che veniva poi ribattuto a mano nel foglio di calcolo del laboratorio, e una terza volta nel modello del certificato.',
+      'Il cliente chiamava per sapere a che punto fosse la pratica, e la risposta richiedeva di cercare fisicamente il fascicolo.',
     ],
     solution: [
-      'Abbiamo mappato i processi reparto per reparto e costruito un ERP unico con la commessa al centro: ore, materiali, subappalti e costi indiretti confluiscono sulla stessa scheda.',
-      'La migrazione è avvenuta per moduli, mai in blocco: il magazzino è entrato in produzione dopo quattro settimane, le commesse e la contabilità analitica sono seguite con lo stesso ritmo. Ogni modulo è andato in esercizio mentre il precedente era già a regime, senza fermare l’operatività.',
+      'Abbiamo digitalizzato la scheda di prova con i campi e i controlli della norma applicata: i valori fuori tolleranza si evidenziano mentre il tecnico li inserisce.',
+      'Il certificato si genera dai dati già registrati e viene firmato digitalmente dal responsabile. Il portale clienti mostra lo stato di ogni pratica senza telefonate.',
     ],
     results: [
-      'Marginalità di commessa aggiornata ogni notte',
-      'Chiusura mensile da 5 giorni a mezza giornata',
-      'Un solo anagrafico fornitori, prima duplicato su tre sistemi',
-      'Permessi per ruolo su 120 utenti interni',
+      'Certificato emesso in giornata nella maggior parte delle prove',
+      'Storico consultabile per cliente, materiale e periodo',
+      'Nessuna reimmissione manuale tra laboratorio e amministrazione',
     ],
-    stack: ['React', 'Node.js', 'PostgreSQL', 'Docker', 'Metabase', 'SAP connector'],
+    stack: ['Rust', 'React', 'PostgreSQL', 'Firma digitale', 'Cloud EU'],
   },
   {
-    id: 'mes',
-    kicker: 'Case study — MES',
-    type: 'MES',
-    client: 'Officine V',
-    sector: 'Metalmeccanica',
-    year: '2024',
+    id: 'vallenova',
+    accent: 'var(--color-purple)',
+    type: 'Portale B2B',
+    team: '3 persone: design, front-end, back-end',
+    year: '2026',
+    client: 'Vallenova Group S.p.A.',
+    sector: 'Distribuzione alimentare',
     duration: '3 settimane',
-    team: '4 persone',
-    title: 'La produzione senza carta, tracciata al pezzo',
-    body: 'Ordini di lavoro, controlli qualità e non conformità su terminale a bordo macchina. Ogni pezzo ha uno storico completo e la rintracciabilità si genera da sola.',
-    quote: 'Gli scarti si sono dimezzati semplicemente perché ora vediamo dove nascono.',
-    author: 'Responsabile produzione, Officine V',
+    title: 'I rivenditori ordinano da soli, con il loro listino',
+    body: 'Un portale dove ogni cliente entra, vede le proprie condizioni e ordina senza passare dall’ufficio commerciale. Gli ordini entrano già strutturati nel gestionale.',
+    quote:
+      'L’ufficio ordini ha smesso di fare da centralino. Il tempo liberato è finito sui clienti nuovi.',
+    author: 'Responsabile commerciale',
     metrics: [
-      { value: 51, suffix: '%', label: 'non conformità' },
-      { value: 0, suffix: '', label: 'moduli cartacei' },
-      { value: 18, suffix: '%', label: 'resa di linea' },
+      { value: 68, suffix: '%', label: 'ordini inseriti dai clienti' },
+      { value: 3, suffix: ' sett.', label: 'dal via al primo rilascio' },
+      { value: 24, suffix: 'h', label: 'catalogo sempre aggiornato' },
     ],
-    cta: 'Sviluppa il tuo MES su misura',
-    accent: 'var(--color-success)',
     challenge: [
-      'Ordini di lavoro stampati la mattina, annotazioni a penna durante il turno, inserimento a computer la sera. Tra il pezzo prodotto e il dato disponibile passavano fino a dodici ore.',
-      'Le non conformità venivano registrate solo se gravi, quindi le cause ricorrenti restavano invisibili e gli scarti si ripetevano di lotto in lotto.',
+      'Gli ordini arrivavano per email, telefono e messaggi, ognuno in un formato diverso: qualcuno andava perso, molti venivano ribattuti a mano con errori di codice articolo.',
+      'Ogni rivenditore aveva condizioni proprie, custodite in fogli che solo due persone sapevano leggere.',
     ],
     solution: [
-      'Terminali a bordo macchina con interfaccia pensata per i guanti: pochi tasti grandi, avanzamento con un tocco, causali di fermo preimpostate.',
-      'Ogni pezzo porta con sé un identificativo che raccoglie macchina, operatore, parametri e controlli qualità. La rintracciabilità, prima ricostruita a mano su richiesta del cliente, ora si genera da sola in un PDF.',
+      'Il portale espone a ogni cliente il suo listino e la disponibilità reale presa dal gestionale, con le regole commerciali applicate in automatico.',
+      'L’ordine confermato entra nel gestionale già completo: nessun reinserimento, nessuna interpretazione.',
     ],
     results: [
-      'Dati di produzione disponibili in tempo reale, non a fine turno',
-      'Non conformità dimezzate nei primi sei mesi',
-      'Rintracciabilità di lotto generata automaticamente',
-      'Zero moduli cartacei in reparto',
+      'Due terzi degli ordini inseriti direttamente dai rivenditori',
+      'Errori di codice articolo praticamente azzerati',
+      'Storico ordini e documenti consultabili dal cliente',
     ],
-    stack: ['React Native', 'Node.js', 'PostgreSQL', 'MQTT', 'Grafana'],
+    stack: ['Rust', 'React', 'TypeScript', 'PostgreSQL', 'Cloud EU'],
+  },
+  {
+    id: 'meridia',
+    accent: 'var(--color-orange)',
+    type: 'App mobile e pannello turni',
+    team: '4 persone: analisi, mobile, back-end, sistemistica',
+    year: '2025',
+    client: 'Trasporti Meridia S.p.A.',
+    sector: 'Trasporto persone',
+    duration: '4 settimane',
+    title: 'Turni, cambi e presenze dal telefono degli autisti',
+    body: 'Una app per gli autisti e un pannello per la centrale: turni pubblicati, cambi richiesti e approvati, presenze registrate dove il servizio comincia davvero.',
+    quote: 'I cambi turno si chiudono in chat di gruppo? Non più: ora passano tutti dal sistema.',
+    author: 'Responsabile esercizio',
+    metrics: [
+      { value: 100, suffix: '%', label: 'turni pubblicati in app' },
+      { value: 50, suffix: ' m', label: 'raggio della timbratura' },
+      { value: 4, suffix: ' sett.', label: 'su iOS e Android' },
+    ],
+    challenge: [
+      'I turni venivano affissi in deposito e i cambi concordati a voce: la centrale scopriva le sostituzioni a servizio iniziato.',
+      'Le presenze si ricostruivano a fine mese incrociando fogli firma e memoria dei capiturno.',
+    ],
+    solution: [
+      'App con turni personali, richiesta di cambio e approvazione tracciata; la centrale vede in tempo reale chi ha accettato cosa.',
+      'Timbratura con verifica della posizione: se il dispositivo non è entro il raggio previsto dal luogo di servizio, la timbratura non si chiude.',
+    ],
+    results: [
+      'Cambi turno tracciati e approvati, senza accordi informali',
+      'Presenze pronte a fine mese, senza ricostruzioni',
+      'Storico completo per contestazioni e verifiche',
+    ],
+    stack: ['React Native', 'Rust', 'PostgreSQL', 'Geolocalizzazione'],
+  },
+  {
+    id: 'horeca',
+    accent: 'var(--color-success)',
+    type: 'Piattaforma di prodotto',
+    team: '6 persone, squadra interna dedicata',
+    year: '2024 · in corso',
+    client: 'Horeca in Suite',
+    sector: 'Prodotto nostro · HoReCa',
+    duration: 'In sviluppo continuo',
+    title: 'Un gestionale solo al posto di trenta strumenti',
+    body: 'La piattaforma che portiamo avanti come fondatori: magazzino e lotti, temperature in tempo reale, ordini che arrivano da WhatsApp, parco mezzi, vuoti, giri di consegna e fatturazione, tutto in un unico software pensato per l’HoReCa.',
+    link: { label: 'horecainsuite.com', href: 'https://www.horecainsuite.com' },
+    metrics: [
+      { value: 8, suffix: '', label: 'aree in un solo software' },
+      { value: 1, suffix: 'ª', label: 'in Italia con ordini WhatsApp' },
+      { value: 24, suffix: '/7', label: 'monitoraggio temperature' },
+    ],
+    challenge: [
+      'Chi distribuisce food & beverage lavora con un programma per il magazzino, uno per gli ordini, uno per la fatturazione e nessuno che parli con gli altri: i dati vanno ribattuti e le scadenze si scoprono tardi.',
+      'Gli ordini arrivano dove arrivano i clienti — soprattutto su WhatsApp — e finiscono ricopiati a mano, con gli errori che ne conseguono.',
+    ],
+    solution: [
+      'Un’unica piattaforma con tracciabilità dei lotti, mappa degli scaffali, inventario multi-operatore e allerte automatiche su scadenze e sotto scorta.',
+      'Il messaggio WhatsApp del cliente viene letto e trasformato in ordine già strutturato: all’operatore resta la verifica, non la trascrizione.',
+      'Monitoraggio continuo delle temperature per cella, con storico e anomalie; parco mezzi con scadenze di assicurazione, bollo, revisione e ATP; gestione di vuoti e cauzioni; giri di consegna pianificati con l’AI.',
+    ],
+    results: [
+      'Magazzino, temperature, mezzi, vuoti e fatturazione in un solo posto',
+      'Ordini da WhatsApp creati senza reinserimento manuale',
+      'Migrazione dei dati dal vecchio gestionale inclusa nell’avvio',
+    ],
+    stack: ['Rust', 'React', 'TypeScript', 'PostgreSQL', 'AI', 'Cloud EU'],
+  },
+  {
+    id: 'scuolabus',
+    accent: 'var(--color-accent)',
+    type: 'Web app scolastica',
+    team: '5 persone: analisi, front-end, back-end, mobile',
+    year: '2025',
+    client: 'Comune di Roma',
+    sector: 'Pubblica amministrazione · Scuola',
+    duration: '4 settimane il primo modulo',
+    title: 'Il genitore sa dove si trova il figlio, fermata per fermata',
+    body: 'La web app che gestisce alunni, navette e abbonamenti del servizio di trasporto scolastico, con un pannello per i genitori e uno per gli autisti.',
+    metrics: [
+      { value: 3, suffix: '', label: 'pannelli: scuola, genitori, autisti' },
+      { value: 100, suffix: '%', label: 'corse tracciate' },
+      { value: 0, suffix: '', label: 'moduli cartacei per l’iscrizione' },
+    ],
+    challenge: [
+      'Iscrizioni, abbonamenti ed elenchi degli alunni per fermata vivevano su moduli cartacei e fogli di calcolo, con aggiornamenti che arrivavano in ritardo agli autisti.',
+      'Il genitore non aveva modo di sapere se il figlio fosse salito, dove si trovasse la navetta e se fosse arrivato a scuola.',
+    ],
+    solution: [
+      'Anagrafica alunni, navette, percorsi e abbonamenti in un unico sistema, con l’elenco della corsa sempre aggiornato sul dispositivo dell’autista.',
+      'Tracciabilità completa del bambino: salita, percorso, discesa e arrivo a scuola, visibili al genitore dal proprio pannello.',
+      'Pannello autisti con la corsa del giorno, l’elenco dei presenti e le segnalazioni da inviare alla scuola.',
+    ],
+    results: [
+      'Genitori informati in tempo reale, senza telefonate alla segreteria',
+      'Elenchi di corsa sempre allineati tra scuola e autisti',
+      'Abbonamenti e iscrizioni gestiti senza carta',
+    ],
+    stack: ['React', 'Rust', 'PostgreSQL', 'Geolocalizzazione', 'Cloud EU'],
+  },
+  {
+    id: 'cleanbus',
+    accent: 'var(--color-pink)',
+    type: 'Gestionale interno',
+    team: '3 persone: analisi, sviluppo, sistemistica',
+    year: '2025',
+    client: 'Cleanbus',
+    sector: 'Software interno · Servizi di pulizia',
+    duration: '3 settimane',
+    title: 'Le ore di pulizia sui mezzi, rendicontate senza fogli',
+    body: 'Il gestionale interno che organizza squadre e turni di pulizia degli autobus, registra le presenze a bordo e produce la rendicontazione delle ore.',
+    metrics: [
+      { value: 100, suffix: '%', label: 'presenze registrate a bordo' },
+      { value: 1, suffix: ' clic', label: 'per la rendicontazione mensile' },
+      { value: 3, suffix: ' sett.', label: 'dal via all’uso quotidiano' },
+    ],
+    challenge: [
+      'Le ore degli operatori venivano annotate a mano e ricostruite a fine mese, quando ormai nessuno ricordava chi avesse pulito quale mezzo.',
+      'Non esisteva un riscontro oggettivo delle presenze sui singoli autobus.',
+    ],
+    solution: [
+      'Pianificazione delle squadre per turno e per mezzo, con assegnazioni visibili agli operatori.',
+      'Registrazione della presenza sull’autobus e delle ore effettive, con riepilogo per operatore, per mezzo e per periodo.',
+    ],
+    results: [
+      'Rendicontazione delle ore pronta senza ricostruzioni',
+      'Storico degli interventi per singolo mezzo',
+      'Meno contestazioni sulle ore dichiarate',
+    ],
+    stack: ['React', 'Node.js', 'PostgreSQL', 'Cloud EU'],
+  },
+  {
+    id: 'multiservizi',
+    accent: 'var(--color-attention)',
+    type: 'ERP per appaltatori',
+    team: '6 persone su moduli paralleli',
+    year: '2022 · in evoluzione',
+    client: 'Multiservizi in Suite',
+    sector: 'Prodotto nostro · Appalti pubblici',
+    duration: '4 settimane il primo modulo',
+    title: 'L’ERP che risponde all’ente appaltante',
+    body: 'Il gestionale per chi eroga servizi in appalto: personale, mezzi, magazzino, turni e consuntivazione economica dei servizi richiesti dall’ente, con timbratura verificata sul posto.',
+    metrics: [
+      { value: 50, suffix: ' m', label: 'raggio massimo per timbrare' },
+      { value: 8, suffix: '', label: 'aree gestite in un sistema' },
+      { value: 100, suffix: '%', label: 'servizi consuntivati' },
+    ],
+    challenge: [
+      'Chi lavora in appalto deve dimostrare all’ente cosa ha fatto, con quali persone e con quali mezzi: senza un sistema unico la rendicontazione diventa un lavoro a sé, fatto di fogli e allegati.',
+      'Turni, cambi turno e scadenze del personale e dei mezzi vivevano su strumenti separati, con il rischio di far uscire un operatore non in regola.',
+    ],
+    solution: [
+      'Un ERP unico su personale, mezzi, magazzino, servizi, spostamenti e turnistica, con i cambi turno richiesti e approvati dentro al sistema.',
+      'Timbratura geolocalizzata: fuori dai 50 metri dal luogo di lavoro la timbratura non si chiude, e la posizione resta agli atti.',
+      'Consuntivazione economica per servizio e per commessa, pronta da presentare all’ente appaltante, e gestione delle scadenze di personale e mezzi con allerta anticipata.',
+    ],
+    results: [
+      'Rendicontazione all’ente costruita dai dati operativi, non a posteriori',
+      'Turni e cambi tracciati, con storico delle approvazioni',
+      'Mezzi e personale geolocalizzati durante il servizio',
+    ],
+    stack: ['Rust', 'React', 'React Native', 'PostgreSQL', 'Geolocalizzazione'],
   },
 ]
+
+/** Progetti che non hanno una scheda dedicata: il grosso del lavoro fatto. */
+export const altriProgetti = {
+  quanti: '80+',
+  testo: 'ERP, gestionali, app e web app rilasciati per aziende e amministrazioni, dalla produzione ai servizi in appalto.',
+}
 
 export const integrations = [
   'SAP',
@@ -916,9 +1040,9 @@ export const stats = [
 ]
 
 export const aboutStory = [
-  'LevelApp nasce a Roma nel 2022 da Pasqualino Puddas e Kayo Willian Dionizio Venturino: due dipendenti stanchi di vedere aziende sane piegare i propri processi a software che non le rappresentavano. Il primo lavoro è un gestionale per appaltatori pubblici — gare, requisiti, documentazione — che da allora non ha mai smesso di girare.',
-  'Nel 2024 la collaborazione con un ente milanese porta attorno al nucleo iniziale più di 24 sviluppatori back-end e front-end, e con loro la seconda sede. Nello stesso anno il ritmo cambia: niente più progetti lunghi mesi, ma rilasci in produzione entro quattro settimane.',
-  'Oggi seguiamo oltre 70 clienti e più di 200 progetti attivi, tra Roma e Milano. Uno di questi lo portiamo avanti come fondatori e non come fornitori — Horeca in Suite — ed è il motivo per cui, quando qualcuno arriva con un’idea invece che con un processo da sistemare, sappiamo esattamente di cosa sta parlando.',
+  'LevelApp nasce a Roma nel 2022 da Pasqualino Pudda e Kayo Willian Dionizio Venturino: due dipendenti stanchi di vedere aziende sane piegare i propri processi a software che non le rappresentavano. Il primo lavoro è un gestionale per appaltatori pubblici — gare, requisiti, documentazione — che da allora non ha mai smesso di girare.',
+  'Nel 2024 la collaborazione con un’azienda statunitense porta attorno al nucleo iniziale più di 24 sviluppatori back-end e front-end, e con loro un altro passo di scala. Nello stesso anno il ritmo cambia: niente più progetti lunghi mesi, ma rilasci in produzione entro quattro settimane.',
+  'Oggi seguiamo oltre 70 clienti e più di 200 progetti attivi. Uno di questi lo portiamo avanti come fondatori e non come fornitori — Horeca in Suite — ed è il motivo per cui, quando qualcuno arriva con un’idea invece che con un processo da sistemare, sappiamo esattamente di cosa sta parlando.',
 ]
 
 export const values = [
@@ -948,19 +1072,19 @@ export const values = [
  * Tappe dell'azienda. `link` è opzionale: quando c'è, la voce mostra un
  * collegamento in fondo al racconto.
  *
- * TODO: manca il nome dell'ente milanese della tappa 2024 e quello ufficiale
+ * TODO: manca il nome dell'azienda statunitense della tappa 2024 e quello ufficiale
  * dell'assistente lanciato nel 2025 — sono segnati nei testi.
  */
 export const timeline = [
   {
     year: '2022',
     title: 'Due dipendenti e un software per gli appalti',
-    body: 'LevelApp nasce a Roma da Pasqualino Puddas e Kayo Willian Dionizio Venturino, due dipendenti che decidono di mettersi in proprio. Nello stesso anno esce il primo lavoro: un software per appaltatori pubblici, che gestisce gare, requisiti e documentazione — ed è ancora oggi in esercizio, usato tutti i giorni.',
+    body: 'LevelApp nasce a Roma da Pasqualino Pudda e Kayo Willian Dionizio Venturino, due dipendenti che decidono di mettersi in proprio. Nello stesso anno esce il primo lavoro: un software per appaltatori pubblici, che gestisce gare, requisiti e documentazione — ed è ancora oggi in esercizio, usato tutti i giorni.',
   },
   {
     year: '2024',
-    title: 'La squadra si allarga a Milano',
-    body: 'Nasce la collaborazione con un ente milanese: attorno al nucleo iniziale si affiancano più di 24 sviluppatori back-end e front-end, con chi si occupa di infrastruttura, dati e progettazione. È l’anno in cui smettiamo di lavorare a progetti lunghi mesi e passiamo ai rilasci a quattro settimane. Si chiude con 48 clienti ricorrenti e oltre 180 progetti attivi.',
+    title: 'La squadra si allarga oltreoceano',
+    body: 'Nasce la collaborazione con un’azienda statunitense: attorno al nucleo iniziale si affiancano più di 24 sviluppatori back-end e front-end, con chi si occupa di infrastruttura, dati e progettazione. È l’anno in cui smettiamo di lavorare a progetti lunghi mesi e passiamo ai rilasci a quattro settimane. Si chiude con 48 clienti ricorrenti e oltre 180 progetti attivi.',
   },
   {
     year: '2025',
@@ -1082,11 +1206,77 @@ export const contactReasons = [
   { value: 'prodotto', label: 'Ho un’idea di software da realizzare' },
   { value: 'gestionale', label: 'Software gestionale (ERP, CRM, MES)' },
   { value: 'web-app', label: 'Web app o piattaforma' },
-  { value: 'sito-web', label: 'Sito web o e-commerce' },
+  { value: 'sito-web', label: 'Sito, landing o e-commerce' },
   { value: 'mobile', label: 'App mobile' },
-  { value: 'ai', label: 'AI applicata' },
+  { value: 'ai', label: 'Bot AI, assistenti o automazioni' },
   { value: 'modernizzazione', label: 'Modernizzazione di un software esistente' },
   { value: 'altro', label: 'Altro / non lo so ancora' },
+]
+
+/* ------------------------------------------------------------------
+   Area ticket: solo per chi è già cliente
+   ------------------------------------------------------------------ */
+
+/** TODO: sostituire con i referenti reali del supporto. */
+export const operatori = [
+  'Non lo so / assegnatelo voi',
+  'Chi ha seguito lo sviluppo',
+  'Supporto tecnico',
+  'Referente di progetto',
+]
+
+export const tipiRichiesta = [
+  { value: 'malfunzionamento', label: 'Qualcosa non funziona' },
+  { value: 'errore-dati', label: 'Dato sbagliato o mancante' },
+  { value: 'evolutiva', label: 'Modifica a una funzione esistente' },
+  { value: 'nuova', label: 'Funzione nuova da valutare' },
+  { value: 'accessi', label: 'Accessi, utenti e permessi' },
+  { value: 'uso', label: 'Domanda su come si usa' },
+  { value: 'formazione', label: 'Formazione per una persona nuova' },
+  { value: 'integrazione', label: 'Integrazione con un altro sistema' },
+]
+
+/**
+ * Livelli di urgenza con la definizione accanto: senza una descrizione
+ * operativa diventano tutti "urgente", e la coda perde significato.
+ */
+export const urgenze = [
+  {
+    value: 'bloccante',
+    label: 'Bloccante',
+    tono: 'var(--color-danger)',
+    desc: 'Il lavoro è fermo: nessuno può proseguire e non esiste un modo alternativo.',
+    sla: 'Presa in carico entro 2 ore lavorative',
+  },
+  {
+    value: 'alta',
+    label: 'Alta',
+    tono: 'var(--color-orange)',
+    desc: 'Una parte del team è bloccata, oppure si lavora solo con una procedura di ripiego pesante.',
+    sla: 'Presa in carico in giornata',
+  },
+  {
+    value: 'media',
+    label: 'Media',
+    tono: 'var(--color-attention)',
+    desc: 'Rallenta il lavoro o costringe a qualche passaggio in più, ma si va avanti.',
+    sla: 'Presa in carico entro 2 giorni lavorativi',
+  },
+  {
+    value: 'bassa',
+    label: 'Bassa',
+    tono: 'var(--color-success)',
+    desc: 'Miglioria, fastidio o richiesta che può essere pianificata con calma.',
+    sla: 'Inserita nella pianificazione',
+  },
+]
+
+export const daQuando = [
+  'Da sempre, non ha mai funzionato',
+  'Da oggi',
+  'Da questa settimana',
+  'Da dopo l’ultimo aggiornamento',
+  'Capita solo ogni tanto',
 ]
 
 export const contactSteps = [

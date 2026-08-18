@@ -63,9 +63,8 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.3fr_3fr]">
           {/* Marchio, iscrizione, riferimenti */}
           <div>
-            <Link to="/" className="inline-flex items-center gap-2.5 text-fg">
-              <Logo size={32} />
-              <span className="text-lg font-semibold tracking-tight">{company.name}</span>
+            <Link to="/" className="inline-flex items-center gap-2 text-fg" aria-label={company.legalName}>
+              <img src="/logo.png" alt="" className="marchio h-8 w-auto" />
             </Link>
 
             <p className="mt-4 max-w-xs text-sm leading-relaxed text-fg-muted">
@@ -75,14 +74,6 @@ export default function Footer() {
             <Newsletter />
 
             <ul className="mt-8 space-y-2 text-sm text-fg-muted">
-              {company.offices.map((office) => (
-                <li key={office.city} className="flex items-start gap-2">
-                  <Icon name="pin" size={14} className="mt-1 shrink-0 text-fg-subtle" />
-                  <span>
-                    <span className="text-fg">{office.city}</span> — {office.address}
-                  </span>
-                </li>
-              ))}
               <li className="flex items-center gap-2">
                 <Icon name="mail" size={14} className="shrink-0 text-fg-subtle" />
                 <a href={`mailto:${company.email}`} className="hover:text-accent hover:underline">
@@ -125,14 +116,14 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Logo size={22} className="text-fg-subtle" />
             <p>
-              © {new Date().getFullYear()} {company.name} · {company.vat}
+              © {new Date().getFullYear()} {company.legalName}
             </p>
             <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
               {legalLinks.map((link) => (
                 <li key={link.label}>
-                  <a href={link.href} className="transition-colors hover:text-fg hover:underline">
+                  <Link to={link.to} className="transition-colors hover:text-fg hover:underline">
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

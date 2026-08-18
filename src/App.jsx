@@ -9,6 +9,9 @@ import CaseStudy from './pages/CaseStudy'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Interactive from './pages/Interactive'
+import Careers from './pages/Careers'
+import LegalDoc from './pages/LegalDoc'
+import Sitemap from './pages/Sitemap'
 import NotFound from './pages/NotFound'
 
 /**
@@ -34,6 +37,14 @@ function Page() {
       return second ? <NotFound /> : <Contact />
     case 'interattivo':
       return second ? <NotFound /> : <Interactive />
+    case 'lavora-con-noi':
+      return second ? <NotFound /> : <Careers />
+    case 'privacy':
+    case 'cookie':
+    case 'termini':
+      return second ? <NotFound /> : <LegalDoc slug={first} />
+    case 'mappa':
+      return second ? <NotFound /> : <Sitemap />
     default:
       return <NotFound />
   }

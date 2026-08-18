@@ -1,9 +1,12 @@
-import { aiFeatures, services, stats } from '../data/content'
+import { useState } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
+import { aiFeatures, services } from '../data/content'
 import AiConsole from '../components/AiConsole'
 import Icon from '../components/ui/Icon'
 import Button from '../components/ui/Button'
-import Reveal, { RevealGroup, RevealItem } from '../components/ui/Reveal'
+import Reveal from '../components/ui/Reveal'
 import { Link } from '../lib/router'
+import { EASE } from '../lib/motion'
 
 /**
  * Sezione AI costruita come il blocco sicurezza di github.com: resta scura in
@@ -14,14 +17,18 @@ import { Link } from '../lib/router'
 
 const ai = services.find((service) => service.slug === 'ai')
 
-// I numeri arrivano da `stats`: nessun dato inventato solo per questa sezione.
-// TODO: come per il resto di `content.js`, sostituirli con i valori reali.
-const figures = [
-  stats.find((stat) => stat.label === 'Progetti rilasciati') ?? stats[0],
-  stats.find((stat) => stat.label === 'Esperienza media senior') ?? stats[3],
+/* Posizioni dei nodi nello schema (percentuali sul riquadro 100×68). */
+const NODI = [
+  { x: 16, y: 12 },
+  { x: 84, y: 12 },
+  { x: 16, y: 56 },
+  { x: 84, y: 56 },
 ]
 
+const ETICHETTE_NODI = ['Bot di assistenza', 'Esperienze guidate', 'Più modelli', 'Sui tuoi dati']
+
 export default function AiSection() {
+  const [nodo, setNodo] = useState(0)
   return (
     <section
       id="ai"
@@ -32,86 +39,158 @@ export default function AiSection() {
       <div className="grid-lines mask-fade-b pointer-events-none absolute inset-0 opacity-30" />
 
       <div className="shell relative">
-        <Reveal as="p" className="flex items-center justify-center gap-2 text-sm font-semibold text-success">
-          <span className="inline-block h-px w-6 bg-success" />
-          AI applicata
-        </Reveal>
+        {/* Testo a sinistra, assistente a destra: stessa impaginazione della
+            hero, così le due sezioni forti della home si parlano. */}
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:gap-16">
+          <div className="max-w-xl">
+            <Reveal as="p" className="flex items-center gap-2 text-sm font-semibold text-success">
+              <span className="inline-block h-px w-6 bg-success" />
+              AI applicata
+            </Reveal>
 
-        <Reveal as="h2" delay={0.05} className="display display-section mx-auto mt-5 max-w-4xl text-center">
-          AI che lavora sui tuoi dati,
-          <br />
-          <span className="text-success">non su Internet</span>
-        </Reveal>
+            <Reveal as="h2" delay={0.05} className="display display-hero-split mt-6 leading-[1.08]">
+              AI che lavora dentro
+              <br />
+              <span className="text-success">i tuoi processi</span>
+            </Reveal>
 
-        <Reveal
-          as="p"
-          delay={0.1}
-          className="mx-auto mt-6 max-w-2xl text-center text-lg leading-relaxed text-fg-muted"
-        >
-          Assistenti addestrati sulle tue procedure, sui tuoi listini e sul tuo archivio
-          documentale, con gli stessi permessi del gestionale e la fonte citata in ogni risposta.
-          L'innovazione che serve è quella che entra nei processi che hai già, non il progetto
-          pilota che resta in una presentazione.
-        </Reveal>
+            <Reveal as="p" delay={0.1} className="mt-7 text-lg leading-relaxed text-fg-muted">
+              Bot che rispondono ai clienti, esperienze guidate che accompagnano l'utente fino alla
+              scelta giusta, sistemi in cui più modelli si passano il lavoro e assistenti che
+              cercano nei tuoi documenti citando la fonte. L'innovazione che serve è quella che
+              entra nei processi che hai già, non il progetto pilota che resta in una presentazione.
+            </Reveal>
 
-        <Reveal delay={0.14} className="mt-9 flex justify-center">
-          <Button to="/servizi/ai" variant="marketing" size="xl" trailingIcon="arrowRight">
-            Come funziona l'AI applicata
-          </Button>
-        </Reveal>
+            <Reveal delay={0.14} className="mt-9">
+              <Button to="/servizi/ai" variant="marketing" size="xl" trailingIcon="arrowRight">
+                Come funziona l'AI applicata
+              </Button>
+            </Reveal>
 
-        {/* Dimostrazione */}
-        <Reveal delay={0.1} y={36} className="relative mx-auto mt-14 max-w-3xl">
-          <div className="spot-glow pointer-events-none absolute -inset-x-20 -top-12 bottom-0" />
-          <AiConsole className="relative shadow-float" />
-          <p className="mt-4 text-center text-xs text-fg-subtle">
-            Elaborazione su infrastruttura europea · nessun addestramento sui tuoi dati
-          </p>
-        </Reveal>
+            <Reveal
+              as="p"
+              delay={0.18}
+              className="mt-7 flex items-center gap-2 text-xs text-fg-subtle"
+            >
+              <Icon name="lock" size={13} />
+              Elaborazione su infrastruttura europea · nessun addestramento sui tuoi dati
+            </Reveal>
+          </div>
 
-        {/* Tre approfondimenti, come i tre "pilastri" della sezione sicurezza */}
-        <RevealGroup className="mt-16 grid gap-5 md:grid-cols-3" delay={0.05}>
-          {ai.highlights.map((highlight, i) => (
-            <RevealItem key={highlight.title}>
-              <article className="card card-hover group relative flex h-full flex-col p-6">
-                <span className="flex size-9 items-center justify-center rounded-lg border border-line bg-canvas text-success">
-                  <Icon name={aiFeatures[i]?.icon ?? 'sparkle'} size={16} />
+          {/* Dimostrazione, che sborda a destra come il gestionale nella hero */}
+          <Reveal delay={0.1} y={36} className="relative lg:-mr-[calc((100vw-min(100vw,80rem))/2+3rem)]">
+            <div className="spot-glow pointer-events-none absolute -inset-x-20 -top-12 bottom-0" />
+            <AiConsole className="relative shadow-float" />
+          </Reveal>
+        </div>
+
+        {/* Le quattro capacità come schema: al centro la richiesta, attorno i
+            nodi collegati. Quello attivo accende la sua linea e apre la
+            descrizione — è il modo più diretto di mostrare cosa vuol dire
+            "più modelli che si passano il lavoro". */}
+        <div className="mt-24 grid items-center gap-12 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)] lg:gap-16">
+          <div className="relative mx-auto w-full max-w-xl">
+            {/* Collegamenti */}
+            <svg
+              viewBox="0 0 100 68"
+              className="w-full"
+              fill="none"
+              preserveAspectRatio="xMidYMid meet"
+              aria-hidden="true"
+            >
+              {NODI.map((n, i) => (
+                <line
+                  key={n.x}
+                  x1="50"
+                  y1="34"
+                  x2={n.x}
+                  y2={n.y}
+                  stroke="var(--color-success)"
+                  strokeWidth={i === nodo ? 0.7 : 0.35}
+                  strokeDasharray="2 2"
+                  className="transition-all duration-500"
+                  opacity={i === nodo ? 0.9 : 0.22}
+                />
+              ))}
+              {/* Nucleo */}
+              <circle cx="50" cy="34" r="7" fill="var(--color-canvas-subtle)" stroke="var(--color-line)" strokeWidth="0.4" />
+              <circle cx="50" cy="34" r="2.2" fill="var(--color-success)" opacity="0.9" />
+              <circle cx="50" cy="34" r="10.5" stroke="var(--color-success)" strokeWidth="0.3" opacity="0.25" />
+            </svg>
+
+            {/* Nodi cliccabili, posizionati sopra lo schema */}
+            {ai.highlights.map((highlight, i) => (
+              <button
+                key={highlight.title}
+                type="button"
+                onMouseEnter={() => setNodo(i)}
+                onFocus={() => setNodo(i)}
+                onClick={() => setNodo(i)}
+                aria-pressed={i === nodo}
+                className="absolute flex -translate-x-1/2 -translate-y-1/2 items-center gap-2 rounded-full border px-3 py-1.5 text-left transition-all duration-300"
+                style={{
+                  left: `${NODI[i].x}%`,
+                  top: `${(NODI[i].y / 68) * 100}%`,
+                  borderColor:
+                    i === nodo ? 'var(--color-success)' : 'var(--color-line)',
+                  backgroundColor:
+                    i === nodo
+                      ? 'color-mix(in oklab, var(--color-success) 14%, var(--color-canvas))'
+                      : 'var(--color-canvas)',
+                  boxShadow:
+                    i === nodo
+                      ? '0 8px 24px color-mix(in oklab, var(--color-success) 22%, transparent)'
+                      : 'none',
+                }}
+              >
+                <Icon
+                  name={aiFeatures[i]?.icon ?? 'sparkle'}
+                  size={14}
+                  style={{ color: i === nodo ? 'var(--color-success)' : 'var(--color-fg-subtle)' }}
+                />
+                <span
+                  className="text-xs font-semibold whitespace-nowrap"
+                  style={{ color: i === nodo ? 'var(--color-fg)' : 'var(--color-fg-muted)' }}
+                >
+                  {ETICHETTE_NODI[i]}
                 </span>
-                <h3 className="mt-5 text-lg font-semibold text-fg">{highlight.title}</h3>
-                <p className="mt-2.5 flex-1 text-[15px] leading-relaxed text-fg-muted">
-                  {highlight.body}
+              </button>
+            ))}
+          </div>
+
+          {/* Dettaglio del nodo attivo */}
+          <div className="min-h-[15rem]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={ai.highlights[nodo].title}
+                initial={{ opacity: 0, y: 14 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3, ease: EASE }}
+              >
+                <p className="font-mono text-xs text-success">
+                  0{nodo + 1} / 0{ai.highlights.length}
+                </p>
+                <h3 className="display display-sub mt-4">{ai.highlights[nodo].title}</h3>
+                <p className="mt-4 text-[17px] leading-relaxed text-fg-muted">
+                  {ai.highlights[nodo].body}
                 </p>
                 <Link
                   to="/servizi/ai"
-                  className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-success after:absolute after:inset-0"
+                  className="group/link mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-success"
                 >
                   Approfondisci
                   <Icon
                     name="arrowRight"
                     size={14}
-                    className="transition-transform group-hover:translate-x-0.5"
+                    className="transition-transform duration-300 group-hover/link:translate-x-1"
                   />
                 </Link>
-              </article>
-            </RevealItem>
-          ))}
-        </RevealGroup>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+        </div>
 
-        {/* Due numeri, come la coppia di metriche in fondo al blocco */}
-        <Reveal
-          delay={0.1}
-          className="mx-auto mt-14 grid max-w-3xl gap-8 border-t border-line-muted pt-10 sm:grid-cols-2 sm:gap-12"
-        >
-          {figures.map((figure) => (
-            <div key={figure.label} className="text-center sm:text-left">
-              <p className="display text-5xl text-fg">
-                {figure.value}
-                {figure.suffix}
-              </p>
-              <p className="mt-2 text-sm text-fg-muted">{figure.label}</p>
-            </div>
-          ))}
-        </Reveal>
       </div>
     </section>
   )

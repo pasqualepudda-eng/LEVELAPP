@@ -62,7 +62,7 @@ export default function BugHunt() {
         <div className="min-w-0 flex-1">
           <h3 className="text-sm font-semibold text-fg">Trova il bug</h3>
           <p className="text-[11.5px] text-fg-muted">
-            Una riga di queste manderebbe in errore il programma.
+            Sei frammenti di Rust, sempre più lunghi e sempre più cattivi.
           </p>
         </div>
 
@@ -127,6 +127,12 @@ export default function BugHunt() {
               <div className="flex items-center gap-2 border-b border-line-muted px-4 py-2">
                 <Icon name="file" size={12} className="text-fg-subtle" />
                 <span className="font-mono text-[11.5px] text-fg-muted">{corrente.filename}</span>
+                {corrente.livello && (
+                  <span className="ml-auto flex items-center gap-1.5 font-mono text-[10.5px] text-fg-subtle">
+                    <Icon name="zap" size={10} />
+                    livello {round + 1}: {corrente.livello}
+                  </span>
+                )}
               </div>
 
               <ul className="overflow-x-auto py-2 font-mono text-[12px] leading-6 sm:text-[12.5px]">
@@ -203,7 +209,7 @@ export default function BugHunt() {
               ) : (
                 <p className="flex items-center gap-2 text-[13px] text-fg-muted">
                   <Icon name="lightbulb" size={14} className="text-attention" />
-                  Clicca la riga sospetta. Una sola è quella giusta.
+                  Clicca la riga sospetta. Non sempre il codice va in errore: a volte fa la cosa sbagliata in silenzio.
                 </p>
               )}
             </div>

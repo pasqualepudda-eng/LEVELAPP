@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { cases } from '../data/content'
 import Button from '../components/ui/Button'
 import Icon from '../components/ui/Icon'
-import Reveal, { RevealGroup, RevealItem } from '../components/ui/Reveal'
+import Reveal from '../components/ui/Reveal'
 import { Link } from '../lib/router'
 
 /**
@@ -59,60 +59,82 @@ export default function CasesTeaser() {
           </div>
         </Reveal>
 
-        <RevealGroup className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {cases.map((item) => (
-            <RevealItem key={item.id}>
+        {/* Ogni progetto è una riga: chi è, cosa è cambiato, i numeri.
+            Niente card — la lettura è orizzontale e i dati stanno in fila. */}
+        <div className="mt-12 border-t border-line-muted">
+          {cases.slice(0, 4).map((item, i) => (
+            <Reveal key={item.id} delay={i * 0.05}>
               <article
-                className="card card-hover group relative flex h-full flex-col overflow-hidden"
+                className="group relative border-b border-line-muted"
                 style={{ '--accent': item.accent }}
               >
-                {/* Testata colorata: prende il posto della foto di copertina */}
-                <div
-                  className="relative flex h-32 items-end p-5"
+                {/* Tinta che invade la riga da sinistra */}
+                <span
+                  className="pointer-events-none absolute inset-y-0 left-0 w-0 opacity-0 transition-all duration-500 group-hover:w-full group-hover:opacity-100"
                   style={{
-                    background: `linear-gradient(150deg, color-mix(in oklab, ${item.accent} 28%, transparent), transparent 70%)`,
+                    background: `linear-gradient(90deg, color-mix(in oklab, ${item.accent} 10%, transparent), transparent 55%)`,
                   }}
-                >
-                  <div className="grid-lines pointer-events-none absolute inset-0 opacity-40" />
-                  <span className="relative text-xl font-semibold tracking-tight text-fg">
-                    {item.client}
-                  </span>
-                  <span className="relative ml-auto font-mono text-xs text-fg-muted">
-                    {item.year}
-                  </span>
-                </div>
+                />
+                {/* Filetto acceso in basso */}
+                <span
+                  className="absolute bottom-0 left-0 h-px w-0 transition-[width] duration-700 ease-out group-hover:w-full"
+                  style={{ backgroundColor: item.accent }}
+                />
 
-                <div className="flex flex-1 flex-col border-t border-line-muted p-5">
-                  <p
-                    className="text-xs font-semibold tracking-wide uppercase"
-                    style={{ color: item.accent }}
-                  >
-                    {lens.of(item)}
-                  </p>
+                <div className="relative grid items-start gap-x-8 gap-y-4 py-8 lg:grid-cols-[15rem_1fr_16rem]">
+                  {/* Chi */}
+                  <div>
+                    <p className="flex items-baseline gap-2">
+                      <span className="text-lg font-semibold tracking-tight text-fg">
+                        {item.client}
+                      </span>
+                      <span className="font-mono text-xs text-fg-subtle">{item.year}</span>
+                    </p>
+                    <p
+                      className="mt-1.5 text-xs font-semibold tracking-wide uppercase"
+                      style={{ color: item.accent }}
+                    >
+                      {lens.of(item)}
+                    </p>
+                  </div>
 
-                  <h3 className="mt-3 text-lg leading-snug font-semibold">
-                    <Link to={`/progetti/${item.id}`} className="after:absolute after:inset-0">
-                      {item.title}
-                    </Link>
-                  </h3>
+                  {/* Cosa è cambiato */}
+                  <div className="min-w-0">
+                    <h3 className="text-xl leading-snug font-semibold text-fg">
+                      <Link
+                        to={`/progetti/${item.id}`}
+                        className="transition-colors after:absolute after:inset-0 group-hover:text-[var(--accent)]"
+                      >
+                        {item.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-2 max-w-2xl text-[15px] leading-relaxed text-fg-muted">
+                      {item.body}
+                    </p>
+                  </div>
 
-                  <p className="mt-3 flex-1 text-[15px] leading-relaxed text-fg-muted">
-                    {item.body}
-                  </p>
-
-                  <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-fg">
-                    Leggi il case study
+                  {/* I numeri, in fila */}
+                  <div className="flex items-start gap-6 lg:justify-end">
+                    {item.metrics.slice(0, 2).map((m) => (
+                      <div key={m.label} className="min-w-0">
+                        <p className="display text-2xl whitespace-nowrap text-fg">
+                          {m.value}
+                          {m.suffix}
+                        </p>
+                        <p className="mt-1 text-[11px] leading-snug text-fg-muted">{m.label}</p>
+                      </div>
+                    ))}
                     <Icon
                       name="arrowRight"
-                      size={14}
-                      className="transition-transform group-hover:translate-x-0.5"
+                      size={18}
+                      className="mt-1 shrink-0 text-fg-subtle transition-all duration-300 group-hover:translate-x-1 group-hover:text-[var(--accent)]"
                     />
-                  </span>
+                  </div>
                 </div>
               </article>
-            </RevealItem>
+            </Reveal>
           ))}
-        </RevealGroup>
+        </div>
 
         <Reveal delay={0.1} className="mt-10 flex justify-center">
           <Button to="/progetti" variant="default" size="lg" trailingIcon="arrowRight">

@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link, useRoute } from '../lib/router'
 import { nav, company } from '../data/content'
-import Logo from './Logo'
 import ThemeToggle from './ThemeToggle'
 import Icon from './ui/Icon'
 import Button from './ui/Button'
@@ -129,9 +128,12 @@ export default function Header() {
               </svg>
             </button>
 
-            <Link to="/" className="flex items-center gap-2.5 text-fg" aria-label="LevelApp, home">
-              <Logo size={30} />
-              <span className="text-[17px] font-semibold tracking-tight">{company.name}</span>
+            <Link
+              to="/"
+              className="flex items-center gap-2 text-fg"
+              aria-label={`${company.legalName}, home`}
+            >
+              <img src="/logo.png" alt="" className="marchio h-7 w-auto" />
             </Link>
 
             {/* Navigazione desktop, attaccata al marchio come su github.com */}

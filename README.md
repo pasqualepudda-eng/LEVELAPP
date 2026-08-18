@@ -44,7 +44,7 @@ verso `index.html`.
 | `#/progetti` | Elenco case study |
 | `#/progetti/crm` · `erp` · `mes` | Case study completo |
 | `#/azienda` | Chi siamo, valori, tappe, team, stack, sedi |
-| `#/interattivo` | Costruttore di gestionali + tre giochi |
+| `#/interattivo` | Tre prove interattive |
 | `#/contatti` | Form, riferimenti, FAQ |
 | qualsiasi altra | 404 con scorciatoie |
 
@@ -59,7 +59,7 @@ src/
 ├─ App.jsx                 tabella delle rotte + layout
 ├─ index.css               design token, utility, keyframe
 ├─ data/content.js         TUTTI i testi del sito
-├─ data/interactive.js     moduli del costruttore e materiale dei giochi
+├─ data/interactive.js     domande e contenuti dei giochi
 ├─ lib/
 │  ├─ router.jsx           Router, Link, useRoute, scroll management
 │  ├─ motion.js            easing, spring, varianti condivise
@@ -84,8 +84,8 @@ src/
    ├─ AiConsole.jsx        conversazione dimostrativa dell'assistente
    ├─ CodeWindow.jsx       finestra di codice con evidenziazione minima
    ├─ Logo.jsx             marchio
-   ├─ interactive/         pagina interattiva: SoftwareBuilder (drag & drop
-   │                       dei moduli), BugHunt, StackMemory, LatencyMeter
+   ├─ interactive/         giochi della pagina interattiva: BugHunt,
+   │                       StackMemory, LatencyMeter
    └─ ui/                  Button, Icon, Label, Reveal, Counter, Marquee,
                            SectionHeading
 ```
@@ -165,43 +165,12 @@ default in `@theme`; quello scuro riscrive gli stessi token in un unico blocco.
 
 ## Pagina interattiva
 
-`#/interattivo` ha due parti, entrambe senza persistenza: **nessun
+`#/interattivo` ospita tre prove brevi, senza alcuna persistenza: **nessun
 localStorage, nessun cookie, nessuna chiamata di rete**. Lo stato vive nei
-componenti React, quindi ricaricare la pagina riporta tutto a zero — è un
-requisito, non un effetto collaterale.
+componenti React, quindi ricaricare azzera tutto.
 
-- **Costruttore** (`SoftwareBuilder`) — si sceglie il tipo di sistema (ERP,
-  CRM, MES, portale B2B), compaiono i moduli compatibili e li si trascina sulla
-  scrivania. Il trascinamento usa l'HTML5 drag and drop, che sui dispositivi
-  touch non esiste: per questo ogni modulo si aggiunge anche con un clic, ed è
-  il percorso principale da telefono. Le modifiche vengono annunciate in una
-  regione `aria-live` per chi naviga con uno screen reader.
-- **Giochi brevi** — `BugHunt` (trova la riga con il bug su codice
-  evidenziato, quattro round), `StackMemory` (otto coppie di tecnologie, carte
-  che girano in 3D) e `LatencyMeter` (tempo di reazione, con la scala dei
-  millisecondi).
-  Le carte del memory mostrano un simbolo per tecnologia: sono disegni del
-  nostro set di icone, **non i marchi ufficiali**. Per usare i loghi veri metti
-  gli SVG in `public/tech/` e valorizza il campo `logo` in
-  `src/data/interactive.js`.
-- **I grandi classici** — `Platformer` ("Deploy Run", a scorrimento
-  orizzontale, con **Bit** come protagonista) e `Snake` ("Pipeline"), entrambi
-  disegnati su canvas senza librerie di gioco. Personaggio, nemici, livello,
-  palette e regole sono originali: del genere di quei classici, non copie dei
-  loro contenuti.
+- `BugHunt` — trova la riga con il bug su codice evidenziato, quattro round
+- `StackMemory` — otto coppie di tecnologie, carte che girano in 3D
+- `LatencyMeter` — tempo di reazione, con la scala dei millisecondi
 
-  Deploy Run implementa le convenzioni del genere: salto ad altezza variabile
-  (più tieni premuto, più sale), *coyote time* sul bordo delle piattaforme,
-  salto memorizzato se premuto poco prima di atterrare, controllo ridotto in
-  aria, nemici che si girano davanti a muri e strapiombi, invulnerabilità
-  lampeggiante dopo un colpo. Condividono
-  `ArcadeFrame`, che li tiene scuri in entrambi i temi, e si mettono in pausa da
-  soli quando escono dallo schermo (`IntersectionObserver`).
-
-I due classici si comandano da tastiera solo quando il riquadro ha il focus,
-così frecce e barra spaziatrice non rubano lo scorrimento della pagina; da
-telefono c'è una pulsantiera a schermo.
-
-Per aggiungere un modulo o un round basta `src/data/interactive.js`: il campo
-`kind` di un modulo (`tabella`, `cruscotto`, `form`, `agenda`, `chat`,
-`terminale`) decide come viene disegnata la sua anteprima.
+Domande e coppie stanno in `src/data/interactive.js`.

@@ -1,309 +1,193 @@
 /**
- * Contenuti della pagina interattiva: catalogo dei moduli per il costruttore
- * di gestionali e materiale dei tre giochi.
+ * Contenuti dei giochi della pagina interattiva.
  *
- * Tutto quello che l'utente compone qui vive solo nello stato di React: non
- * tocchiamo localStorage, quindi a ogni ricaricamento la pagina riparte vuota.
+ * Punteggi e progressi vivono solo nello stato di React: non tocchiamo
+ * localStorage, quindi a ogni ricaricamento si riparte da zero.
  */
-
-/* ------------------------------------------------------------------
-   Tipi di software selezionabili
-   ------------------------------------------------------------------ */
-
-export const softwareTypes = [
-  {
-    id: 'erp',
-    label: 'Gestionale / ERP',
-    icon: 'layers',
-    accent: 'var(--color-accent)',
-    desc: 'Ordini, magazzino, commesse e amministrazione in un unico sistema.',
-  },
-  {
-    id: 'crm',
-    label: 'CRM commerciale',
-    icon: 'graph',
-    accent: 'var(--color-purple)',
-    desc: 'Contatti, trattative e offerte per chi sta davanti al cliente.',
-  },
-  {
-    id: 'mes',
-    label: 'MES di produzione',
-    icon: 'cpu',
-    accent: 'var(--color-orange)',
-    desc: 'Reparto, avanzamento, qualità e tracciabilità al pezzo.',
-  },
-  {
-    id: 'portale',
-    label: 'Portale B2B',
-    icon: 'browser',
-    accent: 'var(--color-pink)',
-    desc: 'L’area riservata dove clienti e rivenditori fanno da soli.',
-  },
-]
-
-/* ------------------------------------------------------------------
-   Moduli. `kind` decide come viene disegnata l'anteprima del modulo:
-   tabella, cruscotto, form, agenda, chat o terminale.
-   ------------------------------------------------------------------ */
-
-export const modules = [
-  // Trasversali a tutti i tipi
-  {
-    id: 'anagrafiche',
-    label: 'Anagrafiche',
-    icon: 'users',
-    kind: 'tabella',
-    desc: 'Clienti, fornitori e sedi, una scheda sola per tutti i moduli.',
-    types: ['erp', 'crm', 'mes', 'portale'],
-  },
-  {
-    id: 'dashboard',
-    label: 'Cruscotto',
-    icon: 'graph',
-    kind: 'cruscotto',
-    desc: 'I numeri che guardi ogni lunedì mattina, aggiornati in tempo reale.',
-    types: ['erp', 'crm', 'mes', 'portale'],
-  },
-  {
-    id: 'permessi',
-    label: 'Ruoli e permessi',
-    icon: 'lock',
-    kind: 'form',
-    desc: 'Ogni reparto vede e modifica solo quello che gli compete.',
-    types: ['erp', 'crm', 'mes', 'portale'],
-  },
-  {
-    id: 'documenti',
-    label: 'Archivio documenti',
-    icon: 'book',
-    kind: 'tabella',
-    desc: 'Contratti, capitolati e allegati agganciati alla scheda giusta.',
-    types: ['erp', 'crm', 'mes', 'portale'],
-  },
-  {
-    id: 'assistente',
-    label: 'Assistente AI',
-    icon: 'sparkle',
-    kind: 'chat',
-    desc: 'Risponde sui tuoi documenti citando la fonte, con i permessi dell’utente.',
-    types: ['erp', 'crm', 'mes', 'portale'],
-  },
-  {
-    id: 'integrazioni',
-    label: 'Integrazioni',
-    icon: 'plug',
-    kind: 'tabella',
-    desc: 'API e webhook verso i sistemi che l’azienda usa già.',
-    types: ['erp', 'crm', 'mes', 'portale'],
-  },
-
-  // Gestionale / ERP
-  {
-    id: 'ordini',
-    label: 'Ordini',
-    icon: 'file',
-    kind: 'tabella',
-    desc: 'Dal primo inserimento alla conferma, con disponibilità reale.',
-    types: ['erp', 'portale'],
-  },
-  {
-    id: 'magazzino',
-    label: 'Magazzino',
-    icon: 'layers',
-    kind: 'tabella',
-    desc: 'Giacenze, impegnato e movimenti, senza inventari paralleli.',
-    types: ['erp', 'mes'],
-  },
-  {
-    id: 'acquisti',
-    label: 'Acquisti',
-    icon: 'database',
-    kind: 'tabella',
-    desc: 'Richieste, ordini a fornitore e riordino automatico sotto scorta.',
-    types: ['erp'],
-  },
-  {
-    id: 'commesse',
-    label: 'Commesse',
-    icon: 'workflow',
-    kind: 'cruscotto',
-    desc: 'Ore, materiali e avanzamento raccolti sulla stessa scheda.',
-    types: ['erp', 'mes'],
-  },
-
-  // CRM
-  {
-    id: 'lead',
-    label: 'Contatti e lead',
-    icon: 'users',
-    kind: 'tabella',
-    desc: 'Chi ti ha scritto, da dove arriva e chi lo sta seguendo.',
-    types: ['crm'],
-  },
-  {
-    id: 'trattative',
-    label: 'Trattative',
-    icon: 'graph',
-    kind: 'cruscotto',
-    desc: 'Pipeline per fase, con probabilità e prossima azione.',
-    types: ['crm'],
-  },
-  {
-    id: 'offerte',
-    label: 'Offerte',
-    icon: 'file',
-    kind: 'form',
-    desc: 'Configuratore di prodotto e regole di fattibilità già dentro.',
-    types: ['crm', 'portale'],
-  },
-  {
-    id: 'agenda',
-    label: 'Agenda e attività',
-    icon: 'clock',
-    kind: 'agenda',
-    desc: 'Visite, call e solleciti sincronizzati con il calendario aziendale.',
-    types: ['crm'],
-  },
-  {
-    id: 'firma',
-    label: 'Firma digitale',
-    icon: 'verified',
-    kind: 'form',
-    desc: 'Il cliente firma dal tablet e la pratica si apre da sola.',
-    types: ['crm', 'portale'],
-  },
-
-  // MES
-  {
-    id: 'odl',
-    label: 'Ordini di lavoro',
-    icon: 'workflow',
-    kind: 'tabella',
-    desc: 'Cosa si produce oggi, su quale macchina e con che priorità.',
-    types: ['mes'],
-  },
-  {
-    id: 'terminale',
-    label: 'Terminale di reparto',
-    icon: 'terminal',
-    kind: 'terminale',
-    desc: 'Pochi tasti grandi: avanzamento e fermi si registrano coi guanti.',
-    types: ['mes'],
-  },
-  {
-    id: 'qualita',
-    label: 'Controllo qualità',
-    icon: 'verified',
-    kind: 'form',
-    desc: 'Piani di controllo, misure e non conformità a bordo macchina.',
-    types: ['mes'],
-  },
-  {
-    id: 'tracciabilita',
-    label: 'Tracciabilità',
-    icon: 'search',
-    kind: 'tabella',
-    desc: 'Ogni pezzo porta con sé macchina, operatore e parametri.',
-    types: ['mes'],
-  },
-  {
-    id: 'manutenzioni',
-    label: 'Manutenzioni',
-    icon: 'tools',
-    kind: 'agenda',
-    desc: 'Preventive e a guasto, con storico per singolo impianto.',
-    types: ['mes', 'erp'],
-  },
-
-  // Portale B2B
-  {
-    id: 'catalogo',
-    label: 'Catalogo',
-    icon: 'browser',
-    kind: 'tabella',
-    desc: 'Schede prodotto e disponibilità aggiornate dal gestionale.',
-    types: ['portale'],
-  },
-  {
-    id: 'spedizioni',
-    label: 'Stato spedizioni',
-    icon: 'rocket',
-    kind: 'tabella',
-    desc: 'Tracking e documenti di trasporto, senza telefonate all’ufficio.',
-    types: ['portale', 'erp'],
-  },
-  {
-    id: 'ticket',
-    label: 'Assistenza',
-    icon: 'comment',
-    kind: 'chat',
-    desc: 'Richieste dei clienti con storico, priorità e tempi di risposta.',
-    types: ['portale', 'crm'],
-  },
-]
 
 /* ------------------------------------------------------------------
    Gioco 1 — Trova il bug
    ------------------------------------------------------------------ */
 
+/**
+ * Sei round di Rust in difficoltà crescente: i frammenti si allungano e il
+ * difetto si nasconde sempre meglio. Nessuno di questi è un errore di sintassi
+ * — compilano tutti, e sbagliano a runtime o in silenzio.
+ */
 export const bugRounds = [
   {
-    filename: 'totali.ts',
+    livello: 'riscaldamento',
+    filename: 'anagrafiche.rs',
     lines: [
-      'export function totaleRighe(righe: Riga[]) {',
-      '  let totale = 0',
-      '  for (let i = 0; i <= righe.length; i++) {',
-      '    totale += righe[i].quantita',
-      '  }',
-      '  return totale',
+      'use std::collections::HashSet;',
+      '',
+      '/// Ripulisce i codici articolo importati dal vecchio gestionale.',
+      'pub fn codici_unici(righe: Vec<Riga>) -> Vec<String> {',
+      '    let mut codici: Vec<String> = righe',
+      '        .into_iter()',
+      '        .map(|r| r.codice.trim().to_uppercase())',
+      '        .collect();',
+      '',
+      '    codici.dedup();',
+      '',
+      '    codici',
       '}',
     ],
-    buggy: 2,
+    buggy: 9,
     explanation:
-      'Il ciclo arriva fino a `righe.length` incluso: all’ultimo giro `righe[i]` non esiste e il codice esplode. Va usato `<` al posto di `<=`.',
+      '`dedup` rimuove solo i duplicati **consecutivi**: su un elenco non ordinato ne lascia passare la maggior parte, e l’import prosegue con codici ripetuti. O si ordina prima (`sort_unstable` + `dedup`), o si passa da un `HashSet` — che infatti è già importato e mai usato, altro indizio.',
   },
   {
-    filename: 'sincronizza.ts',
+    livello: 'facile',
+    filename: 'turni.rs',
     lines: [
-      'async function sincronizza(ordini: Ordine[]) {',
-      '  const esiti = ordini.map(async (o) => erp.invia(o))',
+      'pub struct Turno {',
+      '    pub inizio: u32, // minuti dalla mezzanotte',
+      '    pub fine: u32,',
+      '}',
       '',
-      '  return esiti',
+      'impl Turno {',
+      '    /// Durata del turno in minuti.',
+      '    pub fn durata(&self) -> u32 {',
+      '        self.fine - self.inizio',
+      '    }',
+      '',
+      '    pub fn copre(&self, minuto: u32) -> bool {',
+      '        minuto >= self.inizio && minuto < self.fine',
+      '    }',
       '}',
     ],
-    buggy: 3,
+    buggy: 8,
     explanation:
-      '`map` con una funzione asincrona restituisce un array di Promise, non di risultati. Serve `return await Promise.all(esiti)`, altrimenti il chiamante prosegue prima che l’invio sia finito.',
+      'Il turno di notte finisce dopo la mezzanotte: `fine` (06:00 → 360) è minore di `inizio` (22:00 → 1320) e la sottrazione fra `u32` va sotto zero. In debug è un panico, in release il valore si avvolge e la durata diventa oltre quattro milioni di minuti — che poi finiscono nel consuntivo. Serve la gestione del giorno successivo, con `checked_sub` o aritmetica sui minuti totali.',
   },
   {
-    filename: 'utenti.ts',
+    livello: 'medio',
+    filename: 'ricerca.rs',
     lines: [
-      'const utenti = await db.utenti.find({ ruolo })',
-      '',
-      'if (utenti.length = 0) {',
-      '  return []',
+      'pub struct Commessa {',
+      '    pub codice: String,',
+      '    pub apertura: NaiveDate,',
       '}',
       '',
-      'return utenti.map(toDto)',
+      '/// Le commesse arrivano dal database ordinate per data di apertura.',
+      'pub fn trova(commesse: &[Commessa], codice: &str) -> Option<usize> {',
+      '    let esito = commesse.binary_search_by(|c| c.codice.as_str().cmp(codice));',
+      '',
+      '    match esito {',
+      '        Ok(i) => Some(i),',
+      '        Err(_) => None,',
+      '    }',
+      '}',
+      '',
+      '// chiamata:',
+      '// let i = trova(&commesse_per_data, "CM-2419");',
     ],
-    buggy: 2,
+    buggy: 7,
     explanation:
-      'Un uguale solo: è un’assegnazione, non un confronto. `utenti.length` viene azzerato e la condizione è sempre falsa. Va scritto `utenti.length === 0`.',
+      'La ricerca binaria richiede che la sequenza sia ordinata **secondo lo stesso criterio** del confronto. Qui le commesse arrivano ordinate per data ma si cerca per codice: il risultato non è casuale in modo evidente, è casuale in modo subdolo — a volte trova, a volte no, e cambia quando cambiano i dati. O si ordina per codice, o si scorre con `iter().position(...)`.',
   },
   {
-    filename: 'media.rs',
+    livello: 'difficile',
+    filename: 'importazione.rs',
     lines: [
-      'pub fn media(valori: &[f64]) -> f64 {',
-      '    let somma: f64 = valori.iter().sum();',
+      'use tokio::task::JoinSet;',
       '',
-      '    somma / valori.len() as f64',
+      '/// Importa i documenti di un cliente, uno per fornitore.',
+      'pub async fn importa(fornitori: Vec<Fornitore>, db: Arc<Db>) -> Result<usize> {',
+      '    let mut set = JoinSet::new();',
+      '',
+      '    for f in fornitori {',
+      '        let db = db.clone();',
+      '        set.spawn(async move {',
+      '            let righe = scarica(&f).await?;',
+      '            let n = righe.len();',
+      '            std::thread::sleep(Duration::from_millis(200));',
+      '            db.inserisci(righe).await?;',
+      '            Ok::<usize, Error>(n)',
+      '        });',
+      '    }',
+      '',
+      '    let mut totale = 0;',
+      '    while let Some(esito) = set.join_next().await {',
+      '        totale += esito??;',
+      '    }',
+      '',
+      '    Ok(totale)',
+      '}',
+    ],
+    buggy: 11,
+    explanation:
+      '`std::thread::sleep` blocca il **thread del runtime**, non solo questo task: mentre aspetta, tutti gli altri task assegnati a quel thread restano fermi. Con qualche fornitore in parallelo l’intera importazione si serializza e le richieste in arrivo sul server smettono di essere servite. In codice asincrono si usa `tokio::time::sleep(...).await`, che restituisce il thread all’esecutore.',
+  },
+  {
+    livello: 'cattivo',
+    filename: 'magazzino.rs',
+    lines: [
+      '/// Scarica dal magazzino la quantità di una riga d’ordine.',
+      'pub async fn scarica(pool: &PgPool, id: i64, qta: i32) -> Result<()> {',
+      '    let mut tx = pool.begin().await?;',
+      '',
+      '    let attuale: i32 = sqlx::query_scalar(',
+      '        "SELECT giacenza FROM articoli WHERE id = $1",',
+      '    )',
+      '    .bind(id)',
+      '    .fetch_one(&mut *tx)',
+      '    .await?;',
+      '',
+      '    if attuale < qta {',
+      '        return Err(Error::GiacenzaInsufficiente);',
+      '    }',
+      '',
+      '    sqlx::query("UPDATE articoli SET giacenza = $1 WHERE id = $2")',
+      '        .bind(attuale - qta)',
+      '        .bind(id)',
+      '        .execute(&mut *tx)',
+      '        .await?;',
+      '',
+      '    tx.commit().await?;',
+      '    Ok(())',
+      '}',
+    ],
+    buggy: 16,
+    explanation:
+      'È un aggiornamento perso: si legge la giacenza, si calcola in memoria e si riscrive un valore assoluto. Due scarichi in parallelo leggono lo stesso `attuale` e il secondo cancella l’effetto del primo — il magazzino va in negativo senza che nessuna riga risulti sbagliata. La scrittura deve essere relativa e atomica: `SET giacenza = giacenza - $1 WHERE id = $2 AND giacenza >= $1`, controllando le righe toccate.',
+  },
+  {
+    livello: 'da incubo',
+    filename: 'listini.rs',
+    lines: [
+      'use std::collections::HashMap;',
+      'use std::sync::Mutex;',
+      '',
+      'pub struct Listini {',
+      '    cache: Mutex<HashMap<String, Prezzo>>,',
+      '    db: Db,',
       '}',
       '',
-      '// chiamata con uno slice vuoto: 0.0 / 0.0',
+      'impl Listini {',
+      '    /// Prezzo di un articolo per uno specifico cliente.',
+      '    pub fn prezzo(&self, articolo: &str, cliente: &Cliente) -> Result<Prezzo> {',
+      '        let mut cache = self.cache.lock().unwrap();',
+      '',
+      '        let chiave = articolo.to_string();',
+      '',
+      '        if let Some(p) = cache.get(&chiave) {',
+      '            return Ok(p.clone());',
+      '        }',
+      '',
+      '        let prezzo = self.db.prezzo_per(articolo, cliente.id)?;',
+      '        cache.insert(chiave, prezzo.clone());',
+      '',
+      '        Ok(prezzo)',
+      '    }',
+      '}',
+      '',
+      '// Ogni cliente ha il proprio listino e i propri sconti.',
     ],
-    buggy: 3,
+    buggy: 13,
     explanation:
-      'Con uno slice vuoto la divisione dà `NaN`, che poi si propaga in tutti i report. In Rust la firma onesta è `Option<f64>`, restituendo `None` quando non ci sono valori.',
+      'La chiave della cache contiene solo l’articolo, ma il prezzo dipende **anche dal cliente**: il primo che chiede un articolo riempie la cache, e da lì in poi tutti gli altri clienti si vedono restituire il suo prezzo — sconti riservati compresi. Non è un errore che si nota nei test con un cliente solo, ed è di quelli che si scoprono da una telefonata. La chiave deve includere l’identificativo del cliente (o la cache va tenuta per cliente).',
   },
 ]
 

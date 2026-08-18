@@ -294,6 +294,11 @@
   .display-hero {
     font-size: clamp(2.75rem, 7vw, 5.25rem);
   }
+  /* Titolo della hero quando divide la riga con il mockup: la scala piena
+     occuperebbe quattro righe in mezza colonna. */
+  .display-hero-split {
+    font-size: clamp(2.4rem, 4.6vw, 3.9rem);
+  }
   .display-section {
     font-size: clamp(2rem, 4.4vw, 3.5rem);
   }
@@ -357,6 +362,13 @@
   .mask-fade-x {
     -webkit-mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
     mask-image: linear-gradient(to right, transparent, #000 12%, #000 88%, transparent);
+  }
+
+  /* Sfuma solo il bordo destro: serve al codice dentro i pannelli, che è più
+     largo dello spazio disponibile e altrimenti sembrerebbe tagliato male. */
+  .mask-fade-r {
+    -webkit-mask-image: linear-gradient(to right, #000 78%, transparent);
+    mask-image: linear-gradient(to right, #000 78%, transparent);
   }
 
   .mask-fade-b {
@@ -453,6 +465,129 @@
     }
   }
 
+  /* Card che reagisce al puntatore: un alone segue il cursore, il bordo si
+     accende e la scheda si alza di poco. Le coordinate arrivano da
+     SpotCard, che scrive `--mx` e `--my` durante il movimento. */
+  .card-spot {
+    position: relative;
+    overflow: hidden;
+    transition:
+      transform 0.35s var(--ease-out-quint),
+      border-color 0.3s ease,
+      box-shadow 0.35s ease;
+  }
+  .card-spot::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    background: radial-gradient(
+      16rem circle at var(--mx, 50%) var(--my, 0%),
+      color-mix(in oklab, var(--spot, var(--color-accent)) 20%, transparent),
+      transparent 65%
+    );
+  }
+  .card-spot::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 1px;
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in oklab, var(--spot, var(--color-accent)) 85%, transparent),
+      transparent
+    );
+  }
+  .card-spot:hover::before,
+  .card-spot:focus-within::before,
+  .card-spot:hover::after,
+  .card-spot:focus-within::after {
+    opacity: 1;
+  }
+  .card-spot:hover,
+  .card-spot:focus-within {
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--spot, var(--color-accent)) 45%, var(--color-line));
+    box-shadow: 0 12px 32px color-mix(in oklab, var(--spot, var(--color-accent)) 16%, transparent);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card-spot:hover,
+    .card-spot:focus-within {
+      transform: none;
+    }
+  }
+
+  /* Testo a contorno: riempimento trasparente e filo di bordo. Serve alle
+     parole grandi che fanno da sfondo, che devono esserci senza rubare la
+     lettura al titolo. */
+  .text-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.5px color-mix(in oklab, var(--color-fg) 22%, transparent);
+  }
+
+  /* Sfondo vivo della hero: tre macchie di colore che si muovono piano.
+     Sono sfocate e lentissime, quindi non distraggono dalla lettura. */
+  .aurora {
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 60rem;
+    pointer-events: none;
+    filter: blur(80px);
+    opacity: 0.55;
+  }
+  .aurora span {
+    position: absolute;
+    display: block;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+  }
+  .aurora span:nth-child(1) {
+    top: 6%;
+    left: 8%;
+    width: 34rem;
+    height: 26rem;
+    background: var(--color-glow-1);
+    animation: aurora-a 26s ease-in-out infinite;
+  }
+  .aurora span:nth-child(2) {
+    top: 0%;
+    right: 6%;
+    width: 30rem;
+    height: 30rem;
+    background: var(--color-glow-2);
+    animation: aurora-b 32s ease-in-out infinite;
+  }
+  .aurora span:nth-child(3) {
+    top: 26%;
+    left: 42%;
+    width: 26rem;
+    height: 20rem;
+    background: var(--color-success-emphasis);
+    opacity: 0.5;
+    animation: aurora-c 38s ease-in-out infinite;
+  }
+
+  /* Reticolo che si illumina solo attorno al puntatore. */
+  .grid-spot {
+    -webkit-mask-image: radial-gradient(
+      22rem circle at var(--mx, 50%) var(--my, 30%),
+      #000 0%,
+      transparent 70%
+    );
+    mask-image: radial-gradient(
+      22rem circle at var(--mx, 50%) var(--my, 30%),
+      #000 0%,
+      transparent 70%
+    );
+  }
+
   /* Link testuale del corpo: colore accento, sottolineato in hover. */
   .link {
     color: var(--color-accent);
@@ -532,6 +667,30 @@
 
 /* Alone pulsante sul testo. Usa `currentColor`, così si accende del colore
    della fascia in cui cade il risultato senza doverlo passare due volte. */
+@keyframes aurora-a {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(6rem, 3rem, 0) scale(1.15); }
+}
+@keyframes aurora-b {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1.1); }
+  50% { transform: translate3d(-7rem, 4rem, 0) scale(0.95); }
+}
+@keyframes aurora-c {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(0.9); }
+  50% { transform: translate3d(-4rem, -3rem, 0) scale(1.2); }
+}
+
+@keyframes matrice-in {
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 @keyframes glow-pulse {
   0%,
   100% {
@@ -605,4 +764,16 @@
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
   }
+}
+
+/* Marchio in immagine (public/logo.png).
+   L'originale è bianco su fondo trasparente: in tema chiaro va invertito,
+   in tema scuro — e dentro le isole `.on-dark` — resta com'è. */
+.marchio {
+  filter: invert(1);
+}
+
+:root[data-color-mode='dark'] .marchio,
+.on-dark .marchio {
+  filter: none;
 }
