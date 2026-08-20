@@ -23,7 +23,7 @@ import { EASE } from '../lib/motion'
  */
 
 const campo = 'field'
-const etichetta = 'block font-mono text-[11px] tracking-wider text-fg-subtle uppercase'
+const etichetta = 'block font-mono text-mini tracking-wider text-fg-subtle uppercase'
 
 /** Mescola una copia dell'array (Fisher-Yates). */
 function mescola(lista) {
@@ -66,7 +66,7 @@ function Badge({ ruolo, accent, fase, fatte, totale, punteggio, matricola, nome 
       {/* Fascia del ruolo + gancio del cordino */}
       <div className="relative h-24" style={{ backgroundColor: accent }}>
         <span className="absolute top-4 left-1/2 h-2 w-14 -translate-x-1/2 rounded-full bg-canvas/70" />
-        <span className="absolute right-4 bottom-3 font-mono text-[11px] text-white/80">
+        <span className="absolute right-4 bottom-3 font-mono text-mini text-white/80">
           {company.name.toUpperCase()}
         </span>
       </div>
@@ -80,7 +80,7 @@ function Badge({ ruolo, accent, fase, fatte, totale, punteggio, matricola, nome 
           >
             <Icon name={ruolo?.icon ?? 'users'} size={30} />
           </span>
-          <span className="pb-1 font-mono text-[11px] text-fg-subtle">{matricola}</span>
+          <span className="pb-1 font-mono text-mini text-fg-subtle">{matricola}</span>
         </div>
 
         <p className="mt-4 text-lg font-semibold text-fg">{nome || 'Candidato/a'}</p>
@@ -90,7 +90,7 @@ function Badge({ ruolo, accent, fase, fatte, totale, punteggio, matricola, nome 
 
         {/* Avanzamento della prova, un pallino per domanda */}
         <div className="mt-5 border-t border-line-muted pt-4">
-          <p className="flex items-center justify-between font-mono text-[11px] text-fg-subtle">
+          <p className="flex items-center justify-between font-mono text-mini text-fg-subtle">
             <span>prova pratica</span>
             <span>
               {String(fatte).padStart(2, '0')} / {String(totale).padStart(2, '0')}
@@ -137,7 +137,7 @@ function Badge({ ruolo, accent, fase, fatte, totale, punteggio, matricola, nome 
             <p data-test="punteggio" className="font-mono text-xl font-bold">
               {punteggio}/{totale}
             </p>
-            <p className="font-mono text-[10px] tracking-[0.2em] uppercase">
+            <p className="font-mono text-mini tracking-[0.2em] uppercase">
               {idoneo ? 'da incontrare' : 'in valutazione'}
             </p>
           </motion.div>
@@ -257,7 +257,7 @@ export default function Careers() {
         <div className="grid-lines mask-fade-b pointer-events-none absolute inset-0 opacity-30" />
         <div className="shell relative py-14 md:py-16">
           <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.25em] text-fg-subtle uppercase">
+            <p className="font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase">
               Lavora con noi · posizioni aperte
             </p>
             <h1 className="display display-section mt-5 max-w-3xl">
@@ -285,7 +285,7 @@ export default function Careers() {
       <section id="test" className="border-b border-line-muted py-14 md:py-20">
         <div className="shell grid gap-10 lg:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] lg:gap-14">
           {/* Il badge resta a fianco per tutto il percorso */}
-          <Reveal className="lg:sticky lg:top-24 lg:self-start">
+          <Reveal className="order-2 lg:sticky lg:top-24 lg:order-none lg:self-start">
             <Badge
               ruolo={ruolo}
               accent={accent}
@@ -303,7 +303,7 @@ export default function Careers() {
             </p>
           </Reveal>
 
-          <div className="min-w-0">
+          <div className="order-1 min-w-0 lg:order-none">
             <AnimatePresence mode="wait">
               {/* --- Scelta del ruolo --- */}
               {fase === 'ruolo' && (
@@ -341,7 +341,7 @@ export default function Careers() {
                               <Icon name={r.icon} size={17} />
                             </span>
                             <span className="font-semibold text-fg">{r.label}</span>
-                            <span className="ml-auto font-mono text-[11px] text-fg-subtle">
+                            <span className="ml-auto font-mono text-mini text-fg-subtle">
                               0{i + 1}
                             </span>
                           </span>
@@ -354,7 +354,7 @@ export default function Careers() {
                             {r.cerchiamo.map((c) => (
                               <span
                                 key={c}
-                                className="rounded-full border border-line px-2 py-0.5 font-mono text-[11px] text-fg-muted"
+                                className="rounded-full border border-line px-2 py-0.5 font-mono text-mini text-fg-muted"
                               >
                                 {c}
                               </span>
@@ -392,7 +392,7 @@ export default function Careers() {
                     <span className="font-mono text-xs text-fg-subtle">
                       domanda {passo + 1} di {test.length}
                     </span>
-                    <span className="hidden items-center gap-1.5 font-mono text-[11px] text-fg-subtle sm:flex">
+                    <span className="hidden items-center gap-1.5 font-mono text-mini text-fg-subtle sm:flex">
                       <Icon name="terminal" size={12} />
                       rispondi anche con i tasti 1–{test[passo].opzioni.length}
                     </span>
@@ -541,7 +541,7 @@ export default function Careers() {
                     <form onSubmit={onSubmit} className="mt-8 border-t border-line pt-8">
                       <div className="flex items-baseline justify-between">
                         <h3 className="text-lg font-semibold text-fg">Completa il badge</h3>
-                        <span className="font-mono text-[11px] text-fg-subtle">{matricola}</span>
+                        <span className="font-mono text-mini text-fg-subtle">{matricola}</span>
                       </div>
 
                       <div className="mt-6 grid gap-5 sm:grid-cols-2">

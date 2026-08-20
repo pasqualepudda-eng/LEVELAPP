@@ -191,6 +191,7 @@ export const legalLinks = [
   { label: 'Cookie policy', to: '/cookie' },
   { label: 'Termini e condizioni', to: '/termini' },
   { label: 'Mappa del sito', to: '/mappa' },
+  { label: 'Area riservata', to: '/accedi' },
 ]
 
 /* ------------------------------------------------------------------

@@ -93,12 +93,12 @@ export default function AppWindow({ className = '' }) {
           <span className="size-3 rounded-full bg-line" />
           <span className="size-3 rounded-full bg-line" />
         </div>
-        <div className="flex flex-1 items-center gap-2 rounded-md border border-line bg-canvas px-2.5 py-1 font-mono text-[11px] text-fg-subtle">
+        <div className="flex flex-1 items-center gap-2 rounded-md border border-line bg-canvas px-2.5 py-1 font-mono text-mini text-fg-subtle">
           <Icon name="lock" size={11} />
           gestionale.tuaazienda.it
           <Icon name="star" size={10} className="ml-auto hidden text-fg-subtle sm:block" />
         </div>
-        <span className="hidden items-center gap-1.5 text-[11px] text-fg-muted sm:flex">
+        <span className="hidden items-center gap-1.5 text-mini text-fg-muted sm:flex">
           <StatusDot tone="success" />
           online
         </span>
@@ -113,7 +113,7 @@ export default function AppWindow({ className = '' }) {
           {SCHEDE.map((scheda, i) => (
             <span
               key={scheda}
-              className={`rounded-md px-2 py-1 text-[11px] ${
+              className={`rounded-md px-2 py-1 text-mini ${
                 i === 0 ? 'bg-canvas-subtle font-medium text-fg' : 'text-fg-muted'
               }`}
             >
@@ -159,14 +159,14 @@ export default function AppWindow({ className = '' }) {
           ))}
 
           <div className="mt-3 rounded-md border border-line bg-canvas-subtle p-2.5">
-            <p className="flex items-center gap-1.5 text-[10px] font-semibold text-attention">
+            <p className="flex items-center gap-1.5 text-mini font-semibold text-attention">
               <Icon name="issue" size={11} />
               Sopra budget
             </p>
             <p className="mt-1 text-[10.5px] leading-snug text-fg-muted">
               3 commesse hanno superato le ore stimate.
             </p>
-            <span className="mt-2 inline-block rounded border border-line px-1.5 py-0.5 text-[10px] text-accent">
+            <span className="mt-2 inline-block rounded border border-line px-1.5 py-0.5 text-mini text-accent">
               Vedi dettaglio
             </span>
           </div>
@@ -188,11 +188,11 @@ export default function AppWindow({ className = '' }) {
               <p className="font-mono text-[9.5px] text-fg-subtle">Produzione / Panoramica</p>
               <p className="text-[13px] font-semibold text-fg">Commesse in corso</p>
             </div>
-            <span className="flex h-6 items-center gap-1 rounded-md border border-line px-2 font-mono text-[10px] text-fg-muted">
+            <span className="flex h-6 items-center gap-1 rounded-md border border-line px-2 font-mono text-mini text-fg-muted">
               ultimi 30 giorni
               <Icon name="chevronDown" size={9} />
             </span>
-            <span className="hidden h-6 items-center gap-1 rounded-md bg-success-emphasis px-2 text-[10px] font-medium text-white sm:flex">
+            <span className="hidden h-6 items-center gap-1 rounded-md bg-success-emphasis px-2 text-mini font-medium text-white sm:flex">
               <Icon name="plus" size={9} />
               Nuova
             </span>
@@ -202,11 +202,11 @@ export default function AppWindow({ className = '' }) {
           <div className="mb-3 grid grid-cols-2 gap-2 lg:grid-cols-4">
             {TILES.map((tile) => (
               <div key={tile.label} className="rounded-md border border-line bg-canvas p-2.5">
-                <p className="truncate text-[10px] text-fg-muted">{tile.label}</p>
+                <p className="truncate text-mini text-fg-muted">{tile.label}</p>
                 <p className="mt-0.5 flex items-baseline gap-1.5">
                   <span className="text-base font-semibold text-fg">{tile.valore}</span>
                   <span
-                    className="text-[10px] font-medium"
+                    className="text-mini font-medium"
                     style={{ color: tile.su ? 'var(--color-success)' : 'var(--color-danger)' }}
                   >
                     {tile.delta}
@@ -276,11 +276,11 @@ export default function AppWindow({ className = '' }) {
                 {RIGHE.map(([codice, cliente, referente, pct, data, stato, tono], i) => (
                   <div
                     key={codice}
-                    className={`flex items-center gap-3 px-2.5 py-2 text-[11px] ${
+                    className={`flex items-center gap-3 px-2.5 py-2 text-mini ${
                       i === 0 ? 'bg-canvas-subtle' : ''
                     } ${i > 0 ? 'border-t border-line-muted' : ''}`}
                   >
-                    <span className="w-16 font-mono text-[10px] text-fg-subtle">{codice}</span>
+                    <span className="w-16 font-mono text-mini text-fg-subtle">{codice}</span>
                     <span className="flex min-w-0 flex-1 items-center gap-1.5">
                       <Avatar nome={referente} />
                       <span className="truncate text-fg">{cliente}</span>
@@ -288,7 +288,7 @@ export default function AppWindow({ className = '' }) {
                     <span className="hidden w-24 md:block">
                       <Avanzamento valore={pct} tono={tono} larghezza="w-14" />
                     </span>
-                    <span className="hidden w-12 font-mono text-[10px] text-fg-muted sm:block">
+                    <span className="hidden w-12 font-mono text-mini text-fg-muted sm:block">
                       {data}
                     </span>
                     <span className="flex w-20 justify-end">
@@ -317,7 +317,7 @@ export default function AppWindow({ className = '' }) {
                 <p className="text-[10.5px] font-semibold text-fg">Scadenze</p>
                 <ul className="mt-2 space-y-1.5">
                   {SCADENZE.map(([codice, cosa, quando, tono]) => (
-                    <li key={codice} className="flex items-center gap-1.5 text-[10px]">
+                    <li key={codice} className="flex items-center gap-1.5 text-mini">
                       <span className="size-1.5 rounded-full" style={{ backgroundColor: tono }} />
                       <span className="font-mono text-fg-subtle">{codice}</span>
                       <span className="min-w-0 flex-1 truncate text-fg-muted">{cosa}</span>
@@ -333,7 +333,7 @@ export default function AppWindow({ className = '' }) {
                 <p className="text-[10.5px] font-semibold text-fg">Attività</p>
                 <ul className="mt-2 space-y-1.5">
                   {ATTIVITA.map(([icona, testo, quando]) => (
-                    <li key={testo} className="flex items-start gap-1.5 text-[10px]">
+                    <li key={testo} className="flex items-start gap-1.5 text-mini">
                       <Icon name={icona} size={10} className="mt-0.5 shrink-0 text-fg-subtle" />
                       <span className="min-w-0 flex-1 truncate text-fg-muted">{testo}</span>
                       <span className="font-mono text-[9px] whitespace-nowrap text-fg-subtle">
@@ -349,7 +349,7 @@ export default function AppWindow({ className = '' }) {
                   <Icon name="sparkle" size={11} className="text-success" />
                   Assistente
                 </p>
-                <p className="mt-1.5 text-[10px] leading-snug text-fg-muted">
+                <p className="mt-1.5 text-mini leading-snug text-fg-muted">
                   “Le tre commesse sopra budget hanno tutte lo stesso fornitore di profilati.”
                 </p>
                 <span className="mt-2 inline-flex items-center gap-1 font-mono text-[9px] text-fg-subtle">

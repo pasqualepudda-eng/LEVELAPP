@@ -202,7 +202,7 @@ export default function Interactive() {
       <div className="shell relative">
         <h1 className="sr-only">Interattivo — il terminale di LevelApp</h1>
 
-        <p className="font-mono text-[11px] tracking-[0.2em] text-fg-subtle uppercase">
+        <p className="font-mono text-mini tracking-[0.2em] text-fg-subtle uppercase">
           interattivo
         </p>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-fg-muted">
@@ -225,7 +225,7 @@ export default function Interactive() {
               <span className="size-3 rounded-full bg-line" />
             </div>
             <span className="font-mono text-xs text-fg-muted">{PROMPT}: ~</span>
-            <span className="ml-auto font-mono text-[10px] text-fg-subtle">
+            <span className="ml-auto font-mono text-mini text-fg-subtle">
               {storia.filter((r) => r.tipo === 'comando').length} comandi
             </span>
           </div>
@@ -255,7 +255,7 @@ export default function Interactive() {
             </label>
           </div>
 
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-line bg-canvas-subtle px-3 py-2 font-mono text-[10px] text-fg-subtle">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 border-t border-line bg-canvas-subtle px-3 py-2 font-mono text-mini text-fg-subtle">
             <span>invio esegue</span>
             <span>tab completa</span>
             <span>↑ ↓ ripescano</span>
@@ -270,7 +270,7 @@ export default function Interactive() {
               key={c.nome}
               type="button"
               onClick={() => esegui(c.nome)}
-              className="rounded-full border border-line px-3.5 py-1.5 font-mono text-xs text-fg-muted transition-colors hover:border-success hover:text-fg"
+              className="flex min-h-10 items-center rounded-full border border-line px-4 py-2 font-mono text-xs text-fg-muted transition-colors hover:border-success hover:text-fg"
             >
               {c.nome}
             </button>

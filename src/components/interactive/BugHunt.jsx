@@ -81,7 +81,7 @@ export default function BugHunt() {
           ))}
         </div>
 
-        <span className="rounded-full border border-line bg-canvas px-2.5 py-0.5 font-mono text-[11px] text-fg-muted">
+        <span className="rounded-full border border-line bg-canvas px-2.5 py-0.5 font-mono text-mini text-fg-muted">
           {punti}/{bugRounds.length}
         </span>
       </div>

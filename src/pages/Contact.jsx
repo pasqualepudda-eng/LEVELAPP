@@ -269,7 +269,7 @@ export default function Contact() {
           >
             {stato === 'riepilogo' ? (
               <>
-                <p className="font-mono text-[11px] tracking-[0.2em] text-fg-subtle uppercase">
+                <p className="font-mono text-mini tracking-[0.2em] text-fg-subtle uppercase">
                   ultimo passo
                 </p>
                 <h1 className="display display-hero-split mt-6 leading-[1.08]">
@@ -285,7 +285,7 @@ export default function Contact() {
                       key={etichetta}
                       className="grid gap-1 border-b border-line-muted py-4 sm:grid-cols-[13rem_minmax(0,1fr)] sm:gap-6"
                     >
-                      <dt className="font-mono text-[11px] tracking-[0.16em] text-fg-subtle uppercase">
+                      <dt className="font-mono text-mini tracking-[0.16em] text-fg-subtle uppercase">
                         {etichetta}
                       </dt>
                       <dd className="text-[15px] leading-relaxed text-fg">{valore}</dd>
@@ -313,7 +313,7 @@ export default function Contact() {
               </>
             ) : stato === 'invio' ? (
               <>
-                <p className="font-mono text-[11px] tracking-[0.2em] text-fg-subtle uppercase">
+                <p className="font-mono text-mini tracking-[0.2em] text-fg-subtle uppercase">
                   invio in corso
                 </p>
                 <h1 className="display display-hero-split mt-6">Un attimo…</h1>
@@ -365,7 +365,7 @@ export default function Contact() {
           </motion.div>
         ) : (
           <>
-            <p className="font-mono text-[11px] tracking-[0.2em] text-fg-subtle uppercase">
+            <p className="font-mono text-mini tracking-[0.2em] text-fg-subtle uppercase">
               contatti · domanda {passo + 1}
               {percorso ? ` di ${domande.length}` : ''}
             </p>
@@ -428,7 +428,7 @@ export default function Contact() {
                           <span className="mt-1 block text-[13px] leading-snug text-fg-muted">
                             {u.desc}
                           </span>
-                          <span className="mt-2 block font-mono text-[11px] text-fg-subtle">
+                          <span className="mt-2 block font-mono text-mini text-fg-subtle">
                             {u.sla}
                           </span>
                         </button>
@@ -478,7 +478,7 @@ export default function Contact() {
                             salta
                           </button>
                         )}
-                        <span className="hidden font-mono text-[11px] text-fg-subtle sm:inline">
+                        <span className="hidden font-mono text-mini text-fg-subtle sm:inline">
                           invio ↵
                         </span>
                       </div>
@@ -508,13 +508,13 @@ export default function Contact() {
 
               <a
                 href={`mailto:${company.email}`}
-                className="font-mono text-[11px] text-fg-subtle hover:text-fg"
+                className="-my-2 py-2 font-mono text-mini text-fg-subtle hover:text-fg"
               >
                 {company.email}
               </a>
               <a
                 href={company.phoneHref}
-                className="font-mono text-[11px] text-fg-subtle hover:text-fg"
+                className="-my-2 py-2 font-mono text-mini text-fg-subtle hover:text-fg"
               >
                 {company.phone}
               </a>

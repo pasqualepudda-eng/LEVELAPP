@@ -66,10 +66,10 @@ export default function ProcessSection() {
         {/* Righello delle settimane */}
         <Reveal delay={0.1} className="mt-14">
           <div className="grid grid-cols-[8.5rem_minmax(0,1fr)] items-center gap-4 sm:grid-cols-[13rem_minmax(0,1fr)]">
-            <span className="font-mono text-[11px] text-fg-subtle">fase</span>
+            <span className="font-mono text-mini text-fg-subtle">fase</span>
             <div className="grid grid-cols-4 border-b border-line-muted pb-2">
               {SETTIMANE.map((s) => (
-                <span key={s} className="font-mono text-[11px] text-fg-subtle">
+                <span key={s} className="font-mono text-mini text-fg-subtle">
                   <span className="hidden sm:inline">{s}</span>
                   <span className="sm:hidden">S{s.slice(-1)}</span>
                 </span>
@@ -105,7 +105,7 @@ export default function ProcessSection() {
                         {f.title}
                       </span>
                     </span>
-                    <span className="mt-0.5 block truncate font-mono text-[10px] text-fg-subtle">
+                    <span className="mt-0.5 block truncate font-mono text-mini text-fg-subtle">
                       {f.duration}
                     </span>
                   </span>
@@ -157,7 +157,7 @@ export default function ProcessSection() {
           {/* Coda: dopo il rilascio si continua */}
           <div className="mt-2 grid grid-cols-[8.5rem_minmax(0,1fr)] gap-4 sm:grid-cols-[13rem_minmax(0,1fr)]">
             <span />
-            <span className="flex items-center justify-end gap-1.5 font-mono text-[10px] text-fg-subtle">
+            <span className="flex items-center justify-end gap-1.5 font-mono text-mini text-fg-subtle">
               poi manutenzione e evolutive
               <Icon name="arrowRight" size={11} />
             </span>

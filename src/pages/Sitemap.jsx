@@ -85,12 +85,12 @@ function Foglia({ voce, tono, indice }) {
       />
       <Link
         to={voce.to}
-        className="group flex flex-wrap items-baseline gap-x-3 gap-y-0.5 border-b border-line-muted py-2.5 transition-colors hover:border-fg-subtle"
+        className="group flex min-h-11 flex-wrap items-baseline gap-x-3 gap-y-0.5 border-b border-line-muted py-3 transition-colors hover:border-fg-subtle"
       >
         <span className="text-[15px] text-fg transition-colors group-hover:text-[var(--tono)]" style={{ '--tono': tono }}>
           {voce.label}
         </span>
-        <span className="font-mono text-[11px] text-fg-subtle">#{voce.to}</span>
+        <span className="font-mono text-mini text-fg-subtle">#{voce.to}</span>
         <Icon
           name="arrowRight"
           size={13}
@@ -110,7 +110,7 @@ export default function Sitemap() {
         <div className="grid-lines mask-fade-b pointer-events-none absolute inset-0 opacity-30" />
         <div className="shell relative py-14 md:py-16">
           <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.25em] text-fg-subtle uppercase">
+            <p className="font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase">
               Mappa del sito · {TOTALE} pagine
             </p>
             <h1 className="display display-section mt-5 max-w-3xl">
@@ -137,11 +137,11 @@ export default function Sitemap() {
             {/* Radice */}
             <div className="relative pl-8 md:pl-12">
               <span className="absolute top-1 left-0 flex size-4 items-center justify-center rounded-full border-2 border-accent bg-canvas md:size-6" />
-              <Link to="/" className="group inline-flex items-baseline gap-3">
+              <Link to="/" className="group -my-1.5 inline-flex items-baseline gap-3 py-1.5">
                 <span className="text-xl font-semibold text-fg group-hover:text-accent">
                   {company.name}
                 </span>
-                <span className="font-mono text-[11px] text-fg-subtle">/</span>
+                <span className="font-mono text-mini text-fg-subtle">/</span>
               </Link>
               <p className="mt-1 text-sm text-fg-muted">
                 Home — {company.payoff.toLowerCase()}
@@ -167,13 +167,13 @@ export default function Sitemap() {
                   <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
                     <Link
                       to={ramo.to}
-                      className="text-lg font-semibold text-fg transition-colors hover:text-[var(--tono)]"
+                      className="-my-1.5 py-1.5 text-lg font-semibold text-fg transition-colors hover:text-[var(--tono)]"
                       style={{ '--tono': ramo.tono }}
                     >
                       {ramo.titolo}
                     </Link>
-                    <span className="font-mono text-[11px] text-fg-subtle">#{ramo.to}</span>
-                    <span className="ml-auto font-mono text-[11px] text-fg-subtle">
+                    <span className="font-mono text-mini text-fg-subtle">#{ramo.to}</span>
+                    <span className="ml-auto font-mono text-mini text-fg-subtle">
                       {ramo.foglie.length > 0
                         ? `${ramo.foglie.length + 1} pagine`
                         : '1 pagina'}

@@ -76,7 +76,7 @@ export default function StackMemory() {
           <h3 className="text-sm font-semibold text-fg">Memory dello stack</h3>
           <p className="text-[11.5px] text-fg-muted">Accoppia le tecnologie con cui lavoriamo.</p>
         </div>
-        <span className="rounded-full border border-line bg-canvas px-2.5 py-0.5 font-mono text-[11px] text-fg-muted">
+        <span className="rounded-full border border-line bg-canvas px-2.5 py-0.5 font-mono text-mini text-fg-muted">
           {trovate.length}/{memoryTechs.length}
         </span>
       </div>

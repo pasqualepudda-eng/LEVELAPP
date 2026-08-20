@@ -111,7 +111,7 @@ export default function LatencyMeter() {
           <h3 className="text-sm font-semibold text-fg">Tempo di risposta</h3>
           <p className="text-[11.5px] text-fg-muted">Clicca appena il riquadro diventa verde.</p>
         </div>
-        <span className="rounded-full border border-line bg-canvas px-2.5 py-0.5 font-mono text-[11px] text-fg-muted">
+        <span className="rounded-full border border-line bg-canvas px-2.5 py-0.5 font-mono text-mini text-fg-muted">
           {migliore === null ? '— ms' : `record ${migliore}`}
         </span>
       </div>
@@ -134,7 +134,7 @@ export default function LatencyMeter() {
             </span>
           )}
           {stato === 'attesa' && (
-            <span className="font-mono text-[11px] text-fg-muted">cronometro armato…</span>
+            <span className="font-mono text-mini text-fg-muted">cronometro armato…</span>
           )}
         </button>
 
@@ -157,7 +157,7 @@ export default function LatencyMeter() {
             )}
           </div>
 
-          <div className="mt-1.5 flex justify-between font-mono text-[10px] text-fg-subtle">
+          <div className="mt-1.5 flex justify-between font-mono text-mini text-fg-subtle">
             <span>0 ms</span>
             <span>400</span>
             <span>800+</span>

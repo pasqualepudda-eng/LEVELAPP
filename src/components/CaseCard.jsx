@@ -44,7 +44,7 @@ export default function CaseCard({ item, compact = false }) {
                 <dd className="display text-2xl" style={{ color: item.accent }}>
                   <Counter value={metric.value} suffix={metric.suffix} />
                 </dd>
-                <dt className="mt-1 text-[11px] leading-tight text-fg-muted">{metric.label}</dt>
+                <dt className="mt-1 text-mini leading-tight text-fg-muted">{metric.label}</dt>
               </div>
             ))}
           </dl>

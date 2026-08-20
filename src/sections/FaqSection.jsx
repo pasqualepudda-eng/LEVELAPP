@@ -84,7 +84,7 @@ export default function FaqSection() {
                   <Icon name="x" size={13} />
                 </button>
               )}
-              <span className="hidden font-mono text-[11px] whitespace-nowrap text-fg-subtle sm:block">
+              <span className="hidden font-mono text-mini whitespace-nowrap text-fg-subtle sm:block">
                 {risultati.length}/{faqs.length}
               </span>
             </label>

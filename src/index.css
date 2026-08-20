@@ -256,6 +256,18 @@
    Utilities
    ============================================================ */
 @layer utilities {
+  /* Etichette minute (occhielli, targhette, metadati): sul telefono non
+     scendono sotto i 12px, altrimenti diventano illeggibili al sole. */
+  .text-mini {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+  @media (max-width: 640px) {
+    .text-mini {
+      font-size: 12px;
+    }
+  }
+
   /* Contenitore standard: 1280px come la chrome di GitHub. */
   .shell {
     width: 100%;
@@ -776,4 +788,165 @@
 :root[data-color-mode='dark'] .marchio,
 .on-dark .marchio {
   filter: none;
+}
+
+/* ============================================================
+   Foglio del preventivo (area riservata)
+
+   A schermo non si vede: esiste solo quando si stampa, e in stampa è
+   l'unica cosa che resta in pagina. Usando "Salva come PDF" nella
+   finestra di stampa si ottiene il documento da allegare all'email.
+   ============================================================ */
+
+@media print {
+  header,
+  footer,
+  .no-stampa {
+    display: none !important;
+  }
+
+  .foglio {
+    display: block !important;
+    /* Senza questo il motore di stampa può schiarire colori e filetti. */
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+    color: #0d1117;
+    background: #fff;
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  @page {
+    margin: 16mm;
+  }
+}
+
+.foglio-testa {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  border-bottom: 1.5px solid #0d1117;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+}
+
+.foglio-marchio {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #0d1117;
+  margin-bottom: 6px;
+}
+
+.foglio-nome {
+  font-size: 15pt;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.foglio-destra {
+  text-align: right;
+}
+
+.foglio-destra h1 {
+  font-size: 16pt;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.foglio-piccolo {
+  font-size: 9pt;
+  color: #57606a;
+}
+
+.foglio-forte {
+  font-weight: 600;
+}
+
+.foglio-blocco {
+  margin-bottom: 16px;
+  break-inside: avoid;
+}
+
+.foglio-blocco h2 {
+  font-size: 8.5pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #57606a;
+  margin-bottom: 4px;
+}
+
+.foglio-tabella {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.foglio-tabella th {
+  text-align: left;
+  font-size: 8.5pt;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #57606a;
+  border-bottom: 1px solid #0d1117;
+  padding-bottom: 6px;
+}
+
+.foglio-tabella td {
+  border-bottom: 1px solid #d0d7de;
+  padding: 8px 0;
+  vertical-align: top;
+}
+
+.foglio-tabella .num {
+  text-align: right;
+  white-space: nowrap;
+  padding-left: 12px;
+}
+
+.foglio-dettaglio {
+  display: block;
+  font-size: 9.5pt;
+  color: #57606a;
+  margin-top: 2px;
+}
+
+.foglio-tabella tfoot td {
+  border-bottom: 0;
+  padding: 4px 0;
+  color: #57606a;
+}
+
+.foglio-tabella tfoot .foglio-totale td {
+  border-top: 1.5px solid #0d1117;
+  padding-top: 8px;
+  font-size: 13pt;
+  font-weight: 700;
+  color: #0d1117;
+}
+
+.foglio-piede {
+  margin-top: 28px;
+  border-top: 1px solid #d0d7de;
+  padding-top: 8px;
+  font-size: 8.5pt;
+  color: #57606a;
+}
+
+/* Anteprima del foglio dentro l'editor: la larghezza è quella di un A4 a
+   96dpi, la scala la mette il componente. Le regole `.foglio-*` qui sopra
+   valgono anche qui, così l'anteprima e la stampa non possono divergere. */
+.foglio-a4 {
+  width: 794px;
+  padding: 46px 52px;
+  background: #fff;
+  color: #0d1117;
+  font-size: 11pt;
+  line-height: 1.5;
+}
+
+.foglio-vuoto {
+  color: #8c959f;
+  font-style: italic;
+  padding: 14px 0;
 }

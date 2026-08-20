@@ -74,7 +74,7 @@ function Blocco({ blocco }) {
               {blocco.intestazioni.map((testa) => (
                 <th
                   key={testa}
-                  className="border-b border-line pb-2.5 font-mono text-[11px] tracking-wider text-fg-subtle uppercase"
+                  className="border-b border-line pb-2.5 font-mono text-mini tracking-wider text-fg-subtle uppercase"
                 >
                   {testa}
                 </th>
@@ -144,7 +144,7 @@ export default function LegalDoc({ slug }) {
         <div className="grid-lines mask-fade-b pointer-events-none absolute inset-0 opacity-30" />
         <div className="shell relative py-14 md:py-16">
           <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.25em] text-fg-subtle uppercase">
+            <p className="font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase">
               Documento {doc.numero} / 0{documenti.length} · {doc.occhiello}
             </p>
             <h1 className="display display-section mt-5 max-w-3xl">{doc.titolo}</h1>
@@ -160,7 +160,7 @@ export default function LegalDoc({ slug }) {
                 ['Sezioni', String(doc.sezioni.length)],
               ].map(([voce, valore]) => (
                 <div key={voce}>
-                  <dt className="font-mono text-[11px] tracking-wider text-fg-subtle uppercase">
+                  <dt className="font-mono text-mini tracking-wider text-fg-subtle uppercase">
                     {voce}
                   </dt>
                   <dd className="mt-1 text-[15px] text-fg">{valore}</dd>
@@ -195,14 +195,14 @@ export default function LegalDoc({ slug }) {
                           e.preventDefault()
                           document.getElementById(sezione.id)?.scrollIntoView({ block: 'start' })
                         }}
-                        className={`flex items-start gap-3 rounded-md px-2 py-1.5 text-[14px] leading-snug transition-colors ${
+                        className={`flex min-h-11 items-start gap-3 rounded-md px-2 py-2.5 text-[14px] leading-snug transition-colors ${
                           corrente
                             ? 'bg-canvas-subtle font-medium text-fg'
                             : 'text-fg-muted hover:text-fg'
                         }`}
                       >
                         <span
-                          className={`mt-0.5 font-mono text-[11px] ${
+                          className={`mt-0.5 font-mono text-mini ${
                             corrente ? 'text-accent' : 'text-fg-subtle'
                           }`}
                         >
@@ -236,7 +236,7 @@ export default function LegalDoc({ slug }) {
                 transition={{ duration: 0.5, ease: EASE }}
                 className="scroll-mt-24 border-b border-line-muted py-9 first:pt-0 last:border-0"
               >
-                <p className="font-mono text-[11px] text-fg-subtle">
+                <p className="font-mono text-mini text-fg-subtle">
                   {String(i + 1).padStart(2, '0')}
                 </p>
                 <h2 className="mt-2 text-2xl leading-tight font-semibold text-fg">
@@ -257,7 +257,7 @@ export default function LegalDoc({ slug }) {
       {/* Gli altri documenti */}
       <section className="border-b border-line-muted py-14">
         <div className="shell">
-          <p className="font-mono text-[11px] tracking-wider text-fg-subtle uppercase">
+          <p className="font-mono text-mini tracking-wider text-fg-subtle uppercase">
             Gli altri documenti
           </p>
           <ul className="mt-5 grid gap-3 sm:grid-cols-3">
@@ -268,7 +268,7 @@ export default function LegalDoc({ slug }) {
                     to={`/${altro.slug}`}
                     className="group flex h-full flex-col rounded-xl border border-line bg-canvas p-5 transition-all duration-300 hover:-translate-y-1 hover:shadow-float"
                   >
-                    <span className="font-mono text-[11px] text-fg-subtle">{altro.numero}</span>
+                    <span className="font-mono text-mini text-fg-subtle">{altro.numero}</span>
                     <span className="mt-2 font-semibold text-fg">{altro.titolo}</span>
                     <span className="mt-1 flex-1 text-sm text-fg-muted">{altro.occhiello}</span>
                     <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-accent">

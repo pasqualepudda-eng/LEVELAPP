@@ -74,7 +74,7 @@ export default function Hero() {
       <div className="shell relative pt-24 pb-16 md:pt-32 md:pb-20">
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute top-36 -left-2 hidden font-mono text-[10px] tracking-[0.25em] text-fg-subtle uppercase xl:block"
+          className="pointer-events-none absolute top-36 -left-2 hidden font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase xl:block"
           style={{ writingMode: 'vertical-rl' }}
         >
           Software house · dal 2022
@@ -135,7 +135,7 @@ export default function Hero() {
             <EmailSignup />
             <a
               href="#/progetti"
-              className="group inline-flex items-center gap-1.5 text-sm font-medium text-fg-muted transition-colors hover:text-fg"
+              className="group inline-flex min-h-10 items-center gap-1.5 text-sm font-medium text-fg-muted transition-colors hover:text-fg"
             >
               Guarda i progetti già rilasciati
               <Icon

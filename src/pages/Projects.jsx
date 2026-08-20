@@ -35,7 +35,7 @@ export default function Projects() {
         <div className="shell relative grid gap-12 pt-10 pb-16 md:pt-14 md:pb-20 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-center lg:gap-16">
           <div>
             <Reveal as="nav" className="flex items-center gap-2 text-sm text-fg-muted">
-              <Link to="/" className="hover:text-fg">
+              <Link to="/" className="-my-2 py-2 hover:text-fg">
                 Home
               </Link>
               <Icon name="chevronRight" size={12} className="text-fg-subtle" />
@@ -62,7 +62,7 @@ export default function Projects() {
 
           {/* La matrice */}
           <Reveal delay={0.18}>
-            <div className="grid grid-cols-[repeat(20,minmax(0,1fr))] gap-1.5">
+            <div className="grid grid-cols-[repeat(20,minmax(0,1fr))] gap-1 sm:gap-1.5">
               {Array.from({ length: TOTALE }).map((_, i) => {
                 const caso = RACCONTATI.get(i)
 
@@ -85,14 +85,14 @@ export default function Projects() {
                     key={i}
                     to={`/progetti/${caso.id}`}
                     title={`${caso.client} — ${caso.title}`}
-                    className="group relative aspect-square rounded-[3px] opacity-0 transition-transform duration-300 hover:scale-[1.6]"
+                    className="group relative aspect-square rounded-[3px] opacity-0 transition-transform duration-300 after:absolute after:-inset-2 after:content-[''] hover:scale-[1.6]"
                     style={{
                       backgroundColor: caso.accent,
                       animation: 'matrice-in 0.5s var(--ease-out-quint) forwards',
                       animationDelay: `${0.2 + (i % 20) * 0.012 + Math.floor(i / 20) * 0.03}s`,
                     }}
                   >
-                    <span className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 hidden -translate-x-1/2 rounded-md border border-line bg-canvas-overlay px-2 py-1 text-[11px] whitespace-nowrap text-fg shadow-overlay group-hover:block">
+                    <span className="pointer-events-none absolute bottom-full left-1/2 z-20 mb-2 hidden -translate-x-1/2 rounded-md border border-line bg-canvas-overlay px-2 py-1 text-mini whitespace-nowrap text-fg shadow-overlay group-hover:block">
                       {caso.client}
                     </span>
                   </Link>
@@ -100,7 +100,7 @@ export default function Projects() {
               })}
             </div>
 
-            <p className="mt-5 flex items-center gap-2 font-mono text-[11px] text-fg-subtle">
+            <p className="mt-5 flex items-center gap-2 font-mono text-mini text-fg-subtle">
               <span className="inline-block size-2 rounded-[2px] bg-line-muted" />
               progetti rilasciati
               <span className="ml-3 inline-block size-2 rounded-[2px] bg-purple" />
@@ -161,7 +161,7 @@ export default function Projects() {
                   >
                     <p className="flex flex-wrap items-center gap-x-3 gap-y-1">
                       <span
-                        className="text-[11px] font-semibold tracking-wide uppercase"
+                        className="text-mini font-semibold tracking-wide uppercase"
                         style={{ color: item.accent }}
                       >
                         {item.type}
@@ -186,7 +186,7 @@ export default function Projects() {
                             {m.value}
                             {m.suffix}
                           </span>
-                          <span className="mt-0.5 block text-[11px] text-fg-muted">{m.label}</span>
+                          <span className="mt-0.5 block text-mini text-fg-muted">{m.label}</span>
                         </span>
                       ))}
 
@@ -234,7 +234,7 @@ export default function Projects() {
                     backgroundColor: `color-mix(in oklab, var(--color-purple) ${14 + i * 9}%, transparent)`,
                   }}
                 >
-                  <span className="absolute inset-0 flex items-center justify-center font-mono text-[11px] text-fg opacity-0 transition-opacity group-hover:opacity-100">
+                  <span className="absolute inset-0 flex items-center justify-center font-mono text-mini text-fg opacity-0 transition-opacity group-hover:opacity-100">
                     {sector.count}
                   </span>
                 </motion.span>

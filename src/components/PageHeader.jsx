@@ -27,7 +27,10 @@ export default function PageHeader({
               {breadcrumbs.map((crumb, i) => (
                 <li key={crumb.to ?? crumb.label} className="flex items-center gap-1.5">
                   {crumb.to ? (
-                    <Link to={crumb.to} className="transition-colors hover:text-accent hover:underline">
+                    <Link
+                    to={crumb.to}
+                    className="-my-1.5 py-1.5 transition-colors hover:text-accent hover:underline"
+                  >
                       {crumb.label}
                     </Link>
                   ) : (

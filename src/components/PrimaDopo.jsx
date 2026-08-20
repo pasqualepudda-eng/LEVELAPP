@@ -120,7 +120,7 @@ export default function PrimaDopo({ item }) {
               <div className="flex items-center gap-2 border-b border-line bg-canvas-subtle px-3 py-2">
                 <Icon name="check" size={13} style={{ color: item.accent }} />
                 <span className="text-xs font-semibold text-fg">{item.client}</span>
-                <span className="ml-auto font-mono text-[10px] text-fg-subtle">un solo sistema</span>
+                <span className="ml-auto font-mono text-mini text-fg-subtle">un solo sistema</span>
               </div>
 
               <ul className="flex-1 divide-y divide-line-muted">
@@ -137,7 +137,7 @@ export default function PrimaDopo({ item }) {
                 ))}
               </ul>
 
-              <div className="border-t border-line bg-canvas-subtle px-3 py-2 font-mono text-[10px] text-fg-subtle">
+              <div className="border-t border-line bg-canvas-subtle px-3 py-2 font-mono text-mini text-fg-subtle">
                 {item.stack.slice(0, 4).join(' · ')}
               </div>
             </motion.div>

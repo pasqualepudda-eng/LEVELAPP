@@ -66,7 +66,7 @@ export default function LiveCode({ filename, code = [], accent = 'var(--color-ac
           <span className="size-3 rounded-full bg-line" />
         </div>
         <span className="rounded-md bg-canvas px-2.5 py-1 font-mono text-xs text-fg">{filename}</span>
-        <span className="ml-auto flex items-center gap-1.5 font-mono text-[10px] text-fg-subtle">
+        <span className="ml-auto flex items-center gap-1.5 font-mono text-mini text-fg-subtle">
           <span
             className="size-1.5 rounded-full transition-colors duration-500"
             style={{ backgroundColor: finito ? 'var(--color-success)' : accent }}

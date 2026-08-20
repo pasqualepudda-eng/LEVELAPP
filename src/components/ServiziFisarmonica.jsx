@@ -46,7 +46,7 @@ function Contenuto({ servizio }) {
           {servizio.tags.map((tag) => (
             <span
               key={tag}
-              className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[11px] text-fg-muted"
+              className="rounded-full border border-line px-2.5 py-0.5 font-mono text-mini text-fg-muted"
             >
               {tag}
             </span>
@@ -55,7 +55,7 @@ function Contenuto({ servizio }) {
 
         <Link
           to={`/servizi/${servizio.slug}`}
-          className="group/link mt-6 inline-flex items-center gap-1.5 text-sm font-semibold"
+          className="group/link mt-5 inline-flex min-h-10 items-center gap-1.5 text-sm font-semibold"
           style={{ color: servizio.accent }}
         >
           Scopri {ETICHETTE[servizio.slug]}
@@ -157,7 +157,7 @@ export default function ServiziFisarmonica({ servizi, delay = 0.1, className = '
                   >
                     {ETICHETTE[servizio.slug]}
                   </span>
-                  <span className="mt-auto font-mono text-[11px] text-fg-subtle">0{i + 1}</span>
+                  <span className="mt-auto font-mono text-mini text-fg-subtle">0{i + 1}</span>
                 </button>
               )}
             </div>

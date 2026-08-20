@@ -69,7 +69,7 @@ const RIGHE = [
         {s.stack.map((tech) => (
           <span
             key={tech}
-            className="rounded-full border border-line px-2 py-0.5 font-mono text-[11px] text-fg-muted"
+            className="rounded-full border border-line px-2 py-0.5 font-mono text-mini text-fg-muted"
           >
             {tech}
           </span>
@@ -85,7 +85,7 @@ const RIGHE = [
       return caso ? (
         <Link
           to={`/progetti/${caso.id}`}
-          className="group inline-flex items-start gap-1.5 text-[14px] font-medium text-fg hover:underline"
+          className="group -my-2 inline-flex min-h-10 items-center gap-1.5 py-2 text-[14px] font-medium text-fg hover:underline"
         >
           {caso.client}
           <Icon
@@ -105,7 +105,7 @@ const RIGHE = [
     cella: (s) => (
       <Link
         to={`/servizi/${s.slug}`}
-        className="group inline-flex items-center gap-1.5 text-sm font-semibold"
+        className="group -my-2 inline-flex min-h-10 items-center gap-1.5 py-2 text-sm font-semibold"
         style={{ color: s.accent }}
       >
         Scheda completa
@@ -150,7 +150,7 @@ export default function Services() {
         <div className="grid-lines mask-fade-b pointer-events-none absolute inset-0 opacity-30" />
         <div className="shell relative py-14 md:py-18">
           <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.25em] text-fg-subtle uppercase">
+            <p className="font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase">
               Servizi · sei aree, una squadra
             </p>
             <h1 className="display display-section mt-5 max-w-4xl">
@@ -191,7 +191,7 @@ export default function Services() {
                 </button>
               )
             })}
-            <span className="ml-1 font-mono text-[11px] text-fg-subtle">
+            <span className="ml-1 font-mono text-mini text-fg-subtle">
               {elenco.length} di {services.length}
             </span>
           </Reveal>
@@ -201,12 +201,55 @@ export default function Services() {
       {/* Il quadro */}
       <section className="border-b border-line-muted py-12 md:py-16">
         <div className="shell">
-          <p className="mb-4 flex items-center gap-2 font-mono text-[11px] text-fg-subtle lg:hidden">
+          <p className="mb-4 hidden items-center gap-2 font-mono text-mini text-fg-subtle sm:flex lg:hidden">
             <Icon name="arrowRight" size={12} />
             scorri il quadro di lato
           </p>
 
-          <div className="-mx-4 overflow-x-auto px-4 pb-2">
+          {/* Telefono: il confronto affiancato non ci sta, quindi ogni area
+              diventa un blocco con le stesse righe una sotto l'altra. */}
+          <motion.ul
+            key={`lista-${filtro}`}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, ease: EASE }}
+            className="space-y-4 sm:hidden"
+          >
+            {elenco.map((s, i) => (
+              <li
+                key={s.slug}
+                className="relative overflow-hidden rounded-xl border border-line bg-canvas p-5"
+              >
+                <span
+                  className="absolute inset-x-0 top-0 h-1"
+                  style={{ backgroundColor: s.accent }}
+                />
+                <span className="flex items-center gap-2.5 pt-1">
+                  <Icon name={s.icon} size={18} style={{ color: s.accent }} />
+                  <span className="font-mono text-mini text-fg-subtle">0{i + 1}</span>
+                </span>
+                <h2 className="mt-2.5 text-lg leading-tight font-semibold text-fg">{s.title}</h2>
+                <p className="mt-1.5 font-mono text-mini" style={{ color: s.accent }}>
+                  {s.tempi}
+                </p>
+
+                <dl className="mt-5 space-y-4">
+                  {RIGHE.map((riga) => (
+                    <div key={riga.id}>
+                      {riga.etichetta && (
+                        <dt className="font-mono text-mini tracking-wider text-fg-subtle uppercase">
+                          {riga.etichetta}
+                        </dt>
+                      )}
+                      <dd className={riga.etichetta ? 'mt-1.5' : ''}>{riga.cella(s)}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </li>
+            ))}
+          </motion.ul>
+
+          <div className="-mx-4 hidden overflow-x-auto px-4 pb-2 sm:block">
             <motion.div
               key={filtro}
               initial={{ opacity: 0, y: 10 }}
@@ -235,10 +278,10 @@ export default function Services() {
                   />
                   <span className="flex items-center gap-2.5">
                     <Icon name={s.icon} size={18} style={{ color: s.accent }} />
-                    <span className="font-mono text-[11px] text-fg-subtle">0{i + 1}</span>
+                    <span className="font-mono text-mini text-fg-subtle">0{i + 1}</span>
                   </span>
                   <h2 className="mt-3 text-lg leading-tight font-semibold text-fg">{s.title}</h2>
-                  <p className="mt-2 font-mono text-[11px]" style={{ color: s.accent }}>
+                  <p className="mt-2 font-mono text-mini" style={{ color: s.accent }}>
                     {s.tempi}
                   </p>
                 </div>
@@ -248,7 +291,7 @@ export default function Services() {
               {RIGHE.map((riga) => (
                 <div key={riga.id} className="contents">
                   <div className="sticky left-0 z-10 border-b border-line-muted bg-canvas py-6 pr-4">
-                    <span className="font-mono text-[11px] tracking-wider text-fg-subtle uppercase">
+                    <span className="font-mono text-mini tracking-wider text-fg-subtle uppercase">
                       {riga.etichetta}
                     </span>
                   </div>
@@ -282,10 +325,10 @@ export default function Services() {
 
           <Reveal delay={0.08} className="mx-auto mt-12 max-w-4xl">
             <div className="grid grid-cols-2 border-b border-line pb-3">
-              <p className="font-mono text-[11px] tracking-wider text-fg-subtle uppercase">
+              <p className="font-mono text-mini tracking-wider text-fg-subtle uppercase">
                 Software standard
               </p>
-              <p className="pl-6 font-mono text-[11px] tracking-wider uppercase text-success md:pl-10">
+              <p className="pl-6 font-mono text-mini tracking-wider uppercase text-success md:pl-10">
                 Software scritto per te
               </p>
             </div>

@@ -161,7 +161,7 @@ export default function FinestraGioco({ gioco, onChiudi }) {
                     ))}
                   </ul>
 
-                  <p className="mt-6 font-mono text-[11px] text-fg-subtle">
+                  <p className="mt-6 font-mono text-mini text-fg-subtle">
                     durata · {scheda.durata} — niente punteggi salvati
                   </p>
 
@@ -178,7 +178,7 @@ export default function FinestraGioco({ gioco, onChiudi }) {
               )}
             </div>
 
-            <div className="flex items-center gap-3 border-t border-line bg-canvas-subtle px-3 py-2 font-mono text-[10px] text-fg-subtle">
+            <div className="flex items-center gap-3 border-t border-line bg-canvas-subtle px-3 py-2 font-mono text-mini text-fg-subtle">
               <span>{avviato ? 'in esecuzione' : 'pronto'}</span>
               <span className="ml-auto">esc chiude</span>
             </div>

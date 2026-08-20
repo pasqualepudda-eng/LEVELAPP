@@ -155,7 +155,7 @@ export default function WorkflowRiver() {
                     <span className="font-mono text-xs text-fg-subtle">0{i + 1}</span>
                     <span className="text-lg font-semibold text-fg">{tappa.label}</span>
                   </p>
-                  <p className="mt-1 font-mono text-[11px] text-accent">{tappa.tempo}</p>
+                  <p className="mt-1 font-mono text-mini text-accent">{tappa.tempo}</p>
                   <p className="mt-2.5 text-sm leading-relaxed text-fg-muted">{tappa.body}</p>
                 </div>
               </motion.li>
@@ -207,8 +207,8 @@ export default function WorkflowRiver() {
             >
               <div className="flex items-center gap-2 border-b border-line bg-canvas-subtle px-3 py-2">
                 <Icon name="lock" size={13} className="text-fg-subtle" />
-                <span className="font-mono text-[11px] text-fg-muted">consegna-progetto</span>
-                <span className="ml-auto rounded-full border border-success px-2 py-0.5 text-[10px] font-medium text-success">
+                <span className="font-mono text-mini text-fg-muted">consegna-progetto</span>
+                <span className="ml-auto rounded-full border border-success px-2 py-0.5 text-mini font-medium text-success">
                   intestato a te
                 </span>
               </div>
@@ -221,12 +221,12 @@ export default function WorkflowRiver() {
                   >
                     <Icon name="check" size={13} className="shrink-0 text-success" />
                     <span className="min-w-0 flex-1 truncate text-fg">{riga.label}</span>
-                    <span className="font-mono text-[10px] text-fg-subtle">{riga.meta}</span>
+                    <span className="font-mono text-mini text-fg-subtle">{riga.meta}</span>
                   </li>
                 ))}
               </ul>
 
-              <div className="border-t border-line bg-canvas-subtle px-3 py-2 font-mono text-[11px] text-fg-muted">
+              <div className="border-t border-line bg-canvas-subtle px-3 py-2 font-mono text-mini text-fg-muted">
                 consegna completa · nessuna dipendenza da noi
               </div>
             </div>

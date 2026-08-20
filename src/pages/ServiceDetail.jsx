@@ -38,11 +38,11 @@ export default function ServiceDetail({ slug }) {
 
         <div className="shell relative pt-10 pb-16 md:pt-14 md:pb-20">
           <Reveal as="nav" className="flex items-center gap-2 text-sm text-fg-muted">
-            <Link to="/" className="hover:text-fg">
+            <Link to="/" className="-my-2 py-2 hover:text-fg">
               Home
             </Link>
             <Icon name="chevronRight" size={12} className="text-fg-subtle" />
-            <Link to="/servizi" className="hover:text-fg">
+            <Link to="/servizi" className="-my-2 py-2 hover:text-fg">
               Servizi
             </Link>
             <Icon name="chevronRight" size={12} className="text-fg-subtle" />
@@ -92,7 +92,7 @@ export default function ServiceDetail({ slug }) {
 
               {/* Le altre aree, in coda: si salta senza tornare all'elenco */}
               <Reveal delay={0.14} className="mt-10 border-t border-line-muted pt-6">
-                <p className="font-mono text-[10px] tracking-[0.18em] text-fg-subtle uppercase">
+                <p className="font-mono text-mini tracking-[0.18em] text-fg-subtle uppercase">
                   altre aree
                 </p>
                 <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
@@ -184,14 +184,14 @@ export default function ServiceDetail({ slug }) {
       <section className="border-b border-line-muted py-16">
         <Reveal className="shell">
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3 border-b border-line-muted pb-6">
-            <p className="font-mono text-[10px] tracking-[0.2em] text-fg-subtle uppercase">
+            <p className="font-mono text-mini tracking-[0.2em] text-fg-subtle uppercase">
               stack tipico
             </p>
             <div className="flex flex-wrap gap-1.5">
               {service.stack.map((tech) => (
                 <span
                   key={tech}
-                  className="rounded-md border border-line px-2.5 py-1 font-mono text-[11px] text-fg-muted"
+                  className="rounded-md border border-line px-2.5 py-1 font-mono text-mini text-fg-muted"
                 >
                   {tech}
                 </span>
@@ -199,7 +199,7 @@ export default function ServiceDetail({ slug }) {
             </div>
           </div>
 
-          <p className="mt-10 font-mono text-[10px] tracking-[0.2em] text-fg-subtle uppercase">
+          <p className="mt-10 font-mono text-mini tracking-[0.2em] text-fg-subtle uppercase">
             come procediamo
           </p>
           <ol className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -209,7 +209,7 @@ export default function ServiceDetail({ slug }) {
                   className="absolute top-0 left-0 h-0.5 w-8 rounded-full"
                   style={{ backgroundColor: service.accent, opacity: 1 - i * 0.18 }}
                 />
-                <p className="font-mono text-[11px] text-fg-subtle">{fase.step}</p>
+                <p className="font-mono text-mini text-fg-subtle">{fase.step}</p>
                 <p className="mt-1.5 font-semibold text-fg">{fase.title}</p>
                 <p className="mt-1 text-[13px] text-fg-muted">{fase.duration}</p>
               </li>

@@ -4,6 +4,7 @@ import { nav, company } from '../data/content'
 import ThemeToggle from './ThemeToggle'
 import Icon from './ui/Icon'
 import Button from './ui/Button'
+import { useSessione } from '../lib/auth'
 
 /**
  * Barra di navigazione fissa ricostruita sulla chrome marketing di GitHub:
@@ -41,6 +42,7 @@ function MegaItem({ item, onNavigate }) {
 }
 
 export default function Header() {
+  const sessione = useSessione()
   const path = useRoute()
   const [openMenu, setOpenMenu] = useState(null) // label del pannello desktop
   const [mobileOpen, setMobileOpen] = useState(false)
@@ -130,7 +132,7 @@ export default function Header() {
 
             <Link
               to="/"
-              className="flex items-center gap-2 text-fg"
+              className="flex min-h-10 items-center gap-2 text-fg"
               aria-label={`${company.legalName}, home`}
             >
               <img src="/logo.png" alt="" className="marchio h-7 w-auto" />
@@ -266,7 +268,17 @@ export default function Header() {
               {company.phone}
             </a>
 
-            <Button to="/contatti" variant="primary" size="md">
+            {/* Ingresso all'area riservata: se la sessione è già aperta porta
+                direttamente ai preventivi invece che al modulo di accesso. */}
+            <Link
+              to={sessione ? '/area' : '/accedi'}
+              className="hidden min-h-10 items-center gap-1.5 rounded-md px-3 text-sm font-medium text-fg-muted transition-colors hover:bg-canvas-subtle hover:text-fg sm:flex"
+            >
+              <Icon name={sessione ? 'file' : 'lock'} size={14} />
+              {sessione ? 'Preventivi' : 'Accedi'}
+            </Link>
+
+            <Button to="/contatti" variant="primary" size="md" className="min-h-10">
               Parliamone
             </Button>
           </div>
@@ -283,9 +295,9 @@ export default function Header() {
       {mobileOpen && (
         <div
           id="menu-mobile"
-          className="fixed inset-x-0 bottom-0 top-16 z-40 overflow-y-auto border-t border-line bg-canvas lg:hidden"
+          className="fixed inset-x-0 top-16 bottom-0 z-40 overflow-y-auto overscroll-contain bg-canvas lg:hidden"
         >
-          <nav className="shell py-4" aria-label="Principale (mobile)">
+          <nav className="shell pb-4" aria-label="Principale (mobile)">
             <ul className="divide-y divide-line-muted">
               {nav.map((item) => {
                 const expanded = mobileSection === item.label
@@ -295,7 +307,7 @@ export default function Header() {
                     <li key={item.label}>
                       <Link
                         to={item.to}
-                        className="flex items-center justify-between py-4 text-lg font-medium text-fg"
+                        className="flex min-h-[3.25rem] items-center justify-between py-3.5 text-lg font-medium text-fg"
                       >
                         {item.label}
                         <Icon name="chevronRight" size={16} className="text-fg-subtle" />
@@ -308,7 +320,7 @@ export default function Header() {
                   <li key={item.label}>
                     <button
                       type="button"
-                      className="flex w-full items-center justify-between py-4 text-lg font-medium text-fg"
+                      className="flex min-h-[3.25rem] w-full items-center justify-between py-3.5 text-lg font-medium text-fg"
                       aria-expanded={expanded}
                       onClick={() => setMobileSection(expanded ? null : item.label)}
                     >
@@ -334,7 +346,7 @@ export default function Header() {
                                 <li key={child.label}>
                                   <Link
                                     to={child.to}
-                                    className="flex items-center gap-2.5 py-2 text-sm text-fg-muted"
+                                    className="flex min-h-11 items-center gap-2.5 py-2.5 text-[15px] text-fg-muted"
                                   >
                                     <Icon name={child.icon} size={15} className="shrink-0" />
                                     {child.label}
@@ -365,6 +377,14 @@ export default function Header() {
               </Button>
               <Button href={company.phoneHref} variant="default" size="xl" icon="phone">
                 {company.phone}
+              </Button>
+              <Button
+                to={sessione ? '/area' : '/accedi'}
+                variant="invisible"
+                size="xl"
+                icon={sessione ? 'file' : 'lock'}
+              >
+                {sessione ? 'I tuoi preventivi' : 'Accedi all’area riservata'}
               </Button>
 
               <div className="mt-2 flex items-center justify-between rounded-md border border-line bg-canvas-subtle px-4 py-3">

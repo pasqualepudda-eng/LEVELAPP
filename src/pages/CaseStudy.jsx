@@ -52,11 +52,11 @@ export default function CaseStudy({ id }) {
 
         <div className="shell relative pt-10 pb-14 md:pt-14 md:pb-20">
           <Reveal as="nav" className="flex items-center gap-2 text-sm text-fg-muted">
-            <Link to="/" className="hover:text-fg">
+            <Link to="/" className="-my-2 py-2 hover:text-fg">
               Home
             </Link>
             <Icon name="chevronRight" size={12} className="text-fg-subtle" />
-            <Link to="/progetti" className="hover:text-fg">
+            <Link to="/progetti" className="-my-2 py-2 hover:text-fg">
               Progetti
             </Link>
             <Icon name="chevronRight" size={12} className="text-fg-subtle" />
@@ -88,7 +88,7 @@ export default function CaseStudy({ id }) {
                 .filter((f) => f.label !== 'Cliente')
                 .map((fact) => (
                   <div key={fact.label} className="border-b border-line-muted py-5 pr-6 lg:border-b-0">
-                    <dt className="font-mono text-[10px] tracking-[0.18em] text-fg-subtle uppercase">
+                    <dt className="font-mono text-mini tracking-[0.18em] text-fg-subtle uppercase">
                       {fact.label}
                     </dt>
                     <dd className="mt-2 text-[15px] leading-snug font-medium text-fg">
@@ -135,7 +135,7 @@ export default function CaseStudy({ id }) {
           <div className="shell grid gap-10 lg:grid-cols-[8rem_minmax(0,1fr)] lg:gap-16">
             <Reveal className="lg:sticky lg:top-32 lg:self-start">
               <p className="display text-6xl text-danger opacity-40">01</p>
-              <p className="mt-2 font-mono text-[11px] tracking-wide text-fg-subtle uppercase">
+              <p className="mt-2 font-mono text-mini tracking-wide text-fg-subtle uppercase">
                 il problema
               </p>
             </Reveal>
@@ -155,7 +155,7 @@ export default function CaseStudy({ id }) {
                 {['Excel', 'Email', 'WhatsApp', 'Carta', 'Gestionale storico'].map((s) => (
                   <span
                     key={s}
-                    className="rounded-md border border-dashed border-line px-2.5 py-1 font-mono text-[11px] text-fg-subtle"
+                    className="rounded-md border border-dashed border-line px-2.5 py-1 font-mono text-mini text-fg-subtle"
                   >
                     {s}
                   </span>
@@ -195,7 +195,7 @@ export default function CaseStudy({ id }) {
               <p className="display text-6xl opacity-40" style={{ color: item.accent }}>
                 02
               </p>
-              <p className="mt-2 font-mono text-[11px] tracking-wide text-fg-subtle uppercase">
+              <p className="mt-2 font-mono text-mini tracking-wide text-fg-subtle uppercase">
                 la soluzione
               </p>
             </Reveal>
@@ -214,7 +214,7 @@ export default function CaseStudy({ id }) {
                 {item.stack.map((tech) => (
                   <span
                     key={tech}
-                    className="rounded-full border border-line px-3 py-1 font-mono text-[11px] text-fg-muted"
+                    className="rounded-full border border-line px-3 py-1 font-mono text-mini text-fg-muted"
                   >
                     {tech}
                   </span>
@@ -229,7 +229,7 @@ export default function CaseStudy({ id }) {
           <div className="shell grid gap-10 lg:grid-cols-[8rem_minmax(0,1fr)] lg:gap-16">
             <Reveal className="lg:sticky lg:top-32 lg:self-start">
               <p className="display text-6xl text-success opacity-40">03</p>
-              <p className="mt-2 font-mono text-[11px] tracking-wide text-fg-subtle uppercase">
+              <p className="mt-2 font-mono text-mini tracking-wide text-fg-subtle uppercase">
                 il risultato
               </p>
             </Reveal>
@@ -313,7 +313,7 @@ export default function CaseStudy({ id }) {
       <section className="border-b border-line-muted py-20 md:py-24">
         <div className="shell flex items-end justify-between gap-4">
           <h2 className="display text-3xl">Altri progetti</h2>
-          <p className="hidden font-mono text-[11px] text-fg-subtle sm:block">
+          <p className="hidden font-mono text-mini text-fg-subtle sm:block">
             scorri di lato →
           </p>
         </div>
@@ -339,10 +339,10 @@ export default function CaseStudy({ id }) {
                     <span className="display text-4xl opacity-25 transition-opacity duration-500 group-hover:opacity-60" style={{ color: altro.accent }}>
                       {String(i + 1).padStart(2, '0')}
                     </span>
-                    <span className="font-mono text-[11px] text-fg-subtle">{altro.year}</span>
+                    <span className="font-mono text-mini text-fg-subtle">{altro.year}</span>
                   </span>
 
-                  <span className="relative mt-6 block text-[11px] font-semibold tracking-wide uppercase" style={{ color: altro.accent }}>
+                  <span className="relative mt-6 block text-mini font-semibold tracking-wide uppercase" style={{ color: altro.accent }}>
                     {altro.type}
                   </span>
 

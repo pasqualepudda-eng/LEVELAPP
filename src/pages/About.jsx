@@ -55,7 +55,7 @@ function Righello() {
         })}
       </motion.div>
 
-      <div className="mt-2 flex justify-between font-mono text-[11px] text-fg-subtle">
+      <div className="mt-2 flex justify-between font-mono text-mini text-fg-subtle">
         {ANNI.map((anno) => (
           <span key={anno} className={anno === 2026 ? 'text-fg' : undefined}>
             {anno}
@@ -76,7 +76,7 @@ function Apertura() {
 
       <div className="shell relative pt-16 pb-14 md:pt-20 md:pb-16">
         <Reveal>
-          <p className="font-mono text-[11px] tracking-[0.25em] text-fg-subtle uppercase">
+          <p className="font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase">
             Chi siamo · {company.foundedIn} {company.founded}
           </p>
           <div className="mt-6">
@@ -99,7 +99,7 @@ function Apertura() {
                 ['Commerciali', 'nessuno'],
               ].map(([voce, valore]) => (
                 <div key={voce}>
-                  <dt className="font-mono text-[11px] tracking-wider text-fg-subtle uppercase">
+                  <dt className="font-mono text-mini tracking-wider text-fg-subtle uppercase">
                     {voce}
                   </dt>
                   <dd className="mt-1 text-[15px] text-fg">{valore}</dd>
@@ -330,14 +330,14 @@ function Patto() {
       <div className="shell">
         <div className="flex flex-wrap items-end justify-between gap-6 border-b border-line pb-6">
           <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.25em] text-fg-subtle uppercase">
+            <p className="font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase">
               Il patto
             </p>
             <h2 className="display display-section mt-3 max-w-2xl">
               Quattro regole che non tradiamo a progetto in corso
             </h2>
           </Reveal>
-          <Reveal delay={0.1} className="font-mono text-[11px] text-fg-subtle">
+          <Reveal delay={0.1} className="font-mono text-mini text-fg-subtle">
             valide dal {company.founded} · rev. 2026
           </Reveal>
         </div>
@@ -393,7 +393,7 @@ function SalaMacchine() {
       <div className="shell">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-end">
           <Reveal>
-            <p className="font-mono text-[11px] tracking-[0.25em] text-fg-subtle uppercase">
+            <p className="font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase">
               La sala macchine
             </p>
             <h2 className="display display-section mt-3">
@@ -420,7 +420,7 @@ function SalaMacchine() {
               />
 
               <div className="flex items-center gap-3 pl-3">
-                <span className="font-mono text-[11px] text-fg-subtle">livello 0{i + 1}</span>
+                <span className="font-mono text-mini text-fg-subtle">livello 0{i + 1}</span>
                 <h3 className="text-lg font-semibold">{strato.group}</h3>
               </div>
 

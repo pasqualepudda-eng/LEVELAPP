@@ -41,7 +41,7 @@ export default function ServiceCard({ service }) {
         {service.tags.map((tag) => (
           <span
             key={tag}
-            className="rounded-full border border-line px-2.5 py-0.5 font-mono text-[11px] text-fg-muted"
+            className="rounded-full border border-line px-2.5 py-0.5 font-mono text-mini text-fg-muted"
           >
             {tag}
           </span>

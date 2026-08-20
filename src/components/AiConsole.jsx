@@ -39,7 +39,7 @@ export default function AiConsole({ className = '' }) {
       <div className="flex items-center gap-2.5 border-b border-line bg-canvas-subtle px-4 py-3">
         <Logo size={20} className="text-fg" />
         <span className="text-sm font-semibold">Assistente LevelApp</span>
-        <span className="ml-auto flex items-center gap-1.5 rounded-full border border-line px-2 py-0.5 text-[11px] text-fg-muted">
+        <span className="ml-auto flex items-center gap-1.5 rounded-full border border-line px-2 py-0.5 text-mini text-fg-muted">
           <Icon name="lock" size={10} />
           dati interni
         </span>
@@ -75,7 +75,7 @@ export default function AiConsole({ className = '' }) {
                       {message.sources.map((source) => (
                         <li
                           key={source}
-                          className="flex items-center gap-1.5 font-mono text-[11px] text-fg-muted"
+                          className="flex items-center gap-1.5 font-mono text-mini text-fg-muted"
                         >
                           <Icon name="file" size={11} className="shrink-0 text-fg-subtle" />
                           <span className="truncate">{source}</span>

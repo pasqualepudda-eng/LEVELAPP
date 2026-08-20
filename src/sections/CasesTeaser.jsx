@@ -121,7 +121,7 @@ export default function CasesTeaser() {
                           {m.value}
                           {m.suffix}
                         </p>
-                        <p className="mt-1 text-[11px] leading-snug text-fg-muted">{m.label}</p>
+                        <p className="mt-1 text-mini leading-snug text-fg-muted">{m.label}</p>
                       </div>
                     ))}
                     <Icon

@@ -12,6 +12,9 @@ import Interactive from './pages/Interactive'
 import Careers from './pages/Careers'
 import LegalDoc from './pages/LegalDoc'
 import Sitemap from './pages/Sitemap'
+import Login from './pages/Login'
+import Area from './pages/Area'
+import PreventivoEditor from './pages/PreventivoEditor'
 import NotFound from './pages/NotFound'
 
 /**
@@ -45,6 +48,10 @@ function Page() {
       return second ? <NotFound /> : <LegalDoc slug={first} />
     case 'mappa':
       return second ? <NotFound /> : <Sitemap />
+    case 'accedi':
+      return second ? <NotFound /> : <Login />
+    case 'area':
+      return second ? <PreventivoEditor id={second} /> : <Area />
     default:
       return <NotFound />
   }
@@ -53,6 +60,9 @@ function Page() {
 function Shell() {
   const path = useRoute()
   useScrollToTop(useHashKey())
+
+  /* L'area riservata è un'applicazione, non una pagina vetrina: niente piede. */
+  const riservata = path === '/accedi' || path.startsWith('/area')
 
   return (
     <>
@@ -71,7 +81,7 @@ function Shell() {
         <Page />
       </main>
 
-      <Footer />
+      {!riservata && <Footer />}
     </>
   )
 }
