@@ -102,7 +102,11 @@ export default function Header() {
     <>
       <header
         ref={headerRef}
-        className="sticky top-0 z-50 border-b border-line-muted bg-canvas/85 backdrop-blur-xl"
+        // Con il menu mobile aperto la barra diventa opaca: la trasparenza
+        // lascerebbe intravedere la pagina sopra il pannello.
+        className={`sticky top-0 z-50 border-b border-line-muted ${
+          mobileOpen ? 'bg-canvas' : 'bg-canvas/85 backdrop-blur-xl'
+        }`}
       >
         <div className="shell flex h-16 items-center justify-between gap-4">
           {/* Sinistra: menu mobile + marchio + navigazione */}
