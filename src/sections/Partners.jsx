@@ -1,10 +1,10 @@
 import { partners } from '../data/content'
-import Marquee from '../components/ui/Marquee'
+import VelocityMarquee from '../components/ui/VelocityMarquee'
 import Icon from '../components/ui/Icon'
 
 /**
- * Fascia dei partner: una sola fila che scorre, come le strisce di loghi
- * delle pagine marketing.
+ * Fascia dei partner: una sola fila che scorre legata allo scroll — accelera,
+ * si inclina e inverte la marcia insieme alla pagina.
  *
  * I simboli sono disegni del nostro set di icone, non i marchi ufficiali delle
  * aziende. Per usare i loghi veri metti l'SVG in `public/tech/` e valorizza
@@ -34,11 +34,11 @@ export default function Partners() {
         I nostri partner
       </h2>
 
-      <Marquee speed={70} pauseOnHover className="mask-fade-x" gap="3.5rem">
+      <VelocityMarquee className="mask-fade-x" gap="3.5rem">
         {partners.map((voce) => (
           <Marchio key={voce.nome} voce={voce} />
         ))}
-      </Marquee>
+      </VelocityMarquee>
     </section>
   )
 }
