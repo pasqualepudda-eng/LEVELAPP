@@ -5,15 +5,11 @@
 
 export const company = {
   name: 'LevelApp',
-  // Ragione sociale: è quella che compare in testata e nella riga legale.
-  legalName: 'LevelApp LLC',
   claim: 'Software house',
   payoff: 'Portiamo il tuo business al livello successivo.',
   phone: '+39 351 418 1029',
   phoneHref: 'tel:+393514181029',
   email: 'amministrazione@levelapp.cloud',
-  founded: 2022,
-  foundedIn: 'Roma',
   socials: [
     { label: 'Instagram', href: 'https://www.instagram.com/levelapp.cloud', icon: 'instagram' },
   ],
@@ -1041,7 +1037,7 @@ export const stats = [
 ]
 
 export const aboutStory = [
-  'LevelApp nasce a Roma nel 2022 da Pasqualino Pudda e Kayo Willian Dionizio Venturino: due dipendenti stanchi di vedere aziende sane piegare i propri processi a software che non le rappresentavano. Il primo lavoro è un gestionale per appaltatori pubblici — gare, requisiti, documentazione — che da allora non ha mai smesso di girare.',
+  'LevelApp nasce da due dipendenti stanchi di vedere aziende sane piegare i propri processi a software che non le rappresentavano. Il primo lavoro è un gestionale per appaltatori pubblici — gare, requisiti, documentazione — che da allora non ha mai smesso di girare.',
   'Nel 2024 la collaborazione con un’azienda statunitense porta attorno al nucleo iniziale più di 24 sviluppatori back-end e front-end, e con loro un altro passo di scala. Nello stesso anno il ritmo cambia: niente più progetti lunghi mesi, ma rilasci in produzione entro quattro settimane.',
   'Oggi seguiamo oltre 70 clienti e più di 200 progetti attivi. Uno di questi lo portiamo avanti come fondatori e non come fornitori — Horeca in Suite — ed è il motivo per cui, quando qualcuno arriva con un’idea invece che con un processo da sistemare, sappiamo esattamente di cosa sta parlando.',
 ]
@@ -1080,7 +1076,7 @@ export const timeline = [
   {
     year: '2022',
     title: 'Due dipendenti e un software per gli appalti',
-    body: 'LevelApp nasce a Roma da Pasqualino Pudda e Kayo Willian Dionizio Venturino, due dipendenti che decidono di mettersi in proprio. Nello stesso anno esce il primo lavoro: un software per appaltatori pubblici, che gestisce gare, requisiti e documentazione — ed è ancora oggi in esercizio, usato tutti i giorni.',
+    body: 'LevelApp nasce da due dipendenti che decidono di mettersi in proprio. Nello stesso anno esce il primo lavoro: un software per appaltatori pubblici, che gestisce gare, requisiti e documentazione — ed è ancora oggi in esercizio, usato tutti i giorni.',
   },
   {
     year: '2024',

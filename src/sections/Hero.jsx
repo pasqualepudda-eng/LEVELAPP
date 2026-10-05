@@ -77,7 +77,7 @@ export default function Hero() {
           className="pointer-events-none absolute top-36 -left-2 hidden font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase xl:block"
           style={{ writingMode: 'vertical-rl' }}
         >
-          Software house · dal 2022
+          Software house
         </span>
 
         {/* Il titolo: particelle da 768px in su, testo pieno sotto.

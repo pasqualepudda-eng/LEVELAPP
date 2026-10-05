@@ -152,7 +152,7 @@ export default function Interactive() {
       return aggiungi({
         tipo: 'testo',
         valore:
-          'Software house dal 2022. Gestionali, piattaforme, siti e AI applicata: in produzione in quattro settimane, con il codice intestato a te.',
+          'Software house. Gestionali, piattaforme, siti e AI applicata: in produzione in quattro settimane, con il codice intestato a te.',
       })
     }
 

@@ -95,7 +95,7 @@ src/
 Tutti i contenuti stanno in [`src/data/content.js`](src/data/content.js).
 I valori ancora da sostituire sono segnati con `TODO`:
 
-- `company` — telefono, email, P.IVA, anno di fondazione, sedi (Roma e Milano), social
+- `company` — telefono, email, social
 - `clients` — nomi dei clienti (o sostituisci i wordmark con veri loghi SVG)
 - `cases`, `testimonials`, `stats`, `timeline`, `team` — **dati e numeri reali**:
   quelli attuali sono plausibili ma inventati, non pubblicarli così come sono

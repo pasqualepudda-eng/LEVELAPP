@@ -7,8 +7,8 @@
  * Le uniche richieste verso terzi sono quelle dei caratteri tipografici.
  *
  * TODO prima della pubblicazione: sede legale e registro di iscrizione della
- * società, indirizzo PEC, foro competente nella sezione "Legge applicabile" dei
- * termini, ed eventuale responsabile della protezione dei dati.
+ * società, indirizzo PEC, legge applicabile e foro competente nei termini, ed
+ * eventuale responsabile della protezione dei dati.
  *
  * Ogni sezione è fatta di blocchi: `p` (paragrafo), `elenco`, `nota`
  * (riquadro evidenziato) e `tabella` (intestazioni + righe).
@@ -39,11 +39,7 @@ const privacy = {
       titolo: 'Chi tratta i tuoi dati',
       blocchi: [
         p(
-          'Il titolare del trattamento è LevelApp LLC, la società che sviluppa e gestisce questo sito. Per qualsiasi richiesta sui tuoi dati puoi scrivere all’indirizzo di posta indicato nella pagina Contatti: rispondiamo noi, non un servizio esterno.',
-        ),
-        nota(
-          'Da completare',
-          'I riferimenti identificativi completi della società — sede legale, registro di iscrizione ed eventuale responsabile della protezione dei dati — vanno inseriti qui prima della pubblicazione del sito.',
+          'Il titolare del trattamento è LevelApp, la società che sviluppa e gestisce questo sito. Per qualsiasi richiesta sui tuoi dati puoi scrivere all’indirizzo di posta indicato nella pagina Contatti: rispondiamo noi, non un servizio esterno.',
         ),
       ],
     },
@@ -251,7 +247,7 @@ const termini = {
       titolo: 'Oggetto',
       blocchi: [
         p(
-          'Queste condizioni regolano l’uso del sito di LevelApp LLC. Navigandolo le accetti. Il sito presenta i nostri servizi: non vende nulla online, non permette di registrarsi e non dà accesso ad alcuna area riservata.',
+          'Queste condizioni regolano l’uso del sito di LevelApp. Navigandolo le accetti. Il sito presenta i nostri servizi: non vende nulla online, non permette di registrarsi e non dà accesso ad alcuna area riservata.',
         ),
       ],
     },
@@ -306,16 +302,6 @@ const termini = {
       blocchi: [
         p(
           'Facciamo il possibile perché il sito sia sempre raggiungibile e aggiornato, ma può essere sospeso per manutenzione o per cause fuori dal nostro controllo. Non rispondiamo dei danni derivanti da decisioni prese sulla sola base delle informazioni pubblicate qui, né dei contenuti dei siti esterni a cui rimandiamo.',
-        ),
-      ],
-    },
-    {
-      id: 'legge',
-      titolo: 'Legge applicabile',
-      blocchi: [
-        nota(
-          'Da completare',
-          'La legge applicabile e il foro competente vanno indicati qui in coerenza con la sede della società, insieme all’eventuale clausola per i consumatori.',
         ),
       ],
     },

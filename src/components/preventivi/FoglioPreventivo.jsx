@@ -124,7 +124,7 @@ export default function FoglioPreventivo({ preventivo }) {
       </section>
 
       <footer className="foglio-piede">
-        {company.legalName} · {company.email} · documento generato il{' '}
+        {company.name} · {company.email} · documento generato il{' '}
         {dataIt(new Date().toISOString())}
       </footer>
     </>

@@ -137,7 +137,7 @@ export default function Header() {
             <Link
               to="/"
               className="flex min-h-10 items-center gap-2 text-fg"
-              aria-label={`${company.legalName}, home`}
+              aria-label={`${company.name}, home`}
             >
               <img src="/logo.png" alt="" className="marchio h-7 w-auto" />
             </Link>

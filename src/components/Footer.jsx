@@ -63,7 +63,7 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-[1.3fr_3fr]">
           {/* Marchio, iscrizione, riferimenti */}
           <div>
-            <Link to="/" className="inline-flex items-center gap-2 text-fg" aria-label={company.legalName}>
+            <Link to="/" className="inline-flex items-center gap-2 text-fg" aria-label={company.name}>
               <img src="/logo.png" alt="" className="marchio h-8 w-auto" />
             </Link>
 
@@ -116,7 +116,7 @@ export default function Footer() {
           <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Logo size={22} className="text-fg-subtle" />
             <p>
-              © {new Date().getFullYear()} {company.legalName}
+              © {new Date().getFullYear()} {company.name}
             </p>
             <ul className="flex flex-wrap items-center gap-x-5 gap-y-2">
               {legalLinks.map((link) => (

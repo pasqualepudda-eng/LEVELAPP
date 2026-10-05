@@ -183,7 +183,7 @@ export default function PreventivoEditor({ id }) {
     )
     const testo = [
       `${preventivo.numero} — ${preventivo.oggetto || 'Preventivo'}`,
-      company.legalName,
+      company.name,
       '',
       `Cliente: ${preventivo.cliente.azienda || '—'}${
         preventivo.cliente.referente ? ` (${preventivo.cliente.referente})` : ''

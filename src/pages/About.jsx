@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { motion, useMotionValueEvent, useScroll, useTransform } from 'motion/react'
-import { aboutStory, values, timeline, stack, stats, company } from '../data/content'
+import { aboutStory, values, timeline, stack, stats } from '../data/content'
 import CtaBand from '../components/CtaBand'
 import ProcessSection from '../sections/ProcessSection'
 import Counter from '../components/ui/Counter'
@@ -77,7 +77,7 @@ function Apertura() {
       <div className="shell relative pt-16 pb-14 md:pt-20 md:pb-16">
         <Reveal>
           <p className="font-mono text-mini tracking-[0.25em] text-fg-subtle uppercase">
-            Chi siamo · {company.foundedIn} {company.founded}
+            Chi siamo
           </p>
           <div className="mt-6">
             <Righello />
@@ -93,8 +93,6 @@ function Apertura() {
           <Reveal delay={0.16}>
             <dl className="space-y-4 border-t border-line pt-5">
               {[
-                ['Fondata', `${company.foundedIn}, ${company.founded}`],
-                ['Soci', 'Pasqualino Pudda · Kayo Willian Dionizio Venturino'],
                 ['Squadra', 'oltre 24 sviluppatori'],
                 ['Commerciali', 'nessuno'],
               ].map(([voce, valore]) => (
@@ -338,7 +336,7 @@ function Patto() {
             </h2>
           </Reveal>
           <Reveal delay={0.1} className="font-mono text-mini text-fg-subtle">
-            valide dal {company.founded} · rev. 2026
+            rev. 2026
           </Reveal>
         </div>
 
@@ -376,7 +374,7 @@ function Patto() {
         <Reveal delay={0.1} className="mt-8 flex flex-wrap items-center gap-3">
           <Icon name="verified" size={15} className="text-success" />
           <p className="font-mono text-[12px] text-fg-muted">
-            sottoscritto da Pasqualino Pudda e Kayo Willian Dionizio Venturino — soci fondatori
+            sottoscritto dai soci fondatori
           </p>
         </Reveal>
       </div>

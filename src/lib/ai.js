@@ -134,7 +134,7 @@ const SCHEMA = {
   },
 }
 
-const istruzioni = () => `Sei chi scrive i preventivi in LevelApp LLC, software house italiana.
+const istruzioni = () => `Sei chi scrive i preventivi in LevelApp, software house italiana.
 Da una descrizione a parole ricavi un preventivo dettagliato, pronto da mandare al cliente.
 
 Le aree di lavoro, con i tempi che promettiamo e il riferimento di prezzo:
